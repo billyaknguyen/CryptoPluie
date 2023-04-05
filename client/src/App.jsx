@@ -1,9 +1,13 @@
-
+import HomePage from "./components/Home/Homepage"
+import GlobalStyle from "./GlobalStyle"
 
 const  App = () => {
 
   return (
-    <div> Hello Word</div>
+    <>
+    <GlobalStyle/>
+    <HomePage/>
+    </>
   )
 }
 
