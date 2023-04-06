@@ -1,12 +1,12 @@
 import Navbar from "../Navbar/Navbar"
-import { HomeContainer, FirstSection, SecondSection } from "./HomepageStyles"
+import { HomeContainer, FirstSection, SecondSection} from "./HomepageStyles"
 
 
 const HomePage = () => {
 return (
     <HomeContainer>
-    <Navbar />
       <FirstSection>
+      <Navbar />
       </FirstSection>
       <SecondSection></SecondSection>
   </HomeContainer>
