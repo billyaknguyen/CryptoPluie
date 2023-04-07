@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 export const NavContainer = styled.header`
   display: flex;
@@ -6,13 +7,16 @@ export const NavContainer = styled.header`
   align-items: center;
   max-height: 200px;
   width: 100%;
-  border: 1px solid black;
+  border: 2px solid yellow;
+  /* position: fixed;
+  top: 0; */
 `;
 
 export const MainTitle = styled.h1`
-  margin-left: 1rem;
-  font-size: 30px;
+  margin-left: 2rem;
+  font-size: 2.5rem;
   letter-spacing: 3px;
+  font-weight: bold;
 `;
 
 export const Logo = styled.img`
@@ -20,13 +24,38 @@ export const Logo = styled.img`
   width: 120px;
 `;
 
-export const HomeLinks = styled.div`
+export const TitleLink = styled(NavLink)`
+  text-decoration: none;
+  color: white;
+`;
+
+export const LogoLink = styled(NavLink)``;
+
+export const CoinsLink = styled(NavLink)`
+  text-decoration: none;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+`;
+
+export const LinksWrapper = styled.div`
+  display: flex;
+  border: 3px solid brown;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+`;
+export const HomeLinksWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
-  margin-left: 1rem;
-  /* flex-direction: row; */
+  margin-left: 2rem;
+  border: 3px solid purple;
+`;
+
+export const NavigationLinksWrapper = styled.div`
+  display: flex;
+  border: 3px solid green;
 `;
 
 export const SignUpButton = styled.button`
