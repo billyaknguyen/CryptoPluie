@@ -1,15 +1,21 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import WaveNav from "./wavenav.svg";
 
 export const NavContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-height: 200px;
   width: 100%;
-  border: 2px solid yellow;
-  /* position: fixed;
-  top: 0; */
+  height: 250px;
+  background-image: url(${WaveNav});
+  /* border: 1px solid yellow; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  top: 0;
+  z-index: 1;
 `;
 
 export const MainTitle = styled.h1`
@@ -40,7 +46,7 @@ export const CoinsLink = styled(NavLink)`
 
 export const LinksWrapper = styled.div`
   display: flex;
-  border: 3px solid brown;
+  /* border: 3px solid brown; */
   align-items: center;
   justify-content: center;
   gap: 20px;
@@ -50,12 +56,12 @@ export const HomeLinksWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin-left: 2rem;
-  border: 3px solid purple;
+  /* border: 3px solid purple; */
 `;
 
 export const NavigationLinksWrapper = styled.div`
   display: flex;
-  border: 3px solid green;
+  /* border: 3px solid green; */
 `;
 
 export const SignUpButton = styled.button`

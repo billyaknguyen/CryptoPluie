@@ -18,8 +18,8 @@ const HomePage = () => {
 
 return (
     <HomeContainer>
-      <FirstSection>
       <Navbar />
+      <FirstSection>
       <TitleContainer>{animatedTitle}</TitleContainer>
       </FirstSection>
       <SecondSection></SecondSection>

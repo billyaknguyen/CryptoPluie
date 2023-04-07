@@ -11,7 +11,7 @@ export const FirstSection = styled.section`
   background-image: url(https://cdn.discordapp.com/attachments/899929905318486046/1093585672926920785/24a9ncHG_2x.jpg);
   background-size: cover;
   background-position: center;
-  border: 3px solid red;
+  /* border: 3px solid red; */
 `;
 
 export const AnimatedLetter = styled.span`
@@ -48,7 +48,7 @@ export const AnimatedLetter = styled.span`
 `;
 
 export const TitleContainer = styled.div`
-  margin-top: 50px;
+  margin-top: 300px;
   font-size: 4rem;
   border: 2px solid green;
   font-family: "Raleway", sans-serif;
