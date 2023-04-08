@@ -1,5 +1,5 @@
 import Navbar from "../Navbar/Navbar"
-import { HomeContainer, FirstSection, SecondSection,  AnimatedLetter, TitleContainer} from "./HomepageStyles"
+import { HomeContainer, FirstSection, SecondSection,  AnimatedLetter, TitleContainer, Wave} from "./HomepageStyles"
 
 
 const HomePage = () => {
@@ -21,6 +21,7 @@ return (
       <Navbar />
       <FirstSection>
       <TitleContainer>{animatedTitle}</TitleContainer>
+      <Wave/>
       </FirstSection>
       <SecondSection></SecondSection>
   </HomeContainer>
