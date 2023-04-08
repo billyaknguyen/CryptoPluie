@@ -9,7 +9,7 @@ export const HomeContainer = styled.div`
 
 export const FirstSection = styled.section`
   height: 100vh;
-  background-image: url(https://cdn.discordapp.com/attachments/899929905318486046/1093585672926920785/24a9ncHG_2x.jpg);
+  background-image: url(https://media.discordapp.net/attachments/899929905318486046/1094135069867782155/new_background_pic_HD.jpg?width=1752&height=819);
   background-size: cover;
   background-position: center;
   position: relative;
@@ -46,10 +46,9 @@ export const AnimatedLetter = styled.span`
 `;
 
 export const TitleContainer = styled.div`
-  margin-top: 300px;
+  margin-top: 400px;
   font-size: 4rem;
   border: 2px solid green;
-  font-family: "Raleway", sans-serif;
   text-align: center;
 
   @media (max-width: 768px) {
@@ -62,11 +61,11 @@ export const TitleContainer = styled.div`
 `;
 
 export const Wave = styled.div`
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 150px;
+  height: 110px;
   background-image: url(${WaveDivider});
   background-size: cover;
   background-position: top;
@@ -74,7 +73,18 @@ export const Wave = styled.div`
   /* border: 2px solid black; */
 `;
 
+export const RainCoatImg = styled.img`
+  width: 500px;
+  height: 500px;
+`;
+
+export const H2 = styled.h2`
+  font-size: 50px;
+  color: black;
+`;
 export const SecondSection = styled.section`
   background-color: #f1fafc;
-  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  min-height: 500px;
 `;

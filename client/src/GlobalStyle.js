@@ -7,6 +7,9 @@ body {
     font-family: 'Quicksand', sans-serif;
     color: white;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 `;
 
