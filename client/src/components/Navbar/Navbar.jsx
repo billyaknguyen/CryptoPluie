@@ -6,7 +6,7 @@ const Navbar = () => {
       <LinksWrapper>
       <HomeLinksWrapper>
         <LogoLink to="/">
-        <Logo src="https://cdn.discordapp.com/attachments/899929905318486046/1094145054467162162/new_logo_2.png" alt="logo"/>
+        <Logo src="https://cdn.discordapp.com/attachments/899929905318486046/1094149965976174672/CryptoPluie_Billy_Nguyen_Logo.png" alt="logo"/>
         </LogoLink>
         <TitleLink>
       <MainTitle>CryptoPluie</MainTitle>
