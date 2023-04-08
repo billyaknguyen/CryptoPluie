@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import WaveDivider from "./wavedivider.svg";
 
 export const HomeContainer = styled.div`
   display: flex;
@@ -11,18 +12,16 @@ export const FirstSection = styled.section`
   background-image: url(https://cdn.discordapp.com/attachments/899929905318486046/1093585672926920785/24a9ncHG_2x.jpg);
   background-size: cover;
   background-position: center;
-  /* border: 3px solid red; */
+  position: relative;
 `;
 
 export const AnimatedLetter = styled.span`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  border-bottom-left-radius: 50%;
-  border-bottom-right-radius: 50%;
   color: white;
   opacity: 0;
-  animation: rainTitle 2s linear forwards;
+  animation: rainTitle 0.5s linear forwards;
   animation-delay: ${({ delay }) => delay || 0}s;
 
   @keyframes rainTitle {
@@ -42,7 +41,6 @@ export const AnimatedLetter = styled.span`
     100% {
       transform: translateY(0);
       opacity: 1;
-      border-radius: 0;
     }
   }
 `;
@@ -63,7 +61,20 @@ export const TitleContainer = styled.div`
   }
 `;
 
+export const Wave = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background-image: url(${WaveDivider});
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  /* border: 2px solid black; */
+`;
+
 export const SecondSection = styled.section`
   background-color: #f1fafc;
-  height: 500px;
+  min-height: 300px;
 `;

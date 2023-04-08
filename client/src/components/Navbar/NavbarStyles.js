@@ -61,7 +61,7 @@ export const HomeLinksWrapper = styled.div`
 
 export const NavigationLinksWrapper = styled.div`
   display: flex;
-  /* border: 3px solid green; */
+  border: 3px solid green;
 `;
 
 export const SignUpButton = styled.button`
