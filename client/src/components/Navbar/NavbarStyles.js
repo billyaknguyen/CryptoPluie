@@ -48,7 +48,7 @@ export const HomeLinksWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 2rem;
+  margin-left: 1rem;
   /* border: 3px solid purple; */
 `;
 
