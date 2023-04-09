@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import WaveDivider from "./wavedivider.svg";
+import styled, { css } from "styled-components";
+import WaveDivider from "./assets/wavedivider.svg";
 
 export const HomeContainer = styled.div`
   display: flex;
@@ -50,18 +50,9 @@ export const TitleContainer = styled.div`
   font-size: 4rem;
   border: 2px solid green;
   text-align: center;
-
-  @media (max-width: 768px) {
-    font-size: 2rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1rem;
-  }
 `;
 
 export const Wave = styled.div`
-  /* position: absolute; */
   bottom: 0;
   left: 0;
   width: 100%;
@@ -70,7 +61,48 @@ export const Wave = styled.div`
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
-  /* border: 2px solid black; */
+  border: 2px solid black;
+`;
+
+export const SecondSection = styled.section`
+  background-color: #f1fafc;
+  display: flex;
+  justify-content: center;
+  min-height: 500px;
+`;
+export const SecondSectionWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 702px;
+`;
+export const SecondSectionTitle = styled.h2`
+  font-size: 50px;
+  color: black;
+`;
+
+export const CoinsSlider = styled.div`
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+`;
+
+export const CoinImg = styled.img`
+  width: 100px;
+  height: 100px;
+  animation: coinFall 1s linear;
+
+  @keyframes coinFall {
+    0% {
+      transform: translateY(-200px);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 `;
 
 export const RainCoatImg = styled.img`
@@ -78,11 +110,7 @@ export const RainCoatImg = styled.img`
   height: 500px;
 `;
 
-export const H2 = styled.h2`
-  font-size: 50px;
-  color: black;
-`;
-export const SecondSection = styled.section`
+export const ThirdSection = styled.section`
   background-color: #f1fafc;
   display: flex;
   justify-content: center;
