@@ -7,7 +7,7 @@ export const HomeContainer = styled.div`
   height: 100%;
 `;
 
-export const FirstSection = styled.section`
+export const HeroSection = styled.section`
   height: 100vh;
   background-image: url(https://media.discordapp.net/attachments/899929905318486046/1094135069867782155/new_background_pic_HD.jpg?width=1752&height=819);
   background-size: cover;
@@ -19,7 +19,6 @@ export const AnimatedLetter = styled.span`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  color: white;
   opacity: 0;
   animation: rainTitle 0.5s linear forwards;
   animation-delay: ${({ delay }) => delay || 0}s;
@@ -76,8 +75,8 @@ export const SecondSectionWrapper = styled.div`
   width: 702px;
 `;
 export const SecondSectionTitle = styled.h2`
-  font-size: 50px;
-  color: black;
+  font-size: 3rem;
+  color: #85a7c0;
 `;
 
 export const CoinsSlider = styled.div`
@@ -115,4 +114,25 @@ export const ThirdSection = styled.section`
   display: flex;
   justify-content: center;
   min-height: 500px;
+`;
+
+export const ThirdSectionWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 2px solid red;
+  width: 700px;
+`;
+
+export const ThirdSectionTitle = styled.h2`
+  font-size: 2.5rem;
+  color: #85a7c0;
+`;
+
+export const ThirdSectionText = styled.p`
+  color: #213651;
+  width: 100%;
+  font-size: 1.5rem;
+  font-style: italic;
+  border: 1px solid black;
+  margin-top: 0;
 `;
