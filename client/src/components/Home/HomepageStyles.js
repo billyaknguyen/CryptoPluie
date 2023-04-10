@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import WaveDivider from "./assets/wavedivider.svg";
 
 export const HomeContainer = styled.div`
