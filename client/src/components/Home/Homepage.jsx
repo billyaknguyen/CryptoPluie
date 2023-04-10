@@ -1,10 +1,10 @@
 import { useRef, useEffect, useState} from "react";
 import Navbar from "../Navbar/Navbar"
 import Coins from "./assets/coins";
-import { HomeContainer, FirstSection, SecondSection,  AnimatedLetter, TitleContainer, Wave, RainCoatImg, SecondSectionTitle, SecondSectionWrapper, CoinsSlider, CoinImg, ThirdSection } from "./HomepageStyles";
+import { HomeContainer, HeroSection, SecondSection,  AnimatedLetter, TitleContainer, Wave, RainCoatImg, SecondSectionTitle, SecondSectionWrapper, CoinsSlider, CoinImg, ThirdSection, ThirdSectionWrapper, ThirdSectionTitle, ThirdSectionText } from "./HomepageStyles";
 
 const HomePage = () => {
-const text = "Everything Crypto with CryptoPluie";
+const text = "Making it Rain with CryptoPluie";
 const myRef = useRef()
 const [playCoinAnimation, setPlayCoinAnimation] = useState(false)
 
@@ -32,9 +32,9 @@ return () => {
 return (
     <HomeContainer>
       <Navbar />
-      <FirstSection >
+      <HeroSection >
       <TitleContainer>{animatedTitle}</TitleContainer>
-      </FirstSection>
+      </HeroSection>
       <Wave/>
       <SecondSection >
       <SecondSectionWrapper>
@@ -50,7 +50,15 @@ return (
       <RainCoatImg src="https://cdn.discordapp.com/attachments/899929905318486046/1094452815725858827/RainCoat_Billy_Nguyen.PNG"/>
       </SecondSection>
       <Wave/>
-      <ThirdSection> hello</ThirdSection>
+      <ThirdSection>
+      <div>placeholder</div>
+        <ThirdSectionWrapper>
+          <ThirdSectionTitle>Turn Rainy Days into Crypto Gains</ThirdSectionTitle>
+          <ThirdSectionText>
+          Embrace the downpour of cryptocurrency opportunities with a virtual portfolio.
+          Get hands-on experience, <br/>rain or shine , it is risk-free.</ThirdSectionText>
+        </ThirdSectionWrapper>
+      </ThirdSection>
   </HomeContainer>
 )
 } 

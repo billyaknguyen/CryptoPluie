@@ -5,7 +5,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Quicksand', sans-serif;
-    color: white;
+    color: #f1fafc;
 }
 html {
   scroll-behavior: smooth;

@@ -1,8 +1,25 @@
 import { NavContainer, MainTitle, SignUpButton, HomeLinksWrapper, Logo, NavigationLinksWrapper, TitleLink, LogoLink, CoinsLink, PortfolioLink, AboutLink} from "./NavbarStyles";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
+   const [isScrolledDown, setIsScrolledDown] = useState(false)
+   
+   useEffect(() => {
+    const handleScroll = () => {
+      const topScroll = window.scrollY || document.documentElement.topScroll;
+      console.log(window.scrollY)
+      setIsScrolledDown(topScroll > 0)
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
+   }, [])
+
   return (
-    <NavContainer>
+    <NavContainer  scrolledDown ={ isScrolledDown}>
       <HomeLinksWrapper>
         <LogoLink to="/">
         <Logo src="https://cdn.discordapp.com/attachments/899929905318486046/1094149965976174672/CryptoPluie_Billy_Nguyen_Logo.png" alt="logo"/>

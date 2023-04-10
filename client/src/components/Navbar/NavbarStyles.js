@@ -9,18 +9,20 @@ export const NavContainer = styled.header`
   position: fixed;
   top: 0;
   border: 1px solid yellow;
+  background-color: ${({ scrolledDown }) =>
+    scrolledDown ? "#85a7c0" : "transparent"};
   z-index: 1;
 `;
 
 export const MainTitle = styled.h1`
-  font-size: 2.5rem;
+  font-size: 2rem;
   letter-spacing: 3px;
   font-weight: bold;
 `;
 
 export const Logo = styled.img`
-  height: 120px;
-  width: 120px;
+  height: 100px;
+  width: 100px;
 `;
 
 export const TitleLink = styled(NavLink)`
@@ -32,19 +34,19 @@ export const LogoLink = styled(NavLink)``;
 
 export const CoinsLink = styled(NavLink)`
   text-decoration: none;
-  color: white;
+  color: #f1fafc;
   font-size: 1.5rem;
   font-weight: bold;
 `;
 export const PortfolioLink = styled(NavLink)`
   text-decoration: none;
-  color: white;
+  color: #f1fafc;
   font-size: 1.5rem;
   font-weight: bold;
 `;
 export const AboutLink = styled(NavLink)`
   text-decoration: none;
-  color: white;
+  color: #f1fafc;
   font-size: 1.5rem;
   font-weight: bold;
 `;
