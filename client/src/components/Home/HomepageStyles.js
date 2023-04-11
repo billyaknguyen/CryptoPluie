@@ -105,8 +105,9 @@ export const CoinImg = styled.img`
 `;
 
 export const RainCoatImg = styled.img`
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 400px;
+  margin: 30px;
 `;
 
 export const ThirdSection = styled.section`
@@ -119,8 +120,12 @@ export const ThirdSection = styled.section`
 export const ThirdSectionWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  border: 2px solid red;
   width: 700px;
+`;
+
+export const RichImg = styled.img`
+  width: 450px;
+  height: 450px;
 `;
 
 export const ThirdSectionTitle = styled.h2`
@@ -133,6 +138,5 @@ export const ThirdSectionText = styled.p`
   width: 100%;
   font-size: 1.5rem;
   font-style: italic;
-  border: 1px solid black;
   margin-top: 0;
 `;
