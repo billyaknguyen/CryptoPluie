@@ -7,8 +7,7 @@ const {id} = useParams()
 
 useEffect(() => {
 const getSpecificCoin = async () => {
-    try {
-        
+    try {    
  const response = await fetch(`/api/coin/${id}`)
  const resData = await response.json()
  setSingleCoin(resData.data)
@@ -24,7 +23,7 @@ console.log(singleCoin)
 
 return (
     <>
-    {singleCoin && <div>{singleCoin.description.en}</div>}
+    {singleCoin && <div>{singleCoin.name}</div>}
     </>
 )
 }

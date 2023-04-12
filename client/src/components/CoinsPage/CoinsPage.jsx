@@ -7,14 +7,9 @@ const CoinsPage = () => {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const getAllCoins = async (pageNumber) => {
+  const getAllCoins = async () => {
     try {
-      const response = await fetch(`/api/coins?pageNumber=${pageNumber}`);
-
-       if (response.status === 429) {
-        console.log("limit reached")
-       }
-       
+      const response = await fetch("/api/coins");
       const resData = await response.json();
       setCoins(resData.data)
       setLoading(false)
@@ -28,15 +23,14 @@ const CoinsPage = () => {
   }, [])
 
   const nextPageHandle = () => {
-    if (currentPage < 15 )
+    if (currentPage < 10 )
    setCurrentPage((previousNumber) => previousNumber + 1)
-   getAllCoins(currentPage + 1)
   }
 
   const previousPageHandle = () => {
     if (currentPage > 1) {
       setCurrentPage((previousNumber) => previousNumber - 1);
-      getAllCoins(currentPage - 1 )
+
     }
   }
 
@@ -45,9 +39,15 @@ const CoinsPage = () => {
       loading
     </div>
   }
+  console.log(coins)
+
+  const startingIndex = (currentPage - 1) * 25;
+  const endingIndex = startingIndex + 25
+  const filteredCoins = coins.slice(startingIndex,endingIndex)
+ 
   return (
     <>
-      { coins && coins.map((coin) => {
+      { filteredCoins.map((coin) => {
         return (
           <>
           <div>{coin.id}</div>
