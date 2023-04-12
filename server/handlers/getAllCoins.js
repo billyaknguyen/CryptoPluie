@@ -1,20 +1,23 @@
+const { MongoClient } = require("mongodb");
+require("dotenv").config();
+const { MONGO_URI } = process.env;
+const options = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+};
+
 const getAllCoins = async (req, res) => {
+  const client = new MongoClient(MONGO_URI, options);
   try {
-    const pageNumber = req.query.pageNumber;
-    const response = await fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=${pageNumber}&sparkline=false&locale=en`
-    );
-
-    if (response.status === 429) {
-      return res.status(429).json({ status: 429, message: "limit reached" });
-    }
-
-    const resData = await response.json();
+    await client.connect();
+    const db = client.db("CryptoPluie");
+    const coins = await db.collection("Coins").find().toArray();
+    client.close;
 
     return res.status(200).json({
       status: 200,
       message: "successfully fetched page",
-      data: resData,
+      data: coins,
     });
   } catch (error) {
     console.log(error);
