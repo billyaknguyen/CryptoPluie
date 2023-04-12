@@ -3,6 +3,7 @@ import GlobalStyle from "./GlobalStyle"
 import { Routes, Route } from "react-router-dom"
 import Navbar from "./components/Navbar/Navbar"
 import CoinsPage from "./components/CoinsPage/CoinsPage"
+import CoinsDetailPage from "./components/CoinsPage/CoinsDetailPage"
 
 const  App = () => {
 
@@ -12,6 +13,7 @@ const  App = () => {
     <Routes>
     <Route path="/" element={<HomePage/>}/>
     <Route path="/coins" element={<CoinsPage/>}/>
+    <Route path="/coin/:id" element={<CoinsDetailPage/>}/>
     <Route path="/portfolio" element={<h1>hello</h1>}/>
     <Route path="/about" element={<h1>hello</h1>}/>
     </Routes>
