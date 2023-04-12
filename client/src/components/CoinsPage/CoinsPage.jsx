@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 
 const CoinsPage = () => {
@@ -50,7 +51,9 @@ const CoinsPage = () => {
         return (
           <>
           <div>{coin.id}</div>
+          <Link to={`/coin/${coin.id}`}>
           <img src={coin.image}></img>
+          </Link>
           <div>{coin.name}</div>
           <div>${coin.current_price}</div>
           <div>${coin.market_cap}</div>

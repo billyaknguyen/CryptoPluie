@@ -7,7 +7,6 @@ const Navbar = () => {
    useEffect(() => {
     const handleScroll = () => {
       const topScroll = window.scrollY || document.documentElement.topScroll;
-      console.log(window.scrollY)
       setIsScrolledDown(topScroll > 0)
     }
 
