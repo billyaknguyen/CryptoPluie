@@ -1,12 +1,14 @@
 import HomePage from "./components/Home/Homepage"
 import GlobalStyle from "./GlobalStyle"
 import { Routes, Route } from "react-router-dom"
-import Navbar from "./components/Navbar/Navbar"
 import CoinsPage from "./components/CoinsPage/CoinsPage"
 import CoinsDetailPage from "./components/CoinsPage/CoinsDetailPage"
+import { useAuth0 } from "@auth0/auth0-react"
 
 const  App = () => {
+  const {user} = useAuth0
 
+  console.log(user)
   return (
     <>
     <GlobalStyle/>

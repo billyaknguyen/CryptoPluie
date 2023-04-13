@@ -1,8 +1,13 @@
 import { NavContainer, MainTitle, SignUpButton, HomeLinksWrapper, Logo, NavigationLinksWrapper, TitleLink, LogoLink, CoinsLink, PortfolioLink, AboutLink} from "./NavbarStyles";
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";;
+import { useAuth0 } from "@auth0/auth0-react";
+import LoginButton from "./LoginButton";
+import LogoutButton from "./LogoutButton"
+
 
 const Navbar = () => {
    const [isScrolledDown, setIsScrolledDown] = useState(false)
+   const {isAuthenticated} = useAuth0()
    
    useEffect(() => {
     const handleScroll = () => {
@@ -16,6 +21,9 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll)
     }
    }, [])
+
+   console.log(isAuthenticated)
+
 
   return (
     <NavContainer  scrolledDown ={ isScrolledDown}>
@@ -32,9 +40,10 @@ const Navbar = () => {
       <PortfolioLink to="/portfolio">Portfolio</PortfolioLink>
       <AboutLink to= "/about">About</AboutLink>
       </NavigationLinksWrapper>
-      <SignUpButton>Login</SignUpButton>
+      {!isAuthenticated ? <LoginButton/> : <LogoutButton/>}
     </NavContainer>
   );
 };
+
 
 export default Navbar;
