@@ -12,7 +12,7 @@ const getAllCoins = async (req, res) => {
     await client.connect();
     const db = client.db("CryptoPluie");
     const coins = await db.collection("Coins").find().toArray();
-    client.close;
+    client.close();
 
     return res.status(200).json({
       status: 200,

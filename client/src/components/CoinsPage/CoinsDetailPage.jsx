@@ -5,6 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const CoinsDetailPage = () => {
 const [singleCoin, setSingleCoin] = useState(null)
+const [quantity, setQuantity] = useState(1);
 const {id} = useParams()
 const {user} = useAuth0()
 
@@ -23,11 +24,20 @@ getSpecificCoin()
 }, [])
 
 console.log(singleCoin)
+console.log(user)
 
 const addCoinHandle = async() => {
 try {
     if (user && singleCoin) {
-        await addNewCoin(user.sub, singleCoin)
+        const coinData = {
+            coin_id: singleCoin._id,
+            coin_name: singleCoin.name,
+            coin_image: singleCoin.image,
+            coin_symbol: singleCoin.symbol,
+            coin_quantity: parseFloat(quantity),
+            coin_purchasePrice: singleCoin.current_price
+        }
+        await addNewCoin(user.sub, coinData)
         alert("Coin added")
     }
 } catch(error) {
@@ -41,6 +51,12 @@ return (
     {singleCoin && 
     <div>
         {singleCoin.name}
+       Current Price: {singleCoin.current_price}
+        <input
+        type="number"
+        value={quantity}
+        onChange={(e) => setQuantity(e.target.value)}
+        />
         <button onClick={addCoinHandle}>Buy</button>
         </div>}
     </>
