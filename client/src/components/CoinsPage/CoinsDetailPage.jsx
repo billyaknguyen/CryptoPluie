@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import {useParams} from "react-router-dom"
 import addNewCoin from "../utils/addNewCoin"
+import sellCoin from "../utils/sellCoin";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const CoinsDetailPage = () => {
@@ -26,7 +27,7 @@ getSpecificCoin()
 console.log(singleCoin)
 console.log(user)
 
-const addCoinHandle = async() => {
+const addCoinHandle = async () => {
 try {
     if (user && singleCoin) {
         const coinData = {
@@ -45,6 +46,22 @@ try {
 }
 }
 
+const sellCoinHandle = async () => {
+    try {
+        if (user && singleCoin) {
+            const coinData = {
+                coin_id: singleCoin._id,
+                coin_quantity: parseFloat(quantity),
+                coin_salePrice: singleCoin.current_price
+            }
+            await sellCoin(user.sub, coinData)
+            alert("Coin sold")
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 console.log(user)
 return (
     <>
@@ -58,6 +75,7 @@ return (
         onChange={(e) => setQuantity(e.target.value)}
         />
         <button onClick={addCoinHandle}>Buy</button>
+        <button onClick={sellCoinHandle}>Sell</button>
         </div>}
     </>
 )
