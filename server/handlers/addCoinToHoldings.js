@@ -30,8 +30,9 @@ const addCoinToHoldings = async (req, res) => {
 
     const newBalance = user.balance - coin_purchasePrice * coin_quantity;
 
-    newBalance < 0 &&
-      res.status(400).json({ status: 400, message: "not enough fund" });
+    if (newBalance < 0) {
+      return res.status(400).json({ status: 400, message: "not enough funds" });
+    }
 
     await users.updateOne(
       { user_id: userId },
