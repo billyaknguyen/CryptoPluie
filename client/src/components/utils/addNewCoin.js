@@ -1,4 +1,4 @@
-const addNewCoin = async (userId, coin) => {
+const addNewCoin = async (userId, coinData) => {
   try {
     const response = await fetch("/api/addCoin", {
       method: "POST",
@@ -7,7 +7,7 @@ const addNewCoin = async (userId, coin) => {
       },
       body: JSON.stringify({
         userId,
-        coin,
+        ...coinData,
       }),
     });
 
