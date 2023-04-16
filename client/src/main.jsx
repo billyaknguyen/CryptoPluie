@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {Auth0Provider} from "@auth0/auth0-react"
 import { BrowserRouter } from 'react-router-dom'
+import { UserPortfolioProvider} from './components/utils/UserPortfolioContext'
 import App from './App'
 
 const domain = import.meta.env.VITE_AUTH0_DOMAIN
@@ -18,7 +19,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       useRefreshTokens={true}
       cacheLocation="localstorage"
     >
+      <UserPortfolioProvider>
       <App />
+      </UserPortfolioProvider>
     </Auth0Provider>
   </BrowserRouter>
 )
