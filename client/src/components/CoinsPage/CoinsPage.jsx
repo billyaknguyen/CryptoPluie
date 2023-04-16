@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react"
+import {CoinPageContainer, CoinImg, CoinCard, CoinName,CoinH2, CoinCardItem,CoinPrice, ButtonsWrapper, CoinCardWrapper} from "./CoinsPageStyles"
 
 
 const CoinsPage = () => {
@@ -47,22 +47,29 @@ const CoinsPage = () => {
  
   return (
     <>
-      { filteredCoins.map((coin) => {
+    <h1>NAV BAR </h1>
+    <CoinPageContainer>
+      <CoinH2>Coins</CoinH2>
+      <CoinCardWrapper>
+      { filteredCoins.map((coin, index) => {
         return (
-          <>
-          <div>{coin.id}</div>
-          <Link to={`/coin/${coin.id}`}>
-          <img src={coin.image}></img>
-          </Link>
-          <div>{coin.name}</div>
-          <div>${coin.current_price}</div>
-          <div>${coin.market_cap}</div>
-          </>
+          <CoinCard to={`/coin/${coin.id}`} key={index}>
+            <CoinCardItem>
+          <CoinImg src={coin.image}></CoinImg>
+          <CoinName>{coin.name}</CoinName>
+          <CoinPrice>{coin.current_price}</CoinPrice>
+          </CoinCardItem>
+          </CoinCard>
+          
         )
       })}
-      <button onClick={previousPageHandle}> back</button>
-      <span>{currentPage}</span>
-      <button onClick= {nextPageHandle}>next</button>
+      </CoinCardWrapper>
+    </CoinPageContainer>
+    <ButtonsWrapper>
+    <button onClick={previousPageHandle}> back</button>
+    <span>{currentPage}</span>
+    <button onClick= {nextPageHandle}>next</button>
+    </ButtonsWrapper>
     </>
   );
 };
