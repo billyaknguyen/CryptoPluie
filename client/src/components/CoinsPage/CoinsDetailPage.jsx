@@ -1,7 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import {useParams} from "react-router-dom"
+import { UserPortfolioContext } from "../utils/UserPortfolioContext";
 import addNewCoin from "../utils/addNewCoin"
 import sellCoin from "../utils/sellCoin";
+import fetchUserPortfolio from "../utils/fetchUserPortfolio";
+import {SingleCoinContainer, CoinPageDetailsContainer, ChartContainer, CoinContainer} from "./CoinsDetailPageStyles"
 import { useAuth0 } from "@auth0/auth0-react";
 
 const CoinsDetailPage = () => {
@@ -9,6 +12,8 @@ const [singleCoin, setSingleCoin] = useState(null)
 const [quantity, setQuantity] = useState(1);
 const {id} = useParams()
 const {user} = useAuth0()
+const {state, actions: {updateUserPortfolio}} = useContext(UserPortfolioContext)
+
 
 useEffect(() => {
 const getSpecificCoin = async () => {
@@ -24,9 +29,6 @@ const getSpecificCoin = async () => {
 getSpecificCoin()
 }, [])
 
-console.log(singleCoin)
-console.log(user)
-
 const addCoinHandle = async () => {
 try {
     if (user && singleCoin) {
@@ -39,6 +41,7 @@ try {
             coin_purchasePrice: singleCoin.current_price
         }
         await addNewCoin(user.sub, coinData)
+        await fetchUserPortfolio(user.sub, updateUserPortfolio)
         alert("Coin added")
     }
 } catch(error) {
@@ -55,6 +58,7 @@ const sellCoinHandle = async () => {
                 coin_salePrice: singleCoin.current_price
             }
             await sellCoin(user.sub, coinData)
+            await fetchUserPortfolio(user.sub, updateUserPortfolio)
             alert("Coin sold")
         }
     } catch (error) {
@@ -62,11 +66,17 @@ const sellCoinHandle = async () => {
     }
 }
 
-console.log(user)
 return (
     <>
+    <h1>Nav Bar</h1>
+    <h2>{state.balance}</h2>
+
     {singleCoin && 
-    <div>
+    <CoinPageDetailsContainer>
+        <SingleCoinContainer>
+        <ChartContainer>
+        </ChartContainer>
+    <CoinContainer>
         {singleCoin.name}
        Current Price: {singleCoin.current_price}
         <input
@@ -76,7 +86,10 @@ return (
         />
         <button onClick={addCoinHandle}>Buy</button>
         <button onClick={sellCoinHandle}>Sell</button>
-        </div>}
+        </CoinContainer>
+        </SingleCoinContainer>
+        </CoinPageDetailsContainer>
+        }
     </>
 )
 }

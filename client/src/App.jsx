@@ -5,7 +5,6 @@ import CoinsPage from "./components/CoinsPage/CoinsPage"
 import CoinsDetailPage from "./components/CoinsPage/CoinsDetailPage"
 
 const  App = () => {
-
   return (
     <>
     <GlobalStyle/>
