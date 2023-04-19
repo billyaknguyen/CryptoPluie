@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import {CoinPageContainer, CoinImg, CoinCard, CoinName,CoinH2, CoinCardItem,CoinPrice, ButtonsWrapper, CoinCardWrapper} from "./CoinsPageStyles"
+import {CoinPageContainer, CoinImg, CoinCard, CoinName,CoinH2, CoinCardItem,CoinPrice, ButtonsWrapper, CoinCardWrapper, } from "./CoinsPageStyles"
 
 
 const CoinsPage = () => {
@@ -57,7 +57,7 @@ const CoinsPage = () => {
             <CoinCardItem>
           <CoinImg src={coin.image}></CoinImg>
           <CoinName>{coin.name}</CoinName>
-          <CoinPrice>{coin.current_price}</CoinPrice>
+          <CoinPrice>${coin.current_price}</CoinPrice>
           </CoinCardItem>
           </CoinCard>
           

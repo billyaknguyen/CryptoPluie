@@ -13,7 +13,6 @@ const getCoinById = async (req, res) => {
     await client.connect();
     const db = client.db("CryptoPluie");
     const coin = await db.collection("Coins").findOne({ id });
-    client.close();
 
     if (coin) {
       return res.status(200).json({
@@ -29,6 +28,8 @@ const getCoinById = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.status.json({ status: 400, message: error });
+  } finally {
+    client.close();
   }
 };
 
