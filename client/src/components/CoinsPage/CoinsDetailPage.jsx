@@ -6,7 +6,7 @@ import sellCoin from "../utils/sellCoin";
 import addCoinHandle from "../hooks/addCoinHandle";
 import sellCoinHandle from "../hooks/sellCoinHandle";
 import fetchUserPortfolio from "../utils/fetchUserPortfolio";
-import {SingleCoinContainer, CoinPageDetailsContainer, ChartContainer, CoinContainer} from "./CoinsDetailPageStyles"
+import {SingleCoinContainer, CoinPageDetailsContainer, ChartContainer, CoinContainer, CoinDetailsContainer,CoinInfoContainer, CoinName,CoinImg, CoinSymbol, CoinPriceContainer, CoinPrice, CoinPercentage, CoinPriceStatsContainer, CoinDayStatsContainer, CoinHighContainer, CoinLowContainer, PriceChangeContainer, CoinStatsContainer, CoinHigh, CoinLow,  CoinHighTitle ,CoinLowTitle, CoinPriceChange, CoinPriceTitle, CoinStatsTitle} from "./CoinsDetailPageStyles"
 import { useAuth0 } from "@auth0/auth0-react";
 import Modal from "../Modal/Modal";
 
@@ -52,10 +52,12 @@ const sellModalOption = () => {
     setOpenModal(true)
 }
 
+// <button onClick={buyModalOption}>Buy</button>
+//<button onClick={sellModalOption}>Sell</button>
 return (
     <>
     <h1>Nav Bar</h1>
-    <h2>{state.balance}</h2>
+    <h2>${state.balance}</h2>
 
     {singleCoin && 
     <CoinPageDetailsContainer>
@@ -63,10 +65,42 @@ return (
         <ChartContainer>
         </ChartContainer>
     <CoinContainer>
-        {singleCoin.name}
-       Current Price: {singleCoin.current_price}
-        <button onClick={buyModalOption}>Buy</button>
-        <button onClick={sellModalOption}>Sell</button>
+        <CoinDetailsContainer>
+
+        <CoinInfoContainer>
+        <CoinImg src={singleCoin.image} alt={`${singleCoin.name} picture`}></CoinImg>
+        <CoinName> {singleCoin.name}</CoinName>
+        <CoinSymbol>{singleCoin.symbol}</CoinSymbol>
+        </CoinInfoContainer>
+
+        <CoinPriceContainer>
+        <CoinPriceTitle>Price</CoinPriceTitle>
+        <CoinPrice>${singleCoin.current_price}</CoinPrice>
+        <CoinPriceStatsContainer>
+        <PriceChangeContainer>
+        <CoinPriceChange isNegative={singleCoin.price_change_24h < 0}>${singleCoin.price_change_24h.toFixed(2)}</CoinPriceChange>
+        <CoinPercentage isNegative={singleCoin.price_change_percentage_24h < 0}> ({singleCoin.price_change_percentage_24h.toFixed(2)}%)</CoinPercentage>
+        </PriceChangeContainer>
+        {/* Container for day high and low */}
+        <CoinDayStatsContainer>
+        <CoinHighContainer>
+        <CoinHighTitle>24H High</CoinHighTitle>
+        <CoinHigh> {singleCoin.high_24h}</CoinHigh>
+        </CoinHighContainer>
+        <CoinLowContainer>
+        <CoinLowTitle>24H Low</CoinLowTitle>
+        <CoinLow> {singleCoin.low_24h}</CoinLow>
+        </CoinLowContainer>
+        </CoinDayStatsContainer>
+        {/* Container for day high and low */}
+        </CoinPriceStatsContainer>
+        <CoinStatsTitle>Coin stats</CoinStatsTitle>
+        <CoinStatsContainer>
+        {/* TO DO */}
+        </CoinStatsContainer>
+        </CoinPriceContainer>
+
+        </CoinDetailsContainer>
         </CoinContainer>
         </SingleCoinContainer>
         </CoinPageDetailsContainer>

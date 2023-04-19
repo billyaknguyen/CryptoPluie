@@ -12,7 +12,6 @@ const getAllCoins = async (req, res) => {
     await client.connect();
     const db = client.db("CryptoPluie");
     const coins = await db.collection("Coins").find().toArray();
-    client.close();
 
     return res.status(200).json({
       status: 200,
@@ -22,6 +21,8 @@ const getAllCoins = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.status.json({ status: 400, message: error });
+  } finally {
+    client.close();
   }
 };
 

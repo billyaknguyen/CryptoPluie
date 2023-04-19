@@ -33,11 +33,11 @@ const updateCoins = async () => {
       );
     }
 
-    client.close();
-
     console.log("Coins updated successfully", resData.length);
   } catch (error) {
     console.log(error);
+  } finally {
+    client.close();
   }
 };
 
