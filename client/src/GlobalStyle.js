@@ -5,10 +5,14 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
     color: black;
     background-color: #f1fafc;
 
     //#f1fafc
+}
+h2 , h1 {
+  font-weight: 600;
 }
 html {
   scroll-behavior: smooth;
