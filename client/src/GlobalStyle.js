@@ -6,7 +6,7 @@ body {
     padding: 0;
     font-family: 'Quicksand', sans-serif;
     font-weight: 500;
-    color: black;
+    color: #262338;
     background-color: #f1fafc;
 
     //#f1fafc

@@ -13,11 +13,6 @@ export const SingleCoinContainer = styled.div`
   border-radius: 20px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  /* &:hover {
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(0, 0, 0, 0.1);
-    transform: translateY(-5px);
-    transition: all 0.3s ease;
-  } */
 `;
 
 export const ChartContainer = styled.div`
@@ -29,8 +24,11 @@ export const ChartContainer = styled.div`
 `;
 
 export const CoinContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
   flex: 1;
-  background-color: #f5f5f5;
+  background-color: #fcfcfc;
   /* border: 2px solid green; */
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
@@ -39,7 +37,6 @@ export const CoinContainer = styled.div`
 export const CoinDetailsContainer = styled.div`
   display: flex;
   margin: 1rem;
-  border: 2px solid blue;
   flex-direction: column;
 `;
 
@@ -48,18 +45,16 @@ export const CoinInfoContainer = styled.div`
   width: 100%;
   justify-content: space-between;
   flex-direction: row;
-  border: 2px solid yellow;
 `;
 
 export const CoinName = styled.h2`
   font-size: 2rem;
-  border: 1px solid yellow;
 `;
 
 export const CoinSymbol = styled.div`
   font-size: 1.5rem;
   font-weight: 300;
-  color: grey;
+  color: #8a8c9b;
 `;
 
 export const MiniCoinContainer = styled.div`
@@ -71,14 +66,13 @@ export const MiniCoinContainer = styled.div`
 export const CoinLastUpdated = styled.div`
   font-size: 1.2rem;
   font-weight: 300;
-  color: grey;
+  color: #8a8c9b;
 `;
 
 export const CoinPriceStatsContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border: 2px solid black;
 `;
 
 export const CoinPrice = styled.div`
@@ -90,7 +84,7 @@ export const CoinPriceTitle = styled.div`
   font-size: 1.3rem;
   margin-bottom: 0.5rem;
   font-weight: 600;
-  color: grey;
+  color: #8a8c9b;
 `;
 
 export const CoinPercentage = styled.div`
@@ -104,14 +98,12 @@ export const CoinPriceChange = styled.div`
 
 export const CoinDayStatsContainer = styled.div`
   display: flex;
-  border: 2px solid orange;
   gap: 1rem;
 `;
 
 export const PriceChangeContainer = styled.div`
   display: flex;
   gap: 0.5rem;
-  border: 2px solid orange;
 `;
 
 export const CoinHighContainer = styled.div`
@@ -135,7 +127,6 @@ export const CoinStatsContainer = styled.div`
 
 export const ColumnContainer = styled.div`
   display: flex;
-  border: 1px solid black;
   align-items: center;
   flex-basis: calc(33.33% - 1rem);
   flex-direction: column;
@@ -160,6 +151,7 @@ export const CoinLow = styled.div`
 export const CoinImg = styled.img`
   width: 40px;
   height: 40px;
+  border-radius: 50%;
 `;
 
 export const CoinStatsTitle = styled.h2`
@@ -177,7 +169,6 @@ export const GeneralItem = styled.div`
 
 export const ButtonContainer = styled.div`
   display: flex;
-  border: 2px solid pink;
   justify-content: center;
 `;
 
@@ -185,7 +176,11 @@ export const BuyButton = styled.button`
   background-color: #2ea44f;
   border-radius: 6px;
   padding: 6px 16px;
+  margin: 10px;
+  flex: 1;
   color: white;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
 
   &:hover {
     background-color: #2c974b;
@@ -193,12 +188,16 @@ export const BuyButton = styled.button`
 `;
 
 export const SellButton = styled.button`
-  background-color: #f0003c;
+  background-color: #e34f4f;
   border-radius: 6px;
   padding: 6px 16px;
+  margin: 10px;
   color: white;
+  flex: 1;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
 
   &:hover {
-    background-color: #cb2027;
+    background-color: #c00707;
   }
 `;
