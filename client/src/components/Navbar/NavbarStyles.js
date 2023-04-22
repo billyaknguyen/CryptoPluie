@@ -9,13 +9,14 @@ export const NavContainer = styled.header`
   position: fixed;
   top: 0;
   border: 1px solid yellow;
-  background-color: ${({ scrolledDown }) =>
-    scrolledDown ? "#85a7c0" : "transparent"};
+  background-color: ${(props) =>
+    props.scrolledDown || !props.isHomePage ? "#85a7c0" : "transparent"};
   z-index: 1;
 `;
 
 export const MainTitle = styled.h1`
-  font-size: 2rem;
+  font-size: 1.5rem;
+
   letter-spacing: 3px;
   font-weight: bold;
 `;

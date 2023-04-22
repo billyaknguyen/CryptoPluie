@@ -23,6 +23,9 @@ const reducer = (state, action) => {
 
 export const UserPortfolioProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [coins, setCoins] = useState([])
+  const [loadingCoin, setLoadingCoin] = useState(true)
+  const [loadingHolding, setLoadingHolding] = useState(true)
   const { user } = useAuth0();
 
   useEffect(() => {
@@ -30,13 +33,14 @@ export const UserPortfolioProvider = ({ children }) => {
       const fetchPortfolio = async (userId) => {
         try {
           const response = await fetch(`/api/user/${userId}`);
-          const data = await response.json();
-          if (data.status === 200) {
+          const resData = await response.json();
+          if (resData.status === 200) {
             dispatch({
               type: "fetch_portfolio",
-              holdings: data.data.holdings,
-              balance: data.data.balance,
+              holdings: resData.data.holdings,
+              balance: resData.data.balance,
             });
+            setLoadingHolding(false)
           }
         } catch (error) {
           console.log(error);
@@ -45,6 +49,21 @@ export const UserPortfolioProvider = ({ children }) => {
       fetchPortfolio(user.sub);
     }
   }, [user]);
+
+  useEffect(() => {
+
+ const fetchCoins = async () => {
+  try {
+    const response = await fetch(`/api/coins`);
+    const resData = await response.json();
+    setCoins(resData.data)
+    setLoadingCoin(false)
+  } catch (error) {
+    console.log(error)
+  }
+ }
+ fetchCoins()
+  }, [])
 
 
   const updateUserPortfolio = (holdings, balance) => {
@@ -56,6 +75,9 @@ export const UserPortfolioProvider = ({ children }) => {
     <UserPortfolioContext.Provider
       value={{
         state,
+        coins,
+        loadingCoin,
+        loadingHolding,
         actions: {
           updateUserPortfolio,
         },

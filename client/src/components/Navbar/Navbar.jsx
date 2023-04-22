@@ -1,49 +1,67 @@
-import { NavContainer, MainTitle, SignUpButton, HomeLinksWrapper, Logo, NavigationLinksWrapper, TitleLink, LogoLink, CoinsLink, PortfolioLink, AboutLink} from "./NavbarStyles";
-import { useState, useEffect } from "react";;
+import {
+  NavContainer,
+  MainTitle,
+  SignUpButton,
+  HomeLinksWrapper,
+  Logo,
+  NavigationLinksWrapper,
+  TitleLink,
+  LogoLink,
+  CoinsLink,
+  PortfolioLink,
+  AboutLink,
+} from "./NavbarStyles";
+import { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useLocation } from "react-router-dom";
 import LoginButton from "./LoginButton";
-import LogoutButton from "./LogoutButton"
-
+import LogoutButton from "./LogoutButton";
 
 const Navbar = () => {
-   const [isScrolledDown, setIsScrolledDown] = useState(false)
-   const {isAuthenticated} = useAuth0()
-   
-   useEffect(() => {
+  const [isScrolledDown, setIsScrolledDown] = useState(false);
+  const { isAuthenticated } = useAuth0();
+  const location = useLocation();
+
+  useEffect(() => {
     const handleScroll = () => {
       const topScroll = window.scrollY || document.documentElement.topScroll;
-      setIsScrolledDown(topScroll > 0)
-    }
+      setIsScrolledDown(topScroll > 0);
+    };
 
     window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-   }, [])
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
-   console.log(isAuthenticated)
+  console.log(isAuthenticated);
 
+  const isHomePage = location.pathname === "/";
 
   return (
-    <NavContainer  scrolledDown ={ isScrolledDown}>
+    <NavContainer scrolledDown={isScrolledDown} isHomePage={isHomePage}>
       <HomeLinksWrapper>
         <LogoLink to="/">
-        <Logo src="https://cdn.discordapp.com/attachments/899929905318486046/1094149965976174672/CryptoPluie_Billy_Nguyen_Logo.png" alt="logo"/>
+          <Logo
+            src="https://cdn.discordapp.com/attachments/899929905318486046/1094149965976174672/CryptoPluie_Billy_Nguyen_Logo.png"
+            alt="logo"
+          />
         </LogoLink>
         <TitleLink>
-      <MainTitle>CryptoPluie</MainTitle>
-      </TitleLink>
+          <MainTitle>CryptoPluie</MainTitle>
+        </TitleLink>
       </HomeLinksWrapper>
       <NavigationLinksWrapper>
-      <CoinsLink to="/coins">Coins</CoinsLink>
-      <PortfolioLink to="/portfolio">Portfolio</PortfolioLink>
-      <AboutLink to= "/about">About</AboutLink>
+        <CoinsLink to="/coins">Coins</CoinsLink>
+        {isAuthenticated && (
+          <PortfolioLink to="/portfolio">Portfolio</PortfolioLink>
+        )}
+        <AboutLink to="/about">About</AboutLink>
       </NavigationLinksWrapper>
-      {!isAuthenticated ? <LoginButton/> : <LogoutButton/>}
+      {!isAuthenticated ? <LoginButton /> : <LogoutButton />}
     </NavContainer>
   );
 };
-
 
 export default Navbar;
