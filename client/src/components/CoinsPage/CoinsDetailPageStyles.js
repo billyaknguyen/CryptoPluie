@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const CoinPageDetailsContainer = styled.div`
   display: flex;
+  margin-top: 200px;
   justify-content: center;
   border: 2px solid yellow;
 `;

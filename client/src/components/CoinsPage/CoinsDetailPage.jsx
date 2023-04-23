@@ -109,8 +109,6 @@ const CoinsDetailPage = () => {
 
   return (
     <>
-      <h2>${state.balance}</h2>
-
       {singleCoin && (
         <CoinPageDetailsContainer>
           <SingleCoinContainer>

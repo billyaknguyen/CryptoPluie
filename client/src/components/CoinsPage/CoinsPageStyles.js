@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 export const CoinPageContainer = styled.div`
   display: flex;
+  margin-top: 200px;
   flex-direction: column;
   justify-content: center;
-  border: 2px solid yellow;
 `;
 
 export const CoinCardWrapper = styled.div`
@@ -13,7 +13,11 @@ export const CoinCardWrapper = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  border: 1px solid red;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  background-color: #fcfcfc;
 `;
 
 export const CoinImg = styled.img`
@@ -24,15 +28,17 @@ export const CoinImg = styled.img`
 
 export const CoinCard = styled(Link)`
   display: flex;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-decoration: none;
   background-color: #85a7c0;
-  margin: 0.5rem;
-  width: 170px;
-  height: 170px;
+  margin: 30px;
+  width: 150px;
+  height: 150px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   border-radius: 0 50% 50% 50%;
   transform: rotate(45deg);
 
@@ -58,10 +64,6 @@ export const CoinName = styled.div`
 export const CoinPrice = styled.div`
   color: black;
   font-size: 1rem;
-`;
-
-export const CoinH2 = styled.h2`
-  text-align: center;
 `;
 
 export const ButtonsWrapper = styled.div`
