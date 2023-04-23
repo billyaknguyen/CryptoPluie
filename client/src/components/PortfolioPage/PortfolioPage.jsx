@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Modal from "../Modal/Modal";
+import priceFormatter from "../utils/priceFormatter";
 import addNewCoin from "../utils/addNewCoin";
 import sellCoin from "../utils/sellCoin";
 import addCoinHandle from "../hooks/addCoinHandle";
@@ -35,7 +36,7 @@ const PortfolioPage = () => {
     loadingCoin,
     actions: { updateUserPortfolio },
   } = useContext(UserPortfolioContext);
-  const { user, isAuthenticated } = useAuth0();
+  const { user } = useAuth0();
   const [openModal, setOpenModal] = useState(false);
   const [modalAction, setModalAction] = useState("");
   const [selectedCoin, setSelectedCoin] = useState(null);
@@ -79,6 +80,8 @@ const PortfolioPage = () => {
     return <div>loading...</div>;
   }
 
+  console.log(state)
+
   const portfolioValue = state.holdings.reduce((total, holding) => {
     const coin = coins.find((coin) => coin.id === holding.coin_id);
     const currentPrice = coin ? coin.current_price : 0;
@@ -93,8 +96,8 @@ const PortfolioPage = () => {
           <div> User: {user.nickname}</div>
         </ProfileContainer>
         <PortfolioStatsContainer>
-          <div>Current Balance:${state.balance.toFixed(2)}</div>
-          <div>Portfolio Value:${portfolioValue.toFixed(2)}</div>
+          <div>Current Balance:{priceFormatter(state.balance)}</div>
+          <div>Portfolio Value:{priceFormatter(portfolioValue)}</div>
         </PortfolioStatsContainer>
       </InformationContainer>
       <PortfolioPageContainer>
@@ -131,22 +134,22 @@ const PortfolioPage = () => {
                     {holding.coin_symbol.toUpperCase()}
                   </PortfolioTableData>
                   <PortfolioTableData>
-                    ${currentPrice.toFixed(2)}
+                    {priceFormatter(currentPrice)}
                   </PortfolioTableData>
                   <PortfolioTableData>
                     {holding.coin_quantity.toFixed(8)}
                   </PortfolioTableData>
                   <PortfolioTableData>
-                    ${holding.coin_averagePrice.toFixed(2)}
+                    {priceFormatter(holding.coin_averagePrice)}
                   </PortfolioTableData>
                   <PortfolioTableData>
-                    ${holding.coin_costBasis.toFixed(2)}
+                    {priceFormatter(holding.coin_costBasis)}
                   </PortfolioTableData>
                   <PortfolioTableData>
-                    ${marketValue.toFixed(2)}
+                    {priceFormatter(marketValue)}
                   </PortfolioTableData>
                   <PortfolioTableProfit profit={profit}>
-                    ${profit.toFixed(2)}
+                    {priceFormatter(profit)}
                   </PortfolioTableProfit>
                   <PortfolioTableData>
                     <BuyButton onClick={() => buyModalOption(coin)}>

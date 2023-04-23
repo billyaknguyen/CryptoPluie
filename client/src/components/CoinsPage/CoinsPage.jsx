@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { UserPortfolioContext } from "../utils/UserPortfolioContext";
+import priceFormatter from "../utils/priceFormatter";
 import {
   CoinPageContainer,
   CoinImg,
@@ -46,7 +47,7 @@ const CoinsPage = () => {
                 <CoinCardItem>
                   <CoinImg src={coin.image}></CoinImg>
                   <CoinName>{coin.name}</CoinName>
-                  <CoinPrice>${coin.current_price}</CoinPrice>
+                  <CoinPrice>{priceFormatter(coin.current_price)}</CoinPrice>
                 </CoinCardItem>
               </CoinCard>
             );
