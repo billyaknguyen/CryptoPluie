@@ -16,6 +16,8 @@ import {
   BalanceContainer,
   CoinPriceContainer,
 } from "./ModalStyles";
+
+import priceFormatter from "../utils/priceFormatter";
 import { useState } from "react";
 
 const Modal = ({
@@ -73,15 +75,21 @@ const Modal = ({
         <CoinPriceContainer>
           <ColumnContainer>
             <GeneralTitle>1x {singleCoin.name}</GeneralTitle>
-            <GeneralItem>{singleCoin.current_price * 1}</GeneralItem>
+            <GeneralItem>
+              {priceFormatter(singleCoin.current_price * 1)}
+            </GeneralItem>
           </ColumnContainer>
           <ColumnContainer>
             <GeneralTitle>5x {singleCoin.name}</GeneralTitle>
-            <GeneralItem>{singleCoin.current_price * 5}</GeneralItem>
+            <GeneralItem>
+              {priceFormatter(singleCoin.current_price * 5)}
+            </GeneralItem>
           </ColumnContainer>
           <ColumnContainer>
             <GeneralTitle>10x {singleCoin.name}</GeneralTitle>
-            <GeneralItem>{singleCoin.current_price * 10}</GeneralItem>
+            <GeneralItem>
+              {priceFormatter(singleCoin.current_price * 10)}
+            </GeneralItem>
           </ColumnContainer>
         </CoinPriceContainer>
         <ColumnContainer>
@@ -113,17 +121,17 @@ const Modal = ({
           <ModalTitle>Balances</ModalTitle>
           <ColumnContainer>
             <GeneralTitle>Current</GeneralTitle>
-            <GeneralItem> {balance}</GeneralItem>
+            <GeneralItem> {priceFormatter(balance)}</GeneralItem>
           </ColumnContainer>
           <ColumnContainer>
             <GeneralTitle>
               {modalAction === "buy" ? "Total Cost" : "Total Gain"}
             </GeneralTitle>
-            <GeneralItem> {totalAmount}</GeneralItem>
+            <GeneralItem> {priceFormatter(totalAmount)}</GeneralItem>
           </ColumnContainer>
           <ColumnContainer>
             <GeneralTitle>Post-trade</GeneralTitle>
-            <GeneralItem> {remainingBalance}</GeneralItem>
+            <GeneralItem> {priceFormatter(remainingBalance)}</GeneralItem>
           </ColumnContainer>
         </BalanceContainer>
       </ModalItem>

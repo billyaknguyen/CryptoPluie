@@ -57,7 +57,7 @@ const Navbar = () => {
         {isAuthenticated && (
           <PortfolioLink to="/portfolio">Portfolio</PortfolioLink>
         )}
-        <AboutLink to="/about">About</AboutLink>
+        <AboutLink to="/community">Community</AboutLink>
       </NavigationLinksWrapper>
       {!isAuthenticated ? <LoginButton /> : <LogoutButton />}
     </NavContainer>
