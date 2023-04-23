@@ -5,7 +5,6 @@ import {
   CoinImg,
   CoinCard,
   CoinName,
-  CoinH2,
   CoinCardItem,
   CoinPrice,
   ButtonsWrapper,
@@ -40,7 +39,6 @@ const CoinsPage = () => {
   return (
     <>
       <CoinPageContainer>
-        <CoinH2>Coins</CoinH2>
         <CoinCardWrapper>
           {filteredCoins.map((coin, index) => {
             return (
