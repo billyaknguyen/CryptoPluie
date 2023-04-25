@@ -11,8 +11,8 @@ const addNewCoin = async (userId, coinData) => {
       }),
     });
 
-    const data = await response.json();
-    return data;
+    const resData = await response.json();
+    return resData;
   } catch (error) {
     console.log(error);
   }

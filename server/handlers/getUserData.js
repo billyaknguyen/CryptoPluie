@@ -23,7 +23,7 @@ const getUserData = async (req, res) => {
     return res.status(200).json({
       status: 200,
       message: "user found",
-      data: { holdings: user.holdings, balance: user.balance },
+      data: { holdings: user.holdings, balance: user.balance, suggestions: user.suggestions, suggestionHistory: user.suggestionHistory, pendingSuggestions: user.pendingSuggestions },
     });
   } catch (error) {
     console.log(error);
