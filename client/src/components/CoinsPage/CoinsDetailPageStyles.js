@@ -202,3 +202,18 @@ export const SellButton = styled.button`
     background-color: #c00707;
   }
 `;
+
+export const SuggestButton = styled.button`
+  background-color: #2d72d9;
+  border-radius: 6px;
+  padding: 6px 16px;
+  margin: 10px;
+  color: white;
+  flex: 1;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+
+  &:hover {
+    background-color: #1a57a3;
+  }
+`;

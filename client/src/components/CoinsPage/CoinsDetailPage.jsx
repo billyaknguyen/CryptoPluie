@@ -3,50 +3,25 @@ import { useParams } from "react-router-dom";
 import { format } from "date-fns";
 import { UserPortfolioContext } from "../utils/UserPortfolioContext";
 import addNewCoin from "../utils/addNewCoin";
+import priceFormatter from "../utils/priceFormatter";
+import decimalFormatter from "../utils/decimalFormatter";
 import sellCoin from "../utils/sellCoin";
 import addCoinHandle from "../hooks/addCoinHandle";
 import sellCoinHandle from "../hooks/sellCoinHandle";
+import suggestCoinHandle from "../utils/suggestCoinHandle";
+import SuggestCoinModal from "../Modal/SuggestModal";
 import fetchUserPortfolio from "../utils/fetchUserPortfolio";
 import {
-  SingleCoinContainer,
-  CoinPageDetailsContainer,
-  ChartContainer,
-  CoinContainer,
-  CoinDetailsContainer,
-  CoinInfoContainer,
-  CoinName,
-  CoinImg,
-  CoinSymbol,
-  CoinPrice,
-  CoinPercentage,
-  CoinPriceStatsContainer,
-  CoinDayStatsContainer,
-  CoinHighContainer,
-  CoinLowContainer,
-  PriceChangeContainer,
-  ColumnContainer,
-  CoinStatsContainer,
-  CoinHigh,
-  CoinLow,
-  CoinHighTitle,
-  CoinLowTitle,
-  CoinLastUpdated,
-  CoinPriceChange,
-  CoinPriceTitle,
-  CoinStatsTitle,
-  GeneralTitle,
-  GeneralItem,
-  MiniCoinContainer,
-  ButtonContainer,
-  BuyButton,
-  SellButton,
+  SingleCoinContainer,CoinPageDetailsContainer,ChartContainer,CoinContainer,CoinDetailsContainer,CoinInfoContainer,CoinName,CoinImg,CoinSymbol,CoinPrice,CoinPercentage,CoinPriceStatsContainer,CoinDayStatsContainer,CoinHighContainer,CoinLowContainer,PriceChangeContainer,ColumnContainer,CoinStatsContainer,CoinHigh,CoinLow,CoinHighTitle,CoinLowTitle,CoinLastUpdated,CoinPriceChange,CoinPriceTitle,CoinStatsTitle,GeneralTitle,GeneralItem,MiniCoinContainer,ButtonContainer,BuyButton,SellButton, SuggestButton
 } from "./CoinsDetailPageStyles";
+
 import { useAuth0 } from "@auth0/auth0-react";
 import Modal from "../Modal/Modal";
 
 const CoinsDetailPage = () => {
   const [singleCoin, setSingleCoin] = useState(null);
   const [openModal, setOpenModal] = useState(false);
+  const [suggestModalOpen, setSuggestModalOpen] = useState(false);
   const [modalAction, setModalAction] = useState("");
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
@@ -56,7 +31,7 @@ const CoinsDetailPage = () => {
     actions: { updateUserPortfolio },
   } = useContext(UserPortfolioContext);
 
-  console.log(state);
+  console.log(user);
 
   useEffect(() => {
     const getSpecificCoin = async () => {
@@ -103,6 +78,14 @@ const CoinsDetailPage = () => {
     setOpenModal(true);
   };
 
+  const openSuggestModal = () => {
+    setSuggestModalOpen(true);
+  };
+
+  const closeSuggestModal = () => {
+    setSuggestModalOpen(false);
+  };
+
   if (loading) {
     return <div>loading...</div>;
   }
@@ -131,30 +114,31 @@ const CoinsDetailPage = () => {
                 </CoinInfoContainer>
 
                 <CoinPriceTitle>Price</CoinPriceTitle>
-                <CoinPrice>${singleCoin.current_price}</CoinPrice>
+                <CoinPrice>
+                  {priceFormatter(singleCoin.current_price)}
+                </CoinPrice>
 
                 <CoinPriceStatsContainer>
                   <PriceChangeContainer>
                     <CoinPriceChange
                       isNegative={singleCoin.price_change_24h < 0}
                     >
-                      ${singleCoin.price_change_24h.toFixed(2)}
+                      {priceFormatter(singleCoin.price_change_24h)}
                     </CoinPriceChange>
                     <CoinPercentage
                       isNegative={singleCoin.price_change_percentage_24h < 0}
                     >
-                      {" "}
                       ({singleCoin.price_change_percentage_24h.toFixed(2)}%)
                     </CoinPercentage>
                   </PriceChangeContainer>
                   <CoinDayStatsContainer>
                     <CoinHighContainer>
                       <CoinHighTitle>24H High</CoinHighTitle>
-                      <CoinHigh> {singleCoin.high_24h}</CoinHigh>
+                      <CoinHigh>{priceFormatter(singleCoin.high_24h)}</CoinHigh>
                     </CoinHighContainer>
                     <CoinLowContainer>
                       <CoinLowTitle>24H Low</CoinLowTitle>
-                      <CoinLow> {singleCoin.low_24h}</CoinLow>
+                      <CoinLow> {priceFormatter(singleCoin.low_24h)}</CoinLow>
                     </CoinLowContainer>
                   </CoinDayStatsContainer>
                 </CoinPriceStatsContainer>
@@ -168,23 +152,35 @@ const CoinsDetailPage = () => {
                   </ColumnContainer>
                   <ColumnContainer>
                     <GeneralTitle>Market Cap</GeneralTitle>
-                    <GeneralItem>{singleCoin.market_cap}</GeneralItem>
+                    <GeneralItem>
+                      {priceFormatter(singleCoin.market_cap)}
+                    </GeneralItem>
                   </ColumnContainer>
                   <ColumnContainer>
                     <GeneralTitle>Total Volume</GeneralTitle>
-                    <GeneralItem>{singleCoin.total_volume}</GeneralItem>
+                    <GeneralItem>
+                      {decimalFormatter(singleCoin.total_volume)}
+                    </GeneralItem>
                   </ColumnContainer>
                   <ColumnContainer>
                     <GeneralTitle>All Time High</GeneralTitle>
-                    <GeneralItem>${singleCoin.ath}</GeneralItem>
+                    <GeneralItem>{priceFormatter(singleCoin.ath)}</GeneralItem>
                   </ColumnContainer>
                   <ColumnContainer>
                     <GeneralTitle>Total Supply</GeneralTitle>
-                    <GeneralItem>{singleCoin.total_supply}</GeneralItem>
+                    {singleCoin.total_supply === null ? (
+                      <GeneralItem>Unknown</GeneralItem>
+                    ) :
+                    <GeneralItem>
+                      {decimalFormatter(singleCoin.total_supply)}
+                    </GeneralItem>
+                    }
                   </ColumnContainer>
                   <ColumnContainer>
                     <GeneralTitle>Circulating Supply</GeneralTitle>
-                    <GeneralItem>{singleCoin.circulating_supply}</GeneralItem>
+                    <GeneralItem>
+                      {decimalFormatter(singleCoin.circulating_supply)}
+                    </GeneralItem>
                   </ColumnContainer>
                 </CoinStatsContainer>
               </CoinDetailsContainer>
@@ -192,6 +188,9 @@ const CoinsDetailPage = () => {
                 <ButtonContainer>
                   <BuyButton onClick={buyModalOption}>Buy</BuyButton>
                   <SellButton onClick={sellModalOption}>Sell</SellButton>
+                  <SuggestButton onClick={openSuggestModal}>
+                    Suggest
+                  </SuggestButton>
                 </ButtonContainer>
               ) : (
                 <div>User must be logged in to make a purchase</div>
@@ -209,6 +208,17 @@ const CoinsDetailPage = () => {
         singleCoin={singleCoin}
         holdings={state.holdings}
         balance={state.balance}
+      />
+      <SuggestCoinModal
+        isOpen={suggestModalOpen}
+        onClose={closeSuggestModal}
+        suggestCoinHandle={suggestCoinHandle}
+        singleCoin={singleCoin}
+        loggedInUserId={user.sub}
+        loggedInUsername={user.nickname}
+        loggedInImage={user.picture}
+        updateUserPortfolio= {updateUserPortfolio}
+        fetchUserPortfolio= {fetchUserPortfolio}
       />
     </>
   );

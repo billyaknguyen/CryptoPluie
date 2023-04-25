@@ -6,6 +6,9 @@ export const UserPortfolioContext = createContext();
 const initialState = {
   holdings: [],
   balance: null,
+  suggestions: [],
+  suggestionHistory: [],
+  pendingSuggestions: []
 };
 
 const reducer = (state, action) => {
@@ -15,7 +18,11 @@ const reducer = (state, action) => {
         ...state,
         holdings: action.holdings,
         balance: action.balance,
+        suggestions: action.suggestions,
+        suggestionHistory: action.suggestionHistory,
+        pendingSuggestions: action.pendingSuggestions
       };
+      
     default:
       throw new Error(`Action unknown: ${action.type}`);
   }
@@ -39,6 +46,9 @@ export const UserPortfolioProvider = ({ children }) => {
               type: "fetch_portfolio",
               holdings: resData.data.holdings,
               balance: resData.data.balance,
+              suggestions: resData.data.suggestions,
+              suggestionHistory: resData.data.suggestionHistory,
+              pendingSuggestions: resData.data.pendingSuggestions
             });
             setLoadingHolding(false)
           }
@@ -66,8 +76,8 @@ export const UserPortfolioProvider = ({ children }) => {
   }, [])
 
 
-  const updateUserPortfolio = (holdings, balance) => {
-    dispatch({ type: "fetch_portfolio", holdings, balance });
+  const updateUserPortfolio = (holdings, balance, suggestions, suggestionHistory, pendingSuggestions) => {
+    dispatch({ type: "fetch_portfolio", holdings, balance, suggestions, suggestionHistory, pendingSuggestions});
   };
 
 

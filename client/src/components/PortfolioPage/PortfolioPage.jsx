@@ -94,6 +94,7 @@ const PortfolioPage = () => {
       <InformationContainer>
         <ProfileContainer>
           <div> User: {user.nickname}</div>
+          <button onClick={() => navigate("/suggestions")}>Suggestions</button>
         </ProfileContainer>
         <PortfolioStatsContainer>
           <div>Current Balance:{priceFormatter(state.balance)}</div>

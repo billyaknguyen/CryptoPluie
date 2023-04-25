@@ -6,6 +6,7 @@ import CoinsDetailPage from "./components/CoinsPage/CoinsDetailPage";
 import PortfolioPage from "./components/PortfolioPage/PortfolioPage";
 import Navbar from "./components/Navbar/Navbar";
 import UsersPage from "./components/Users/UsersPage";
+import SuggestionPage from "./components/SuggestionPage/Suggestionpage";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/coin/:id" element={<CoinsDetailPage />} />
         <Route path="/portfolio" element={<PortfolioPage />} />
         <Route path="/community" element={<UsersPage />} />
+        <Route path="/suggestions" element={<SuggestionPage/>}/>
       </Routes>
     </>
   );

@@ -8,8 +8,6 @@ body {
     font-weight: 500;
     color: #262338;
     background-color: #f1fafc;
-
-    //#f1fafc
 }
 h2 , h1 {
   font-weight: 600;
