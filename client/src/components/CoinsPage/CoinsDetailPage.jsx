@@ -11,6 +11,7 @@ import sellCoinHandle from "../hooks/sellCoinHandle";
 import suggestCoinHandle from "../utils/suggestCoinHandle";
 import SuggestCoinModal from "../Modal/SuggestModal";
 import fetchUserPortfolio from "../utils/fetchUserPortfolio";
+import CoinChart from "./CoinChart";
 import {
   SingleCoinContainer,CoinPageDetailsContainer,ChartContainer,CoinContainer,CoinDetailsContainer,CoinInfoContainer,CoinName,CoinImg,CoinSymbol,CoinPrice,CoinPercentage,CoinPriceStatsContainer,CoinDayStatsContainer,CoinHighContainer,CoinLowContainer,PriceChangeContainer,ColumnContainer,CoinStatsContainer,CoinHigh,CoinLow,CoinHighTitle,CoinLowTitle,CoinLastUpdated,CoinPriceChange,CoinPriceTitle,CoinStatsTitle,GeneralTitle,GeneralItem,MiniCoinContainer,ButtonContainer,BuyButton,SellButton, SuggestButton
 } from "./CoinsDetailPageStyles";
@@ -31,8 +32,8 @@ const CoinsDetailPage = () => {
     actions: { updateUserPortfolio },
   } = useContext(UserPortfolioContext);
 
-  console.log(user);
 
+  console.log(singleCoin)
   useEffect(() => {
     const getSpecificCoin = async () => {
       try {
@@ -95,7 +96,9 @@ const CoinsDetailPage = () => {
       {singleCoin && (
         <CoinPageDetailsContainer>
           <SingleCoinContainer>
-            <ChartContainer></ChartContainer>
+            <ChartContainer>
+            <CoinChart singleCoin={singleCoin}/>
+            </ChartContainer>
             <CoinContainer>
               <CoinDetailsContainer>
                 <CoinInfoContainer>

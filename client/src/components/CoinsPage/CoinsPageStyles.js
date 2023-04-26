@@ -17,7 +17,8 @@ export const CoinCardWrapper = styled.div`
   border-radius: 20px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  background-color: #fcfcfc;
+  background-color: #85a7c0;
+ 
 `;
 
 export const CoinImg = styled.img`
@@ -33,7 +34,7 @@ export const CoinCard = styled(Link)`
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  background-color: #85a7c0;
+  background-color: #fcfcfc;
   margin: 30px;
   width: 150px;
   height: 150px;
