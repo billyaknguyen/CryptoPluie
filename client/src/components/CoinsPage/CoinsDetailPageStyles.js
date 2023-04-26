@@ -17,11 +17,13 @@ export const SingleCoinContainer = styled.div`
 `;
 
 export const ChartContainer = styled.div`
-  background-color: white;
-  flex: 1;
-  /* border: 1px solid red; */
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
+display: flex;
+flex: 1;
+justify-content: center;
+align-items: center;
+background-color: white;
+border-top-left-radius: 20px;
+border-bottom-left-radius: 20px;
 `;
 
 export const CoinContainer = styled.div`
