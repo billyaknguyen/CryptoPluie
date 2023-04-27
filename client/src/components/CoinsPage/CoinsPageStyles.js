@@ -29,6 +29,7 @@ export const CoinImg = styled.img`
 
 export const CoinCard = styled(Link)`
   display: flex;
+  color: black;
   border: 1px solid rgba(0, 0, 0, 0.1);
   flex-direction: column;
   justify-content: center;
@@ -57,16 +58,19 @@ export const CoinCardItem = styled.div`
 `;
 
 export const CoinName = styled.div`
-  color: black;
+  font-weight: bold;
   text-align: center;
   font-size: 1rem;
 `;
 
 export const CoinPrice = styled.div`
-  color: black;
   font-size: 1rem;
 `;
 
+export const CoinLink = styled(Link) `
+text-decoration: none;
+color: inherit;
+`
 export const ButtonsWrapper = styled.div`
   display: flex;
   justify-content: center;

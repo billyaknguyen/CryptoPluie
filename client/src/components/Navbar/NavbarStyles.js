@@ -24,6 +24,7 @@ export const MainTitle = styled.h1`
 export const Logo = styled.img`
   height: 100px;
   width: 100px;
+  
 `;
 
 export const TitleLink = styled(NavLink)`
@@ -38,6 +39,7 @@ export const CoinsLink = styled(NavLink)`
   color: #f1fafc;
   font-size: 1.5rem;
   font-weight: bold;
+  
 `;
 export const PortfolioLink = styled(NavLink)`
   text-decoration: none;

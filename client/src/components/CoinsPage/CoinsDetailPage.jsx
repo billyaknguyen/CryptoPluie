@@ -46,7 +46,7 @@ const CoinsDetailPage = () => {
       }
     };
     getSpecificCoin();
-  }, []);
+  }, [id]);
 
   const buyHandle = (quantity) => {
     addCoinHandle(
