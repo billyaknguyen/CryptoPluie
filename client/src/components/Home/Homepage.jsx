@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from "react";
+import LoginButton from "../Navbar/LoginButton";
 import Navbar from "../Navbar/Navbar";
 import Coins from "./assets/coins";
 import {
@@ -57,6 +58,7 @@ const HomePage = () => {
       <Navbar />
       <HeroSection>
         <TitleContainer>{animatedTitle}</TitleContainer>
+        <LoginButton>Get started</LoginButton>
       </HeroSection>
       <Wave />
       <SecondSection>

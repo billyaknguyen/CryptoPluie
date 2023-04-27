@@ -12,7 +12,7 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
-      {/* <Navbar /> */}
+      <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/coins" element={<CoinsPage />} />

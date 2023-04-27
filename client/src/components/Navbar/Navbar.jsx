@@ -1,7 +1,6 @@
 import {
   NavContainer,
   MainTitle,
-  SignUpButton,
   HomeLinksWrapper,
   Logo,
   NavigationLinksWrapper,
@@ -16,6 +15,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useLocation } from "react-router-dom";
 import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
+import SearchBar from "../SearchBar/SearchBar";
 
 const Navbar = () => {
   const [isScrolledDown, setIsScrolledDown] = useState(false);
@@ -39,9 +39,10 @@ const Navbar = () => {
 
   const isHomePage = location.pathname === "/";
 
+
   return (
     <NavContainer scrolledDown={isScrolledDown} isHomePage={isHomePage}>
-      <HomeLinksWrapper>
+      <HomeLinksWrapper >
         <LogoLink to="/">
           <Logo
             src="https://cdn.discordapp.com/attachments/899929905318486046/1094149965976174672/CryptoPluie_Billy_Nguyen_Logo.png"
@@ -59,6 +60,7 @@ const Navbar = () => {
         )}
         <AboutLink to="/community">Community</AboutLink>
       </NavigationLinksWrapper>
+      {isHomePage ? null : <SearchBar/>}
       {!isAuthenticated ? <LoginButton /> : <LogoutButton />}
     </NavContainer>
   );

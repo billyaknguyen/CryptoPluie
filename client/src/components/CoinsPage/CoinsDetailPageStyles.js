@@ -51,7 +51,7 @@ export const CoinInfoContainer = styled.div`
 `;
 
 export const CoinName = styled.h2`
-  font-size: 2rem;
+  font-size: 1.7rem;
 `;
 
 export const CoinSymbol = styled.div`
@@ -62,6 +62,7 @@ export const CoinSymbol = styled.div`
 
 export const MiniCoinContainer = styled.div`
   display: flex;
+width: 100%;
   gap: 0.5rem;
   align-items: center;
 `;
@@ -158,7 +159,7 @@ export const CoinImg = styled.img`
 `;
 
 export const CoinStatsTitle = styled.h2`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 `;
 
 export const GeneralTitle = styled.div`
