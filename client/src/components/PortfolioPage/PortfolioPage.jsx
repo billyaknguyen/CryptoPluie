@@ -23,6 +23,7 @@ import {
   SellButton,
   ProfileContainer,
   PortfolioStatsContainer,
+  PortfolioTableContainer,
   CoinImg,
   CoinName,
   CoinWrapper,
@@ -88,6 +89,7 @@ const PortfolioPage = () => {
     const marketValue = holding.coin_quantity * currentPrice;
     return total + marketValue;
   }, 0);
+     const netWorth = portfolioValue + state.balance
 
   return (
     <PortfolioPageWrapper>
@@ -99,9 +101,11 @@ const PortfolioPage = () => {
         <PortfolioStatsContainer>
           <div>Current Balance:{priceFormatter(state.balance)}</div>
           <div>Portfolio Value:{priceFormatter(portfolioValue)}</div>
+          <div>Net Worth: {priceFormatter(netWorth)}</div>
         </PortfolioStatsContainer>
       </InformationContainer>
       <PortfolioPageContainer>
+      <PortfolioTableContainer>
         <PortfolioTable>
           <thead>
             <PortfolioTableRow>
@@ -165,6 +169,7 @@ const PortfolioPage = () => {
             })}
           </tbody>
         </PortfolioTable>
+        </PortfolioTableContainer>
       </PortfolioPageContainer>
       <Modal
         isOpen={openModal}

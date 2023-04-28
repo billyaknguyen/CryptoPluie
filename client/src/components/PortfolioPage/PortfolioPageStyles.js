@@ -19,6 +19,10 @@ export const InformationContainer = styled.div`
   gap: 50px;
   border: 1px solid black;
   flex-direction: row;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+  }
 `;
 export const ProfileContainer = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -71,6 +75,11 @@ export const PortfolioTableHead = styled.th`
 export const PortfolioTableProfit = styled.td`
   text-align: justify;
   color: ${(props) => (props.profit >= 0 ? "green" : "red")};
+`;
+
+export const PortfolioTableContainer = styled.div`
+  overflow: auto;
+  width: 90%;
 `;
 
 export const BuyButton = styled.button`
