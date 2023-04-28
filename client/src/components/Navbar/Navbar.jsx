@@ -58,7 +58,7 @@ const Navbar = () => {
         {isAuthenticated && (
           <PortfolioLink to="/portfolio">Portfolio</PortfolioLink>
         )}
-        <AboutLink to="/community">Community</AboutLink>
+        <AboutLink to="/leaderboard">Leaderboard</AboutLink>
       </NavigationLinksWrapper>
       {isHomePage ? null : <SearchBar/>}
       {!isAuthenticated ? <LoginButton /> : <LogoutButton />}
