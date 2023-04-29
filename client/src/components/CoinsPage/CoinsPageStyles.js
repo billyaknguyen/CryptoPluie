@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 export const CoinPageContainer = styled.div`
   display: flex;
-  margin-top: 200px;
+  margin: 200px 50px 50px 50px;
+  border: 1px solid yellow;
   flex-direction: column;
   justify-content: center;
 `;

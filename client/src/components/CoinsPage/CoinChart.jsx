@@ -6,7 +6,7 @@ const CoinChart = ({ singleCoin }) => {
     const oneHour = 3600000; // in milliseconds
 
     const chartData = singleCoin.sparkline_in_7d.price.map((price, index) => {
-      const timestamp = lastUpdatedTime - (singleCoin.sparkline_in_7d.price.length - index) * oneHour; // in milliseconds
+      const timestamp = lastUpdatedTime - (167 - index) * oneHour; // in milliseconds
       const dateTime = new Date(timestamp); // full date
       return { dateTime, price };
     });

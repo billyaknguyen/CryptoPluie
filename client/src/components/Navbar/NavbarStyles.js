@@ -8,7 +8,6 @@ export const NavContainer = styled.header`
   width: 100%;
   position: fixed;
   top: 0;
-  border: 1px solid yellow;
   background-color: ${(props) =>
     props.scrolledDown || !props.isHomePage ? "#85a7c0" : "transparent"};
   z-index: 1;
@@ -59,13 +58,11 @@ export const HomeLinksWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin-left: 1rem;
-  border: 3px solid purple;
 `;
 
 export const NavigationLinksWrapper = styled.div`
   display: flex;
   gap: 20px;
-  border: 2px solid black;
 `;
 
 export const SignUpButton = styled.button`

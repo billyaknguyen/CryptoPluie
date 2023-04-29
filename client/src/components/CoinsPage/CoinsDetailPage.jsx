@@ -55,7 +55,7 @@ const CoinsDetailPage = () => {
       quantity,
       fetchUserPortfolio,
       updateUserPortfolio,
-      addNewCoin
+      addNewCoin,
     );
   };
   const sellHandle = (quantity) => {
@@ -65,7 +65,7 @@ const CoinsDetailPage = () => {
       quantity,
       fetchUserPortfolio,
       updateUserPortfolio,
-      sellCoin
+      sellCoin,
     );
   };
 

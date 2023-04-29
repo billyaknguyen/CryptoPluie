@@ -57,6 +57,7 @@ const Modal = ({
     } else {
       onSellHandle(quantity);
     }
+  onClose()
   };
 
   console.log(userCoinHolding);
@@ -71,6 +72,7 @@ const Modal = ({
             alt={`${singleCoin.name} picture`}
           ></CoinImg>
           <CoinName> {singleCoin.name}</CoinName>
+          <button onClick={() => onClose()}>X</button>
         </MiniCoinContainer>
         <CoinPriceContainer>
           <ColumnContainer>
@@ -108,7 +110,7 @@ const Modal = ({
             onChange={(event) => setQuantity(event.target.value)}
           />
           {modalAction === "buy" ? (
-            <BuyButton disabled={quantity <= 0 || remainingBalance < 0}>
+            <BuyButton disabled={quantity <= 0 || remainingBalance < 0 }>
               Confirm Purchase
             </BuyButton>
           ) : (
@@ -117,8 +119,8 @@ const Modal = ({
             </SellButton>
           )}
         </QuantityForm>
+        <ModalTitle>Balances</ModalTitle>
         <BalanceContainer>
-          <ModalTitle>Balances</ModalTitle>
           <ColumnContainer>
             <GeneralTitle>Current</GeneralTitle>
             <GeneralItem> {priceFormatter(balance)}</GeneralItem>
