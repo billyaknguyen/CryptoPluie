@@ -1,4 +1,5 @@
-import { useState, useContext } from "react";
+import { useEffect } from "react";
+import { useState, useContext, useRef } from "react";
 import { UserPortfolioContext } from "../utils/UserPortfolioContext";
 import { Wrapper, Bar, Form, Suggestion, SuggestionList, CoinInfoContainer, CoinImage, CoinName, CoinSymbol, CoinListWrapper, CoinLink } from "./SearchBarStyles";
 
@@ -6,6 +7,21 @@ const SearchBar = () => {
   const { coins } = useContext(UserPortfolioContext);
   const [coinSearch, setCoinSearch] = useState("");
   const [filteredCoins, setFilteredCoins] = useState([]);
+  const closeSearchRef = useRef()
+
+
+    const handleCloseSearch = (event) => {
+       if (closeSearchRef.current && !closeSearchRef.current.contains(event.target)){
+        setFilteredCoins([])
+       }
+    }
+
+ useEffect(() => {
+ document.addEventListener("mousedown", handleCloseSearch);
+ return () => {
+  document.removeEventListener("mousedown", handleCloseSearch)
+ }
+ }, [])
 
   const handleCoinSearch = (event) => {
     const userSearch = event.target.value;
@@ -31,11 +47,12 @@ const SearchBar = () => {
   console.log(filteredCoins);
 
   return (
-    <Wrapper> 
+    <Wrapper ref={closeSearchRef}> 
     <Form>
       <Bar 
       type="text" 
       value={coinSearch}
+      onClick={handleCoinSearch}
       placeholder= "Search for a coin"
       onChange={handleCoinSearch}
       />
