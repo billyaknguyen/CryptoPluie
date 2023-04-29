@@ -217,9 +217,9 @@ const CoinsDetailPage = () => {
         onClose={closeSuggestModal}
         suggestCoinHandle={suggestCoinHandle}
         singleCoin={singleCoin}
-        loggedInUserId={user.sub}
-        loggedInUsername={user.nickname}
-        loggedInImage={user.picture}
+        loggedInUserId={isAuthenticated ? user.sub : null}
+        loggedInUsername={isAuthenticated ?user.nickname :null}
+        loggedInImage={isAuthenticated?user.picture : null}
         updateUserPortfolio= {updateUserPortfolio}
         fetchUserPortfolio= {fetchUserPortfolio}
       />
