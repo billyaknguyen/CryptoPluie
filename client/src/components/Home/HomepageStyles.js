@@ -46,8 +46,8 @@ export const AnimatedLetter = styled.span`
 
 export const TitleContainer = styled.div`
   margin-top: 400px;
-  font-size: 4rem;
-  border: 2px solid green;
+  font-size: 4rem; 
+  color: #f1fafc;
   text-align: center;
 `;
 
@@ -60,7 +60,6 @@ export const Wave = styled.div`
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
-  border: 2px solid black;
 `;
 
 export const SecondSection = styled.section`

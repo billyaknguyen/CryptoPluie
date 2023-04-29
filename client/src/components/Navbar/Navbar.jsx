@@ -8,7 +8,10 @@ import {
   LogoLink,
   CoinsLink,
   PortfolioLink,
-  AboutLink,
+  LeaderBoardLink,
+  AuthContainer,
+  UserContainer,
+  UserImage,
 } from "./NavbarStyles";
 import { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -19,7 +22,7 @@ import SearchBar from "../SearchBar/SearchBar";
 
 const Navbar = () => {
   const [isScrolledDown, setIsScrolledDown] = useState(false);
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, user } = useAuth0();
   const location = useLocation();
 
   useEffect(() => {
@@ -39,17 +42,16 @@ const Navbar = () => {
 
   const isHomePage = location.pathname === "/";
 
-
   return (
     <NavContainer scrolledDown={isScrolledDown} isHomePage={isHomePage}>
-      <HomeLinksWrapper >
+      <HomeLinksWrapper>
         <LogoLink to="/">
           <Logo
             src="https://cdn.discordapp.com/attachments/899929905318486046/1094149965976174672/CryptoPluie_Billy_Nguyen_Logo.png"
             alt="logo"
           />
         </LogoLink>
-        <TitleLink>
+        <TitleLink to="/">
           <MainTitle>CryptoPluie</MainTitle>
         </TitleLink>
       </HomeLinksWrapper>
@@ -58,10 +60,21 @@ const Navbar = () => {
         {isAuthenticated && (
           <PortfolioLink to="/portfolio">Portfolio</PortfolioLink>
         )}
-        <AboutLink to="/leaderboard">Leaderboard</AboutLink>
+        <LeaderBoardLink to="/leaderboard">Leaderboard</LeaderBoardLink>
       </NavigationLinksWrapper>
-      {isHomePage ? null : <SearchBar/>}
-      {!isAuthenticated ? <LoginButton /> : <LogoutButton />}
+      {isHomePage ? null : <SearchBar />}
+      {!isAuthenticated ? (
+        <AuthContainer>
+        <LoginButton />
+        </AuthContainer>
+      ) : (
+        <AuthContainer>
+          <UserContainer>
+           <UserImage src={user.picture}/>
+          </UserContainer>
+          <LogoutButton />
+        </AuthContainer>
+      )}
     </NavContainer>
   );
 };

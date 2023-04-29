@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export const NavContainer = styled.header`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
   position: fixed;
@@ -36,28 +36,73 @@ export const LogoLink = styled(NavLink)``;
 export const CoinsLink = styled(NavLink)`
   text-decoration: none;
   color: #f1fafc;
+  padding: 5px;
   font-size: 1.5rem;
   font-weight: bold;
+
+  &.active {
+    background-color: #f0f0f0;
+    color: black;
+    border-radius: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  }
+
+  &:hover {
+    background-color: rgb(210, 210, 210);
+    border-radius: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  }
   
 `;
 export const PortfolioLink = styled(NavLink)`
   text-decoration: none;
   color: #f1fafc;
+  padding: 5px;
   font-size: 1.5rem;
   font-weight: bold;
+  &.active {
+    background-color: #f0f0f0;
+    color: black;
+    border-radius: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  }
+
+  &:hover {
+    background-color: rgb(210, 210, 210);
+    border-radius: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  }
 `;
-export const AboutLink = styled(NavLink)`
+export const LeaderBoardLink = styled(NavLink)`
   text-decoration: none;
   color: #f1fafc;
+  padding: 5px;
   font-size: 1.5rem;
   font-weight: bold;
+  &.active {
+    background-color: #f0f0f0;
+    color: black;
+    border-radius: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  }
+
+  &:hover {
+    background-color: rgb(210, 210, 210);
+    border-radius: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  }
 `;
 
 export const HomeLinksWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 1rem;
 `;
 
 export const NavigationLinksWrapper = styled.div`
@@ -65,6 +110,21 @@ export const NavigationLinksWrapper = styled.div`
   gap: 20px;
 `;
 
-export const SignUpButton = styled.button`
-  margin-right: 1rem;
-`;
+export const AuthContainer = styled.div `
+display: flex;
+height: 50px;
+gap: 10px;
+color: #f1fafc;
+`
+
+export const UserImage = styled.img `
+height: 50px;
+width: 50px;
+box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  border-radius: 0 50% 50% 50%;
+  transform: rotate(45deg);
+`
+
+export const UserContainer = styled.div `
+`
