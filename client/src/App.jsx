@@ -7,12 +7,15 @@ import PortfolioPage from "./components/PortfolioPage/PortfolioPage";
 import Navbar from "./components/Navbar/Navbar";
 import SuggestionPage from "./components/SuggestionPage/Suggestionpage";
 import LeaderBoardPage from "./components/LeaderBoard/LeaderBoardPage";
+import {ToastContainer} from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
     <>
       <GlobalStyle />
-      {/* <Navbar /> */}
+      <ToastContainer/>
+      <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/coins" element={<CoinsPage />} />

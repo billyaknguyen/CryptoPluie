@@ -3,13 +3,14 @@ import styled from "styled-components";
 export const CoinPageDetailsContainer = styled.div`
   display: flex;
   margin-top: 200px;
+  margin-bottom: 50px;
   justify-content: center;
-  border: 2px solid yellow;
+  /* border: 2px solid yellow; */
 `;
 export const SingleCoinContainer = styled.div`
   display: flex;
   width: 1200px;
-  height: 600px;
+  height: 500px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,

@@ -1,3 +1,6 @@
+import {toast} from "react-toastify"
+
+
 const suggestCoinHandle = async (loggedInUser, friendUserId, messageData,fetchUserPortfolio,
   updateUserPortfolio,) => {
   try {
@@ -10,14 +13,27 @@ const suggestCoinHandle = async (loggedInUser, friendUserId, messageData,fetchUs
     });
 
     const result = await response.json();
+    const awaitingSuggestion = async () => {
+      await fetchUserPortfolio(loggedInUser, updateUserPortfolio)
+    }
 
     if (result.status === 200) {
-      await fetchUserPortfolio(loggedInUser, updateUserPortfolio)
-      alert("Coin suggested successfully!");
-    } 
+      toast.promise (
+        awaitingSuggestion(),
+        {
+          pending: "Financial Advise Pending",
+          success: "Your Suggestion has been successfully sent",
+          error: "Oops, Please try again"
+        },
+        {
+          autoClose: 3000,
+        }
+      )
+    }
   } catch (error) {
     console.error("Error suggesting coin:", error);
   }
-};
+}
+
 
 export default suggestCoinHandle;

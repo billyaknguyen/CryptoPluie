@@ -3,7 +3,7 @@ const priceFormatter = (price) => {
     style: "currency",
     currency: "USD",
     minimumFractionDigits: 2,
-    maximumFractionDigits: 10,
+    maximumFractionDigits: 8,
   });
 };
 

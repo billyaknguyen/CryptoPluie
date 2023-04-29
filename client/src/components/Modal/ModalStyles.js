@@ -16,10 +16,9 @@ export const ModalContainer = styled.div`
 export const ModalItem = styled.div`
   display: flex;
   flex-direction: column;
-  width: 500px;
   background-color: #f1fafc;
   position: relative;
-  max-width: 100%;
+  width: 800px;
 `;
 
 export const ModalTitle = styled.h2`
@@ -47,7 +46,6 @@ export const ColumnContainer = styled.div`
   display: flex;
   align-items: center;
   flex: 1;
-  border: 1px solid black;
   flex-direction: column;
 `;
 
@@ -61,7 +59,6 @@ export const GeneralItem = styled.div`
 `;
 
 export const QuantityForm = styled.form`
-  border: 1px solid black;
 `;
 
 export const QuantityLabel = styled.label``;
