@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext, useRef } from "react";
 import { UserPortfolioContext } from "../utils/UserPortfolioContext";
 import { Wrapper, Bar, Form, Suggestion, SuggestionList, CoinInfoContainer, CoinImage, CoinName, CoinSymbol, CoinListWrapper, CoinLink } from "./SearchBarStyles";
+import {IconCloudSearch} from "@tabler/icons-react"
 
 const SearchBar = () => {
   const { coins } = useContext(UserPortfolioContext);
@@ -48,11 +49,12 @@ const SearchBar = () => {
   return (
     <Wrapper ref={closeSearchRef}> 
     <Form>
+      <IconCloudSearch color= "#003E85" size={40}/>
       <Bar 
       type="text" 
       value={coinSearch}
       onClick={handleCoinSearch}
-      placeholder= "Search for a coin"
+      placeholder = "Search for a coin"
       onChange={handleCoinSearch}
       />
     </Form>

@@ -2,13 +2,17 @@ import { useState, useEffect } from "react";
 import { format } from "date-fns";
 import {
   ModalContainer,
+  ButtonContainer,
   ModalItem,
   ModalTitle,
   UserSelect,
   MessageBox,
   SubmitButton,
+  CloudShareIcon,
+  XButton,
+  XButtonIcon,
+  WarningMessage,
 } from "./SuggestModalStyles";
-
 
 const SuggestCoinModal = ({
   isOpen,
@@ -19,7 +23,7 @@ const SuggestCoinModal = ({
   loggedInUsername,
   loggedInImage,
   updateUserPortfolio,
-  fetchUserPortfolio
+  fetchUserPortfolio,
 }) => {
   if (!isOpen) {
     return null;
@@ -49,18 +53,15 @@ const SuggestCoinModal = ({
     fetchUsers();
   }, []);
 
-
-
   const handleUserChange = (event) => {
     const userSelected = event.target.value;
     const selected = users.find((user) => user.user_id === userSelected);
     setSelectedUser(selected);
   };
 
-  
   const handleSubmit = (event) => {
     event.preventDefault();
-    if(selectedUser) {
+    if (selectedUser) {
       const messageData = {
         coin_id: singleCoin._id,
         coin_name: singleCoin.name,
@@ -68,32 +69,41 @@ const SuggestCoinModal = ({
         coin_symbol: singleCoin.symbol,
         coin_price: singleCoin.current_price,
         message: message,
-        messageDate: format(new Date(),"yyyy-MM-dd"),
+        messageDate: format(new Date(), "yyyy-MM-dd"),
         sender: {
           sender_id: loggedInUserId,
           sender_name: loggedInUsername,
-          sender_picture: loggedInImage
+          sender_picture: loggedInImage,
         },
         receiver: {
           receiver_name: selectedUser.username,
-          receiver_picture: selectedUser.picture
+          receiver_picture: selectedUser.picture,
         },
-       status: "pending"
+        status: "pending",
       };
-      suggestCoinHandle(loggedInUserId,selectedUser.user_id, messageData,fetchUserPortfolio,updateUserPortfolio);
-    } else {
-      alert("please select a user ")
+      suggestCoinHandle(
+        loggedInUserId,
+        selectedUser.user_id,
+        messageData,
+        fetchUserPortfolio,
+        updateUserPortfolio
+      );
     }
-    
-    onClose();
-  }
 
-console.log(selectedUser)
-console.log(message)
+    onClose();
+  };
+
+  console.log(selectedUser);
+  console.log(message);
   return (
     <ModalContainer onClick={closeModalOutside}>
       <ModalItem>
-        <ModalTitle>Suggest Coin to a User</ModalTitle>
+        <ButtonContainer>
+          <XButton onClick={() => onClose()}>
+            <XButtonIcon />
+          </XButton>
+        </ButtonContainer>
+        <ModalTitle>Suggest Coin to</ModalTitle>
         <UserSelect
           value={selectedUser?.user_id || ""}
           onChange={handleUserChange}
@@ -115,7 +125,20 @@ console.log(message)
           value={message}
           onChange={(event) => setMessage(event.target.value)}
         />
-        <SubmitButton onClick={handleSubmit}>Suggest Coin</SubmitButton>
+        <WarningMessage>
+          {!selectedUser
+            ? "please select a user"
+            : message === ""
+            ? "please enter a message"
+            : null}
+        </WarningMessage>
+        <SubmitButton
+          disabled={!selectedUser || message === ""}
+          onClick={handleSubmit}
+        >
+          <CloudShareIcon />
+          Suggest Coin
+        </SubmitButton>
       </ModalItem>
     </ModalContainer>
   );

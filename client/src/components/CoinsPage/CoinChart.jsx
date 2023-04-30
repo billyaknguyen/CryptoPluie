@@ -34,7 +34,7 @@ const CoinChart = ({ singleCoin }) => {
           </defs>
           <XAxis dataKey="dateTime" tickFormatter={formatDateHandle}  />
           <YAxis />
-          <Tooltip labelFormatter={formatToolTipDate} />
+          <Tooltip  labelFormatter={formatToolTipDate} />
           <Area
             type="monotone"
             dataKey="price"
