@@ -7,17 +7,27 @@ width: 300px;
 `
 export const Form = styled.form `
 display: flex;
-justify-content: center;
-`
-export const Bar = styled.input `
 width: 100%;
-height: 20px;
-padding: 10px;
-border: none;
-  border-radius: 10px;
+background-color: #ffffff;
+align-items: center;
+border-radius: 10px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 
+    &:focus-within {
+    outline: 2px solid #4a90e2;
+    outline-offset: 2px;
+  }
+
+`
+export const Bar = styled.input `
+width: 90%;
+border: 1px solid black;
+height: 20px;
+padding: 10px;
+border: none;
+outline: none;
+border-radius: 10px;
     &::placeholder {
         font-size: 1rem;
     }

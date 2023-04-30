@@ -29,7 +29,7 @@ border-bottom-left-radius: 20px;
 
 export const CoinContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  gap: 20px;
   flex-direction: column;
   flex: 1;
   background-color: #163f5f;
@@ -107,6 +107,7 @@ export const CoinPriceChange = styled.div`
 export const CoinDayStatsContainer = styled.div`
   display: flex;
   gap: 1rem;
+  color: #DBECFF;
 `;
 
 export const PriceChangeContainer = styled.div`
@@ -127,6 +128,7 @@ export const CoinLowContainer = styled.div`
 export const CoinStatsContainer = styled.div`
   display: flex;
   max-width: 100%;
+  color: #DBECFF;
   gap: 1rem;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -177,6 +179,7 @@ export const GeneralItem = styled.div`
 `;
 
 export const ButtonContainer = styled.div`
+margin-bottom: 30px;
   display: flex;
   justify-content: center;
 `;

@@ -16,9 +16,11 @@ import {
   BalanceContainer,
   CoinPriceContainer,
   ButtonContainer,
-  XButton
+  XButton,
+  CloudXIcon,
+  CloudDollarIcon,
+  WarningMessage
 } from "./ModalStyles";
-
 import priceFormatter from "../utils/priceFormatter";
 import { useState } from "react";
 
@@ -59,7 +61,7 @@ const Modal = ({
     } else {
       onSellHandle(quantity);
     }
-  onClose()
+    onClose();
   };
 
   console.log(userCoinHolding);
@@ -68,8 +70,10 @@ const Modal = ({
     <ModalContainer onClick={closeModalOutside}>
       <ModalItem>
         <ButtonContainer>
-      <XButton onClick={() => onClose()}>X</XButton>
-      </ButtonContainer>
+          <XButton onClick={() => onClose()}>
+            <CloudXIcon  />
+          </XButton>
+        </ButtonContainer>
         <MiniCoinContainer>
           <ModalTitle>{modalAction === "buy" ? "Buy" : "Sell"}</ModalTitle>
           <CoinImg
@@ -79,12 +83,12 @@ const Modal = ({
           <CoinName> {singleCoin.name}</CoinName>
         </MiniCoinContainer>
         <CoinPriceContainer>
-        <ColumnContainer>
-          <GeneralTitle>You currently own</GeneralTitle>
-          <GeneralItem>
-            {userCoinQuantity} {singleCoin.name}
-          </GeneralItem>
-        </ColumnContainer>
+          <ColumnContainer>
+            <GeneralTitle>You currently own</GeneralTitle>
+            <GeneralItem>
+              {userCoinQuantity} {singleCoin.name}
+            </GeneralItem>
+          </ColumnContainer>
           <ColumnContainer>
             <GeneralTitle>1x {singleCoin.name}</GeneralTitle>
             <GeneralItem>
@@ -111,20 +115,32 @@ const Modal = ({
             id="quantity"
             name="quantity"
             value={quantity}
-            onChange={(event) => setQuantity(event.target.value)}
+            onChange={(event) =>  setQuantity(event.target.value)}
           />
           {modalAction === "buy" ? (
-            <BuyButton disabled={quantity <= 0 || remainingBalance < 0 }>
+            <BuyButton disabled={quantity <= 0 || remainingBalance < 0}>
+              <CloudDollarIcon/>
               Submit Order
             </BuyButton>
           ) : (
             <SellButton disabled={quantity <= 0 || userCoinQuantity < quantity}>
+              <CloudDollarIcon/>
               Submit Order
             </SellButton>
+            
           )}
         </QuantityForm>
+        <WarningMessage>
+  {modalAction === "buy" && quantity <= 0 ? (
+    "Please choose a quantity higher than 0."
+  ) : modalAction === "sell" && userCoinQuantity <= 0 ? (
+    "You don't own any of this coin."
+  ) : modalAction === "sell" && userCoinQuantity < quantity ? (
+    "You do not own enough coin"
+  ) : null}
+</WarningMessage>
         <BalanceContainer>
-        <ModalTitle>Balances</ModalTitle>
+          <ModalTitle>Balances</ModalTitle>
           <ColumnContainer>
             <GeneralTitle>Current</GeneralTitle>
             <GeneralItem> {priceFormatter(balance)}</GeneralItem>

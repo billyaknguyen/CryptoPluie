@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { IconCloudX, IconCloudDollar } from "@tabler/icons-react";
 
 export const ModalContainer = styled.div`
   display: flex;
@@ -63,6 +64,7 @@ export const GeneralTitle = styled.div`
 `;
 export const GeneralItem = styled.div`
   font-size: 1rem;
+  color: #DBECFF;
 `;
 
 export const QuantityForm = styled.form`
@@ -90,6 +92,11 @@ margin: 8px 0;
 `;
 
 export const BuyButton = styled.button`
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 0.5rem;
+font-size: 1rem;
   background-color: ${(props) => (props.disabled ? "#C4C4C4" : "#2ea44f")};
   border-radius: 6px;
   padding: 6px 16px;
@@ -105,6 +112,11 @@ export const BuyButton = styled.button`
 `;
 
 export const SellButton = styled.button`
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 0.5rem;
+font-size: 1rem;
   background-color: ${(props) => (props.disabled ? "#C4C4C4" : "#e34f4f")};
   border-radius: 6px;
   padding: 6px 16px;
@@ -115,7 +127,6 @@ export const SellButton = styled.button`
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
 
   &:hover {
-    background-color: #c00707;
     background-color: ${(props) => (props.disabled ? "#C4C4C4" : "#c00707")};
   }
 `;
@@ -134,20 +145,34 @@ color: #f1fafc;
 cursor: pointer;
   border: none;
   background-color: transparent;
+`
 
-&:hover {
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  border-radius: 0 50% 50% 50%;
-  transform: rotate(45deg);
-    color: #262338;
-    background-color: #f1fafc ;
-  }
+export const CloudXIcon = styled(IconCloudX) `
+width: 24px;
+height: 24px;
+`
+
+export const CloudDollarIcon = styled(IconCloudDollar) `
+width: 24px;
+height: 24px;
+`
+
+export const SubmitContainer = styled.div `
+display: flex;
+align-items: center;
+justify-content: center;
 `
 
 export const ButtonContainer = styled.div `
 display: flex;
 justify-content: flex-end;
+
+`
+
+export const WarningMessage = styled.div `
+font-size: 1rem; 
+text-align: center;
+color: #FFCBCB;
 `
 export const CoinPriceContainer = styled.div`
   display: flex;
