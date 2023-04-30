@@ -40,6 +40,7 @@ border-radius: 10px;
 
 export const Suggestion = styled.li `
 padding: 10px 20px;
+color: #003E85;
 cursor: pointer;
 
 &:hover {

@@ -9,7 +9,7 @@ export const NavContainer = styled.header`
   position: fixed;
   top: 0;
   background-color: ${(props) =>
-    props.scrolledDown || !props.isHomePage ? "#85a7c0" : "transparent"};
+    props.scrolledDown || !props.isHomePage ? "#163f61" : "transparent"};
   z-index: 1;
 `;
 
@@ -35,21 +35,20 @@ export const LogoLink = styled(NavLink)``;
 
 export const CoinsLink = styled(NavLink)`
   text-decoration: none;
-  color: #f1fafc;
+  color: #F2FAFC;
   padding: 5px;
   font-size: 1.5rem;
   font-weight: bold;
 
   &.active {
-    background-color: #f0f0f0;
-    color: black;
+    background-color:  rgba(0,0,0,0.5);
     border-radius: 10px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   }
 
   &:hover {
-    background-color: rgb(210, 210, 210);
+    background-color: rgba(0,0,0,0.5);
     border-radius: 10px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
@@ -63,15 +62,14 @@ export const PortfolioLink = styled(NavLink)`
   font-size: 1.5rem;
   font-weight: bold;
   &.active {
-    background-color: #f0f0f0;
-    color: black;
+    background-color:  rgba(0,0,0,0.5);
     border-radius: 10px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   }
 
   &:hover {
-    background-color: rgb(210, 210, 210);
+    background-color: rgba(0,0,0,0.5);
     border-radius: 10px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
@@ -84,15 +82,14 @@ export const LeaderBoardLink = styled(NavLink)`
   font-size: 1.5rem;
   font-weight: bold;
   &.active {
-    background-color: #f0f0f0;
-    color: black;
+    background-color:  rgba(0,0,0,0.5);
     border-radius: 10px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   }
 
   &:hover {
-    background-color: rgb(210, 210, 210);
+    background-color: rgba(0,0,0,0.5);
     border-radius: 10px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
