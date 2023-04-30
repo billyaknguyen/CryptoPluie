@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useState, useContext, useRef } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import { UserPortfolioContext } from "../utils/UserPortfolioContext";
 import { Wrapper, Bar, Form, Suggestion, SuggestionList, CoinInfoContainer, CoinImage, CoinName, CoinSymbol, CoinListWrapper, CoinLink } from "./SearchBarStyles";
 
@@ -60,7 +59,8 @@ const SearchBar = () => {
     {filteredCoins.length > 0 && (
       <SuggestionList>
         {filteredCoins.map((singleCoin, index) => {
-          return <Suggestion key={index}>
+          return <Suggestion key={index}
+          >
             <CoinLink onClick={handleLinkClick} 
             to={`/coin/${singleCoin.id}`}>
             <CoinListWrapper>

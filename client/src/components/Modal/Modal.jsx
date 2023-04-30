@@ -15,6 +15,8 @@ import {
   SellButton,
   BalanceContainer,
   CoinPriceContainer,
+  ButtonContainer,
+  XButton
 } from "./ModalStyles";
 
 import priceFormatter from "../utils/priceFormatter";
@@ -65,6 +67,9 @@ const Modal = ({
   return (
     <ModalContainer onClick={closeModalOutside}>
       <ModalItem>
+        <ButtonContainer>
+      <XButton onClick={() => onClose()}>X</XButton>
+      </ButtonContainer>
         <MiniCoinContainer>
           <ModalTitle>{modalAction === "buy" ? "Buy" : "Sell"}</ModalTitle>
           <CoinImg
@@ -72,9 +77,14 @@ const Modal = ({
             alt={`${singleCoin.name} picture`}
           ></CoinImg>
           <CoinName> {singleCoin.name}</CoinName>
-          <button onClick={() => onClose()}>X</button>
         </MiniCoinContainer>
         <CoinPriceContainer>
+        <ColumnContainer>
+          <GeneralTitle>You currently own</GeneralTitle>
+          <GeneralItem>
+            {userCoinQuantity} {singleCoin.name}
+          </GeneralItem>
+        </ColumnContainer>
           <ColumnContainer>
             <GeneralTitle>1x {singleCoin.name}</GeneralTitle>
             <GeneralItem>
@@ -94,12 +104,6 @@ const Modal = ({
             </GeneralItem>
           </ColumnContainer>
         </CoinPriceContainer>
-        <ColumnContainer>
-          <GeneralTitle>You have currently have</GeneralTitle>
-          <GeneralItem>
-            {userCoinQuantity} {singleCoin.name}
-          </GeneralItem>
-        </ColumnContainer>
         <QuantityForm onSubmit={handleSubmit}>
           <QuantityLabel htmlFor="quantity">Quantity:</QuantityLabel>
           <QuantitySelector
@@ -111,16 +115,16 @@ const Modal = ({
           />
           {modalAction === "buy" ? (
             <BuyButton disabled={quantity <= 0 || remainingBalance < 0 }>
-              Confirm Purchase
+              Submit Order
             </BuyButton>
           ) : (
             <SellButton disabled={quantity <= 0 || userCoinQuantity < quantity}>
-              Confirm Sale
+              Submit Order
             </SellButton>
           )}
         </QuantityForm>
-        <ModalTitle>Balances</ModalTitle>
         <BalanceContainer>
+        <ModalTitle>Balances</ModalTitle>
           <ColumnContainer>
             <GeneralTitle>Current</GeneralTitle>
             <GeneralItem> {priceFormatter(balance)}</GeneralItem>

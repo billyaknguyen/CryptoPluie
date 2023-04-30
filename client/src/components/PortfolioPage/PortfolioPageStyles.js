@@ -61,15 +61,17 @@ export const PortfolioTableRow = styled.tr`
 
 export const PortfolioTableData = styled.td`
   text-align: justify;
+  color: #003E85;
 `;
 
 export const PortfolioTableCoinData = styled.td`
   cursor: pointer;
+  color: #003E85;
 `;
 
 export const PortfolioTableHead = styled.th`
   text-align: justify;
-  background-color: #85a7c0;
+  background-color: #163f61;
 `;
 
 export const PortfolioTableProfit = styled.td`

@@ -75,7 +75,7 @@ export const SecondSectionWrapper = styled.div`
 `;
 export const SecondSectionTitle = styled.h2`
   font-size: 3rem;
-  color: #85a7c0;
+  color: #1e334e
 `;
 
 export const CoinsSlider = styled.div`
@@ -129,7 +129,7 @@ export const RichImg = styled.img`
 
 export const ThirdSectionTitle = styled.h2`
   font-size: 2.5rem;
-  color: #85a7c0;
+  color: #1e334e
 `;
 
 export const ThirdSectionText = styled.p`

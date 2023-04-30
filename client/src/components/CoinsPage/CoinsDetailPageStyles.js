@@ -32,7 +32,7 @@ export const CoinContainer = styled.div`
   justify-content: space-between;
   flex-direction: column;
   flex: 1;
-  background-color: #fcfcfc;
+  background-color: #163f5f;
   /* border: 2px solid green; */
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
@@ -53,12 +53,13 @@ export const CoinInfoContainer = styled.div`
 
 export const CoinName = styled.h2`
   font-size: 1.7rem;
+  color: #f1fafc;
 `;
 
 export const CoinSymbol = styled.div`
   font-size: 1.5rem;
   font-weight: 300;
-  color: #8a8c9b;
+  color: #f1fafc;
 `;
 
 export const MiniCoinContainer = styled.div`
@@ -71,7 +72,7 @@ width: 100%;
 export const CoinLastUpdated = styled.div`
   font-size: 1.2rem;
   font-weight: 300;
-  color: #8a8c9b;
+  color: #f1fafc;
 `;
 
 export const CoinPriceStatsContainer = styled.div`
@@ -82,23 +83,25 @@ export const CoinPriceStatsContainer = styled.div`
 
 export const CoinPrice = styled.div`
   font-size: 2rem;
-  color: black;
+  color: #f1fafc
 `;
 
 export const CoinPriceTitle = styled.div`
   font-size: 1.3rem;
   margin-bottom: 0.5rem;
   font-weight: 600;
-  color: #8a8c9b;
+  color: #f1fafc;
 `;
 
 export const CoinPercentage = styled.div`
   font-size: 1.2rem;
-  color: ${(props) => (props.isNegative ? "red" : "green")};
+ 
+  color: ${(props) => (props.isNegative ? "#FFCBCB" : "#B9FFD8")};
 `;
 export const CoinPriceChange = styled.div`
   font-size: 1.2rem;
-  color: ${(props) => (props.isNegative ? "red" : "green")};
+  
+  color: ${(props) => (props.isNegative ? "#FFCBCB" : "#B9FFD8")};
 `;
 
 export const CoinDayStatsContainer = styled.div`
@@ -138,12 +141,12 @@ export const ColumnContainer = styled.div`
 `;
 export const CoinHighTitle = styled.div`
   font-size: 1rem;
-  color: green;
+  color: #B9FFD8;
 `;
 
 export const CoinLowTitle = styled.div`
   font-size: 1rem;
-  color: red;
+  color: #FFCBCB;
 `;
 export const CoinHigh = styled.div`
   text-align: right;
@@ -161,12 +164,13 @@ export const CoinImg = styled.img`
 
 export const CoinStatsTitle = styled.h2`
   font-size: 1.3rem;
+  color: #f1fafc;
 `;
 
 export const GeneralTitle = styled.div`
   font-size: 1rem;
   font-weight: 600;
-  color: grey;
+  color: #f1fafc;
 `;
 export const GeneralItem = styled.div`
   font-size: 1rem;
