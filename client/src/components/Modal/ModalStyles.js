@@ -17,7 +17,6 @@ export const ModalContainer = styled.div`
 export const ModalItem = styled.div`
   display: flex;
   flex-direction: column;
- gap: 10px;
   background-color: #163f61;
   position: relative;
   width: 800px;
@@ -28,7 +27,7 @@ export const ModalItem = styled.div`
 `;
 
 export const ModalTitle = styled.h2`
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-align: center;
   color: #f1fafc;
 `;
@@ -39,7 +38,7 @@ export const CoinImg = styled.img`
   border-radius: 50%;
 `;
 export const CoinName = styled.h2`
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #f1fafc;
 `;
 
@@ -69,9 +68,10 @@ export const GeneralItem = styled.div`
 
 export const QuantityForm = styled.form`
 display: flex;
+padding: 5px 0;
 align-items: center;
 justify-content: center;
-border-top: 1px solid lightgray;
+border-top: 1px solid #DBECFF;
 `;
 
 export const QuantityLabel = styled.label`
@@ -134,8 +134,7 @@ font-size: 1rem;
 export const BalanceContainer = styled.div`
   display: flex;
   align-items: center;
-
-  border-top: 1px solid lightgray;
+  border-top: 1px solid #DBECFF;
 `;
 
 export const XButton = styled.button `
@@ -170,11 +169,12 @@ justify-content: flex-end;
 `
 
 export const WarningMessage = styled.div `
-font-size: 1rem; 
+font-size: 1rem;
 text-align: center;
 color: #FFCBCB;
 `
 export const CoinPriceContainer = styled.div`
   display: flex;
-  border-top: 1px solid lightgray;
+  padding: 10px;
+  border-top: 1px solid #DBECFF;
 `;

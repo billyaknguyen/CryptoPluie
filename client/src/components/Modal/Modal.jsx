@@ -19,7 +19,7 @@ import {
   XButton,
   CloudXIcon,
   CloudDollarIcon,
-  WarningMessage
+  WarningMessage,
 } from "./ModalStyles";
 import priceFormatter from "../utils/priceFormatter";
 import { useState } from "react";
@@ -71,7 +71,7 @@ const Modal = ({
       <ModalItem>
         <ButtonContainer>
           <XButton onClick={() => onClose()}>
-            <CloudXIcon  />
+            <CloudXIcon />
           </XButton>
         </ButtonContainer>
         <MiniCoinContainer>
@@ -115,30 +115,32 @@ const Modal = ({
             id="quantity"
             name="quantity"
             value={quantity}
-            onChange={(event) =>  setQuantity(event.target.value)}
+            onChange={(event) => setQuantity(event.target.value)}
           />
           {modalAction === "buy" ? (
             <BuyButton disabled={quantity <= 0 || remainingBalance < 0}>
-              <CloudDollarIcon/>
+              <CloudDollarIcon />
               Submit Order
             </BuyButton>
           ) : (
             <SellButton disabled={quantity <= 0 || userCoinQuantity < quantity}>
-              <CloudDollarIcon/>
+              <CloudDollarIcon />
               Submit Order
             </SellButton>
-            
           )}
         </QuantityForm>
         <WarningMessage>
-  {modalAction === "buy" && quantity <= 0 ? (
-    "Please choose a quantity higher than 0."
-  ) : modalAction === "sell" && userCoinQuantity <= 0 ? (
-    "You don't own any of this coin."
-  ) : modalAction === "sell" && userCoinQuantity < quantity ? (
-    "You do not own enough coin"
-  ) : null}
-</WarningMessage>
+          {modalAction === "buy" && quantity <= 0
+            ? "Please choose a quantity higher than 0."
+            : modalAction === "buy" && remainingBalance < 0
+            ? "Insufficient fund"
+            : modalAction === "sell" && userCoinQuantity <= 0
+            ? "You don't own any of this coin."
+            : modalAction === "sell" && userCoinQuantity < quantity
+            ? "You do not own enough coin"
+            : modalAction === "sell" && quantity <= 0
+            ? "Please choose a quantity higher than 0." : null}
+        </WarningMessage>
         <BalanceContainer>
           <ModalTitle>Balances</ModalTitle>
           <ColumnContainer>
