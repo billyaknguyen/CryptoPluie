@@ -5,7 +5,6 @@ export const CoinPageDetailsContainer = styled.div`
   margin-top: 200px;
   margin-bottom: 50px;
   justify-content: center;
-  /* border: 2px solid yellow; */
 `;
 export const SingleCoinContainer = styled.div`
   display: flex;

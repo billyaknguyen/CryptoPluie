@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { IconCloudX, IconCloudDollar } from "@tabler/icons-react";
+import { IconCloudX, IconCloudDollar,  } from "@tabler/icons-react";
 
 export const ModalContainer = styled.div`
   display: flex;

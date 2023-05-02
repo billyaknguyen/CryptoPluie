@@ -18,6 +18,7 @@ import {
 
 import { useAuth0 } from "@auth0/auth0-react";
 import Modal from "../Modal/Modal";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const CoinsDetailPage = () => {
   const [singleCoin, setSingleCoin] = useState(null);
@@ -88,7 +89,7 @@ const CoinsDetailPage = () => {
   };
 
   if (loading) {
-    return <div>loading...</div>;
+    return <LoadingSpinner/>;
   }
 
   return (
