@@ -13,8 +13,7 @@ export const SingleCoinContainer = styled.div`
   height: 500px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 20px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  box-shadow: rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 `;
 
 export const ChartContainer = styled.div`
@@ -192,7 +191,7 @@ export const BuyButton = styled.button`
   flex: 1;
   color: white;
   border: 1px solid rgba(27, 31, 35, 0.15);
-  box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+  box-shadow: rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 
   &:hover {
     background-color: #2c974b;
@@ -207,7 +206,7 @@ export const SellButton = styled.button`
   color: white;
   flex: 1;
   border: 1px solid rgba(27, 31, 35, 0.15);
-  box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+  box-shadow: rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 
   &:hover {
     background-color: #c00707;
@@ -222,7 +221,7 @@ export const SuggestButton = styled.button`
   color: white;
   flex: 1;
   border: 1px solid rgba(27, 31, 35, 0.15);
-  box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+  box-shadow: rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 
   &:hover {
     background-color: #1a57a3;

@@ -25,8 +25,7 @@ export const ModalItem = styled.div`
   max-width: 100%;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  box-shadow: rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 `;
 
 export const ModalTitle = styled.h2`
@@ -43,8 +42,7 @@ export const UserSelect = styled.select`
   padding: 8px 12px;
   border-radius: 10px;
   border: none;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  box-shadow: rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 `;
 
 export const MessageBox = styled.input`
@@ -54,8 +52,7 @@ padding: 8px 12px;
 margin: 8px 2px;
  border: none;
   border-radius: 10px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  box-shadow: rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   
 `;
 
@@ -100,8 +97,7 @@ gap: 0.5rem;
   color: white;
   border: none;
   border-radius: 5px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  box-shadow: rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
 
   &:hover {
