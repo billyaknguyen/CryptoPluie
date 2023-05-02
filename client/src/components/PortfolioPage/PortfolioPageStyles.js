@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { IconEqual, IconPlus, IconCloud } from "@tabler/icons-react";
 
 export const PortfolioPageWrapper = styled.div`
   margin-top: 200px;
@@ -17,7 +18,6 @@ export const InformationContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 50px;
-  border: 1px solid black;
   flex-direction: row;
   @media (max-width: 768px) {
     flex-direction: column;
@@ -25,38 +25,103 @@ export const InformationContainer = styled.div`
   }
 `;
 export const ProfileContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 10px;
+  padding: 5px;
   width: 500px;
   height: 100px;
   border-radius: 20px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  background-color: #fcfcfc;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px;
+  background-color: #163f61;
 `;
 
 export const PortfolioStatsContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  padding: 10px;
+  padding: 5px;
   width: 500px;
   height: 100px;
   gap: 20px;
+  background-color: #163f61;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 20px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  background-color: #fcfcfc;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px;
 `;
 
+export const ColumnContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex: 1;
+  flex-direction: column;
+`;
+
+export const GeneralTitle = styled.div`
+  font-size: 1rem;
+  margin-bottom: 5px;
+  text-align: center;
+  color: #f1fafc;
+  font-weight: 600;
+`;
+export const GeneralItem = styled.div`
+  font-size: 1rem;
+  color: #dbecff;
+`;
+
+export const SuggestionButton = styled.button`
+  border: 1px solid #dbecff;
+  border-radius: 0 50% 50% 50%;
+  cursor: pointer;
+  color: #dbecff;
+  background-color: transparent;
+  font-size: 1.2rem;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px;
+  }
+`;
+export const PendingSuggestionItem = styled.button`
+  border: 1px solid #dbecff;
+  border-radius: 0 50% 50% 50%;
+  cursor: pointer;
+  color: #dbecff;
+  background-color: transparent;
+  font-size: 1.2rem;
+  animation: ${(props) => (props.animated ? "ringing 1.5s infinite" : "none")};
+
+  @keyframes ringing {
+    0% {
+      transform: rotate(0deg) scale(1);
+    }
+    25% {
+      transform: rotate(-10deg) scale(1);
+    }
+    50% {
+      transform: rotate(10deg) scale(1);
+    }
+    75% {
+      transform: rotate(-10deg) scale(1);
+    }
+    100% {
+      transform: rotate(0deg) scale(1);
+    }
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px;
+  }
+`;
 export const PortfolioTable = styled.table`
   border-collapse: collapse;
   width: 90%;
 `;
 
 export const PortfolioTableRow = styled.tr`
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid #163f61;
 `;
 
 export const PortfolioTableData = styled.td`
@@ -69,7 +134,7 @@ export const PortfolioTableCoinData = styled.td`
 
 export const PortfolioTableHead = styled.th`
   text-align: justify;
-  color: #DBECFF;
+  color: #dbecff;
   background-color: #163f61;
 `;
 
@@ -79,6 +144,8 @@ export const PortfolioTableProfit = styled.td`
 `;
 
 export const PortfolioTableContainer = styled.div`
+  display: flex;
+  justify-content: center;
   overflow: auto;
   width: 90%;
 `;
@@ -126,4 +193,25 @@ export const CoinImg = styled.img`
   border-radius: 50%;
 `;
 
+export const PlusSign = styled(IconPlus)`
+  width: 16px;
+  height: 16px;
+  color: #dbecff;
+`;
+export const EqualSign = styled(IconEqual)`
+  width: 16px;
+  height: 16px;
+  color: #dbecff;
+`;
+
+export const CloudIcon = styled(IconCloud)`
+  width: 24px;
+  height: 24px;
+  color: #dbecff;
+`;
+
+export const UserImg = styled.img`
+  width: 50px;
+  width: 50px;
+`;
 export const CoinName = styled.div``;

@@ -43,15 +43,13 @@ export const CoinsLink = styled(NavLink)`
   &.active {
     background-color:  rgba(0,0,0,0.5);
     border-radius: 10px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px
   }
 
   &:hover {
     background-color: rgba(0,0,0,0.5);
     border-radius: 10px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px
   }
   
 `;
@@ -64,15 +62,13 @@ export const PortfolioLink = styled(NavLink)`
   &.active {
     background-color:  rgba(0,0,0,0.5);
     border-radius: 10px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px
   }
 
   &:hover {
     background-color: rgba(0,0,0,0.5);
     border-radius: 10px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px
   }
 `;
 export const LeaderBoardLink = styled(NavLink)`
@@ -84,15 +80,13 @@ export const LeaderBoardLink = styled(NavLink)`
   &.active {
     background-color:  rgba(0,0,0,0.5);
     border-radius: 10px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px
   }
 
   &:hover {
     background-color: rgba(0,0,0,0.5);
     border-radius: 10px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px
   }
 `;
 

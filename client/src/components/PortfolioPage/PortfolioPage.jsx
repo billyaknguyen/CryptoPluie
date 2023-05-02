@@ -27,7 +27,15 @@ import {
   CoinImg,
   CoinName,
   CoinWrapper,
+  ColumnContainer,
+  GeneralTitle,
+  GeneralItem,
+  PendingSuggestionItem,
+  SuggestionButton,
+  PlusSign,
+  EqualSign,
 } from "./PortfolioPageStyles";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const PortfolioPage = () => {
   const {
@@ -78,10 +86,10 @@ const PortfolioPage = () => {
   };
 
   if (loadingHolding || loadingCoin) {
-    return <div>loading...</div>;
+    return <LoadingSpinner />;
   }
 
-  console.log(state)
+  console.log(state.suggestions);
 
   const portfolioValue = state.holdings.reduce((total, holding) => {
     const coin = coins.find((coin) => coin.id === holding.coin_id);
@@ -89,86 +97,108 @@ const PortfolioPage = () => {
     const marketValue = holding.coin_quantity * currentPrice;
     return total + marketValue;
   }, 0);
-     const netWorth = portfolioValue + state.balance
+  const netWorth = portfolioValue + state.balance;
 
   return (
     <PortfolioPageWrapper>
       <InformationContainer>
         <ProfileContainer>
-          <div> User: {user.nickname}</div>
-          <button onClick={() => navigate("/suggestions")}>Suggestions</button>
+          <ColumnContainer>
+            <GeneralTitle>Suggestions</GeneralTitle>
+            <SuggestionButton onClick={() => navigate("/suggestions")}>{state.suggestions.length}</SuggestionButton>
+          </ColumnContainer>
+          <ColumnContainer>
+            <GeneralTitle>Pending Suggestions
+            </GeneralTitle>
+            <PendingSuggestionItem onClick={() => navigate("/suggestions")} animated={state.pendingSuggestions.length > 0}>{state.pendingSuggestions.length}</PendingSuggestionItem>
+          </ColumnContainer>
+          <ColumnContainer>
+            <GeneralTitle>Suggestions Sent</GeneralTitle>
+            <SuggestionButton onClick={() => navigate("/suggestions")}>{state.suggestionHistory.length}</SuggestionButton>
+          </ColumnContainer>
         </ProfileContainer>
         <PortfolioStatsContainer>
-          <div>Current Balance:{priceFormatter(state.balance)}</div>
-          <div>Portfolio Value:{priceFormatter(portfolioValue)}</div>
-          <div>Net Worth: {priceFormatter(netWorth)}</div>
+          <ColumnContainer>
+            <GeneralTitle>Current Balance</GeneralTitle>
+            <GeneralItem>{priceFormatter(state.balance)}</GeneralItem>
+          </ColumnContainer>
+          <PlusSign />
+          <ColumnContainer>
+            <GeneralTitle>Portfolio Value</GeneralTitle>
+            <GeneralItem>{priceFormatter(portfolioValue)} </GeneralItem>
+          </ColumnContainer>
+          <EqualSign />
+          <ColumnContainer>
+            <GeneralTitle>Net Worth</GeneralTitle>{" "}
+            <GeneralItem>{priceFormatter(netWorth)} </GeneralItem>
+          </ColumnContainer>
         </PortfolioStatsContainer>
       </InformationContainer>
       <PortfolioPageContainer>
-      <PortfolioTableContainer>
-        <PortfolioTable>
-          <thead>
-            <PortfolioTableRow>
-              <PortfolioTableHead>Coin</PortfolioTableHead>
-              <PortfolioTableHead>Symbol</PortfolioTableHead>
-              <PortfolioTableHead>Current Price</PortfolioTableHead>
-              <PortfolioTableHead>Quantity</PortfolioTableHead>
-              <PortfolioTableHead>Average Price</PortfolioTableHead>
-              <PortfolioTableHead>Cost Basis</PortfolioTableHead>
-              <PortfolioTableHead>Market Value</PortfolioTableHead>
-              <PortfolioTableHead>P/L</PortfolioTableHead>
-            </PortfolioTableRow>
-          </thead>
-          <tbody>
-            {state.holdings.map((holding) => {
-              const coin = coins.find((coin) => coin.id === holding.coin_id);
-              const currentPrice = coin ? coin.current_price : 0;
-              const marketValue = holding.coin_quantity * currentPrice;
-              const profit = marketValue - holding.coin_costBasis;
+        <PortfolioTableContainer>
+          <PortfolioTable>
+            <thead>
+              <PortfolioTableRow>
+                <PortfolioTableHead>Coin</PortfolioTableHead>
+                <PortfolioTableHead>Symbol</PortfolioTableHead>
+                <PortfolioTableHead>Current Price</PortfolioTableHead>
+                <PortfolioTableHead>Quantity</PortfolioTableHead>
+                <PortfolioTableHead>Average Price</PortfolioTableHead>
+                <PortfolioTableHead>Cost Basis</PortfolioTableHead>
+                <PortfolioTableHead>Market Value</PortfolioTableHead>
+                <PortfolioTableHead>P/L</PortfolioTableHead>
+              </PortfolioTableRow>
+            </thead>
+            <tbody>
+              {state.holdings.map((holding) => {
+                const coin = coins.find((coin) => coin.id === holding.coin_id);
+                const currentPrice = coin ? coin.current_price : 0;
+                const marketValue = holding.coin_quantity * currentPrice;
+                const profit = marketValue - holding.coin_costBasis;
 
-              return (
-                <PortfolioTableRow key={holding.coin_id}>
-                  <PortfolioTableCoinData>
-                    <CoinWrapper onClick={() => navigate(`/coin/${coin.id}`)}>
-                      <CoinImg src={holding.coin_image}></CoinImg>
-                      <CoinName> {holding.coin_name}</CoinName>
-                    </CoinWrapper>
-                  </PortfolioTableCoinData>
+                return (
+                  <PortfolioTableRow key={holding.coin_id}>
+                    <PortfolioTableCoinData>
+                      <CoinWrapper onClick={() => navigate(`/coin/${coin.id}`)}>
+                        <CoinImg src={holding.coin_image}></CoinImg>
+                        <CoinName> {holding.coin_name}</CoinName>
+                      </CoinWrapper>
+                    </PortfolioTableCoinData>
 
-                  <PortfolioTableData>
-                    {holding.coin_symbol.toUpperCase()}
-                  </PortfolioTableData>
-                  <PortfolioTableData>
-                    {priceFormatter(currentPrice)}
-                  </PortfolioTableData>
-                  <PortfolioTableData>
-                    {holding.coin_quantity.toFixed(8)}
-                  </PortfolioTableData>
-                  <PortfolioTableData>
-                    {priceFormatter(holding.coin_averagePrice)}
-                  </PortfolioTableData>
-                  <PortfolioTableData>
-                    {priceFormatter(holding.coin_costBasis)}
-                  </PortfolioTableData>
-                  <PortfolioTableData>
-                    {priceFormatter(marketValue)}
-                  </PortfolioTableData>
-                  <PortfolioTableProfit profit={profit}>
-                    {priceFormatter(profit)}
-                  </PortfolioTableProfit>
-                  <PortfolioTableData>
-                    <BuyButton onClick={() => buyModalOption(coin)}>
-                      Buy
-                    </BuyButton>
-                    <SellButton onClick={() => sellModalOption(coin)}>
-                      Sell
-                    </SellButton>
-                  </PortfolioTableData>
-                </PortfolioTableRow>
-              );
-            })}
-          </tbody>
-        </PortfolioTable>
+                    <PortfolioTableData>
+                      {holding.coin_symbol.toUpperCase()}
+                    </PortfolioTableData>
+                    <PortfolioTableData>
+                      {priceFormatter(currentPrice)}
+                    </PortfolioTableData>
+                    <PortfolioTableData>
+                      {holding.coin_quantity.toFixed(8)}
+                    </PortfolioTableData>
+                    <PortfolioTableData>
+                      {priceFormatter(holding.coin_averagePrice)}
+                    </PortfolioTableData>
+                    <PortfolioTableData>
+                      {priceFormatter(holding.coin_costBasis)}
+                    </PortfolioTableData>
+                    <PortfolioTableData>
+                      {priceFormatter(marketValue)}
+                    </PortfolioTableData>
+                    <PortfolioTableProfit profit={profit}>
+                      {priceFormatter(profit)}
+                    </PortfolioTableProfit>
+                    <PortfolioTableData>
+                      <BuyButton onClick={() => buyModalOption(coin)}>
+                        Buy
+                      </BuyButton>
+                      <SellButton onClick={() => sellModalOption(coin)}>
+                        Sell
+                      </SellButton>
+                    </PortfolioTableData>
+                  </PortfolioTableRow>
+                );
+              })}
+            </tbody>
+          </PortfolioTable>
         </PortfolioTableContainer>
       </PortfolioPageContainer>
       <Modal

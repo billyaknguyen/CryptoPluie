@@ -5,11 +5,15 @@ import fetchUserPortfolio from "../utils/fetchUserPortfolio";
 import { handleAcceptSuggestion, handleDeclineSuggestion, handleDeleteSuggestion, handleDeleteSuggestionHistory } from "../utils/suggestionHandlers";
 import {SuggestionPageContainer, SectionTitle, SuggestionWrapper, SuggestionCard, SuggestionImage, SuggestionText, SuggestionButton, SuggestionCoinContainer, SuggestionCoinImage} from "./SuggestionpageStyles"
 import priceFormatter from "../utils/priceFormatter"
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const SuggestionPage = () => {
-  const { state, actions: { updateUserPortfolio } } = useContext(UserPortfolioContext);
+  const { state, loadingHolding, actions: { updateUserPortfolio } } = useContext(UserPortfolioContext);
   const { user } = useAuth0();
 
+  if (loadingHolding) {
+    return <LoadingSpinner/>
+  }
 
   console.log(state);
   return (
