@@ -67,7 +67,7 @@ const LeaderBoardPage = () => {
   }
 
   return (
-    <div>
+    <div style= {{marginTop: 200}} >
       {users.map((user, index) => {
         return (
           <div key={index}>
