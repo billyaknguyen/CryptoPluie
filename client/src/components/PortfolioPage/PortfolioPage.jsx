@@ -34,6 +34,7 @@ import {
   SuggestionButton,
   PlusSign,
   EqualSign,
+  Title
 } from "./PortfolioPageStyles";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
@@ -101,6 +102,7 @@ const PortfolioPage = () => {
 
   return (
     <PortfolioPageWrapper>
+      <Title>My Portfolio</Title>
       <InformationContainer>
         <ProfileContainer>
           <ColumnContainer>

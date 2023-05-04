@@ -2,8 +2,7 @@ import styled from "styled-components";
 import { IconEqual, IconPlus, IconCloud } from "@tabler/icons-react";
 
 export const PortfolioPageWrapper = styled.div`
-  margin-top: 200px;
-  gap: 50px;
+  margin-top: 170px;
   display: flex;
   flex-direction: column;
 `;
@@ -16,6 +15,7 @@ export const PortfolioPageContainer = styled.div`
 
 export const InformationContainer = styled.div`
   display: flex;
+  margin-bottom: 50px;
   justify-content: center;
   gap: 50px;
   flex-direction: row;
@@ -214,4 +214,10 @@ export const UserImg = styled.img`
   width: 50px;
   width: 50px;
 `;
-export const CoinName = styled.div``;
+ export const Title = styled.h1 `
+margin-left: 30px;
+color: #163f61;
+`
+export const CoinName = styled.div`
+font-weight: bold;
+`;

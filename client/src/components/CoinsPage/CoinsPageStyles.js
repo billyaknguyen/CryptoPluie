@@ -131,7 +131,7 @@ export const PaginationButton = styled.button`
 
   `
 export const Title = styled.h1 `
-margin-left: 5px;
+margin-left: 30px;
 color: #f1fafc;
 `
 
