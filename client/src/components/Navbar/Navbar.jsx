@@ -70,7 +70,7 @@ const Navbar = () => {
       ) : (
         <AuthContainer>
           <UserContainer>
-           <UserImage src={user.picture}/>
+           <UserImage src={user.picture} referrerpolicy="no-referrer"></UserImage>
           </UserContainer>
           <LogoutButton />
         </AuthContainer>

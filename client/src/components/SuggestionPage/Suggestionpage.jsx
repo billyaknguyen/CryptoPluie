@@ -2,99 +2,238 @@ import { useContext } from "react";
 import { UserPortfolioContext } from "../utils/UserPortfolioContext";
 import { useAuth0 } from "@auth0/auth0-react";
 import fetchUserPortfolio from "../utils/fetchUserPortfolio";
-import { handleAcceptSuggestion, handleDeclineSuggestion, handleDeleteSuggestion, handleDeleteSuggestionHistory } from "../utils/suggestionHandlers";
-import {SuggestionPageContainer, SectionTitle, SuggestionWrapper, SuggestionCard, SuggestionImage, SuggestionText, SuggestionButton, SuggestionCoinContainer, SuggestionCoinImage} from "./SuggestionpageStyles"
-import priceFormatter from "../utils/priceFormatter"
+import {
+  handleAcceptSuggestion,
+  handleDeclineSuggestion,
+  handleDeleteSuggestion,
+  handleDeleteSuggestionHistory,
+} from "../utils/suggestionHandlers";
+import {
+  SuggestionPageContainer,
+  SectionTitle,
+  SuggestionWrapper,
+  SuggestionCard,
+  SuggestionImage,
+  SuggestionTitle,
+  SuggestionText,
+  AcceptButton,
+  DenyButton,
+  NoSuggestionText,
+  SuggestionCoinContainer,
+  SuggestionContentContainer,
+  SuggestionContainer,
+  SuggestionCoinImage,
+  SuggestionPageTitle,
+  ProfileContainer,
+  CoinContainer,
+  MessageContainer,DateContainer, StatusContainer
+} from "./SuggestionpageStyles";
+import priceFormatter from "../utils/priceFormatter";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import { useState } from "react";
 
 const SuggestionPage = () => {
-  const { state, loadingHolding, actions: { updateUserPortfolio } } = useContext(UserPortfolioContext);
+  const {
+    state,
+    loadingHolding,
+    actions: { updateUserPortfolio },
+  } = useContext(UserPortfolioContext);
   const { user } = useAuth0();
+  const [clickedPending, setClickedPending] = useState(null);
+  const [clickedSuggestion, setClickedSuggestion] = useState(null)
+  const [clickedHistory, setClickedHistory] = useState(null)
 
   if (loadingHolding) {
-    return <LoadingSpinner/>
+    return <LoadingSpinner />;
   }
 
   console.log(state);
   return (
     <SuggestionPageContainer>
-      <SectionTitle>PENDING SUGGESTIONS</SectionTitle>
-      <SuggestionWrapper>
-      {state.pendingSuggestions.length === 0 ? (
-        <SuggestionText>You do not have any pending suggestions at the moment.</SuggestionText>
-      ) : (
-        state.pendingSuggestions.map((pendingSuggestion, index) => {
-          return (
-            <SuggestionCard key={index}>
-              <SuggestionText>{pendingSuggestion.sender.sender_name}</SuggestionText>
-              <SuggestionImage
-                src={pendingSuggestion.sender.sender_picture}
-              />
-              <SuggestionButton onClick={() => handleAcceptSuggestion(user, pendingSuggestion, fetchUserPortfolio, updateUserPortfolio)}>
-                Accept
-              </SuggestionButton>
-              <SuggestionButton
-                onClick={() => handleDeclineSuggestion(user, pendingSuggestion, fetchUserPortfolio, updateUserPortfolio)}
-              >
-                Decline
-              </SuggestionButton>
-            </SuggestionCard>
-          );
-        })
-      )}
-      </SuggestionWrapper>
-      <SectionTitle>ACCEPTED SUGGESTIONS</SectionTitle>
-      <SuggestionWrapper>
-      {state.suggestions.length === 0 ? (
-        <SuggestionText> You do not have any suggestions at the moment.</SuggestionText>
-      ) : (
-        state.suggestions.map((suggestion, index) => {
-          return (
-            <SuggestionCard key={index}>
-              <SuggestionText >
-              {suggestion.sender.sender_name}
-              </SuggestionText>
-              <SuggestionImage
-                src={suggestion.sender.sender_picture}
-              />
-              <SuggestionCoinContainer to={`/coin/${suggestion.coin_id}`}>
-              <SuggestionCoinImage src={suggestion.coin_image}/>
-              <SuggestionText>{suggestion.coin_name}</SuggestionText>
-              </SuggestionCoinContainer>
-              <SuggestionText>{priceFormatter(suggestion.coin_price)}</SuggestionText>
-              <SuggestionText>{suggestion.message}</SuggestionText>
-              <SuggestionText>{suggestion.messageDate}</SuggestionText>
-              <SuggestionButton onClick={() => handleDeleteSuggestion(user, suggestion, fetchUserPortfolio, updateUserPortfolio)}>Delete</SuggestionButton>
-            </SuggestionCard>
-          );
-        })
-      )}
-      </SuggestionWrapper>
-      <SectionTitle>SUGGESTION HISTORY</SectionTitle>
-      <SuggestionWrapper>
-      {state.suggestionHistory.length === 0 ? (
-        <SuggestionText>You do not have any suggestion history at the moment.</SuggestionText>
-      ) : (
-        state.suggestionHistory.map((historyItem, index) => {
-          return (
-            <SuggestionCard key={index}>
-              <SuggestionText>Sent to {historyItem.receiver.receiver_name}</SuggestionText>
-              <SuggestionImage
-                src={historyItem.receiver.receiver_picture}
-              />
-               <SuggestionCoinContainer to={`/coin/${historyItem.coin_id}`}>
-                <SuggestionCoinImage src={historyItem.coin_image}/>
-              <SuggestionText>{historyItem.coin_name}</SuggestionText>
-              </SuggestionCoinContainer>
-              <SuggestionText>{priceFormatter(historyItem.coin_price)}</SuggestionText>
-              <SuggestionText>{historyItem.message}</SuggestionText>
-              <SuggestionText>Status: {historyItem.status}</SuggestionText>
-              <SuggestionButton onClick={() => handleDeleteSuggestionHistory(user, historyItem, fetchUserPortfolio, updateUserPortfolio)}>Delete</SuggestionButton>
-            </SuggestionCard>
-          );
-        })
-      )}
-      </SuggestionWrapper>
+      <SuggestionPageTitle>My Suggestions</SuggestionPageTitle>
+      <SuggestionContainer>
+        <SuggestionWrapper>
+          <SectionTitle>Pending</SectionTitle>
+          <SuggestionContentContainer>
+            {state.pendingSuggestions.length === 0 ? (
+              <NoSuggestionText>
+                You do not have any pending suggestions at the moment.
+              </NoSuggestionText>
+            ) : (
+              state.pendingSuggestions.map((pendingSuggestion, index) => {
+                return (
+                  <SuggestionCard key={index}>
+                    <ProfileContainer>
+                      <SuggestionTitle>Sender:</SuggestionTitle>
+                    <SuggestionText>
+                      {pendingSuggestion.sender.sender_name}
+                    </SuggestionText>
+                    <SuggestionImage
+                      src={pendingSuggestion.sender.sender_picture}
+                    />
+                    </ProfileContainer>
+                    <AcceptButton
+                      onClick={() => {
+                        handleAcceptSuggestion(
+                          user,
+                          pendingSuggestion,
+                          fetchUserPortfolio,
+                          updateUserPortfolio
+                        ),
+                        setClickedPending(pendingSuggestion._id);
+                      }}
+                      disabled={clickedPending === pendingSuggestion._id}
+                    >
+                      Accept
+                    </AcceptButton>
+                    <DenyButton
+                      onClick={() =>
+                        handleDeclineSuggestion(
+                          user,
+                          pendingSuggestion,
+                          fetchUserPortfolio,
+                          updateUserPortfolio
+                        )
+                      }
+                      disabled={clickedPending === pendingSuggestion._id}
+                    >
+                      Decline
+                    </DenyButton>
+                  </SuggestionCard>
+                );
+              })
+            )}
+          </SuggestionContentContainer>
+        </SuggestionWrapper>
+        <SuggestionWrapper>
+          <SectionTitle>Accepted</SectionTitle>
+          <SuggestionContentContainer>
+            {state.suggestions.length === 0 ? (
+              <NoSuggestionText>
+                You do not have any suggestions at the moment.
+              </NoSuggestionText>
+            ) : (
+              state.suggestions.map((suggestion, index) => {
+                return (
+                  <SuggestionCard key={index}>
+                    <ProfileContainer>
+                      <SuggestionTitle>Sender:</SuggestionTitle>
+                    <SuggestionImage src={suggestion.sender.sender_picture} />
+                    <SuggestionText>
+                      {suggestion.sender.sender_name}
+                    </SuggestionText>
+                    </ProfileContainer>
+                    <CoinContainer>
+                    <SuggestionCoinContainer to={`/coin/${suggestion.coin_id}`}>
+                      <SuggestionTitle>Coin:</SuggestionTitle>
+                      <SuggestionCoinImage src={suggestion.coin_image} />
+                      <SuggestionTitle>{suggestion.coin_name}:</SuggestionTitle>
+                    </SuggestionCoinContainer>
+                    <SuggestionText>
+                      {priceFormatter(suggestion.coin_price)}
+                    </SuggestionText>
+                    </CoinContainer>
+                    < MessageContainer>
+                    <SuggestionTitle> Message:</SuggestionTitle>
+                    <SuggestionText>
+                     {suggestion.message}
+                    </SuggestionText>
+                    </MessageContainer>
+                    <DateContainer>
+                      <SuggestionTitle>Date:</SuggestionTitle>
+                    <SuggestionText>
+                       {suggestion.messageDate}
+                    </SuggestionText>
+                    </DateContainer>
+                    <DenyButton
+                      onClick={() =>
+                        {
+                          handleDeleteSuggestion(
+                            user,
+                            suggestion,
+                            fetchUserPortfolio,
+                            updateUserPortfolio
+                          ),
+                          setClickedSuggestion(suggestion._id)
+                        }
+                       
+                      }
+                      disabled={clickedSuggestion === suggestion._id}
+                    >
+                      Delete
+                    </DenyButton>
+                  </SuggestionCard>
+                );
+              })
+            )}
+          </SuggestionContentContainer>
+        </SuggestionWrapper>
+        <SuggestionWrapper>
+          <SectionTitle>Sent</SectionTitle>
+          <SuggestionContentContainer>
+            {state.suggestionHistory.length === 0 ? (
+              <NoSuggestionText>Nothing has been sent yet.</NoSuggestionText>
+            ) : (
+              state.suggestionHistory.map((historyItem, index) => {
+                return (
+                  <SuggestionCard key={index}>
+                    <ProfileContainer>
+                      <SuggestionTitle>Receiver:</SuggestionTitle>
+                    <SuggestionImage
+                      src={historyItem.receiver.receiver_picture}
+                    />
+                    <SuggestionText>
+                      {historyItem.receiver.receiver_name}
+                    </SuggestionText>
+                    </ProfileContainer>
+                    <CoinContainer>
+                    <SuggestionCoinContainer
+                      to={`/coin/${historyItem.coin_id}`}
+                    >
+                      <SuggestionTitle>Coin:</SuggestionTitle>
+                      <SuggestionCoinImage src={historyItem.coin_image} />
+                      <SuggestionTitle>{historyItem.coin_name}</SuggestionTitle>
+                    </SuggestionCoinContainer>
+                    <SuggestionText>
+                      {priceFormatter(historyItem.coin_price)}
+                    </SuggestionText>
+                    </CoinContainer>
+                    <MessageContainer>
+                      <SuggestionTitle>Message:</SuggestionTitle>
+                    <SuggestionText>
+                       {historyItem.message}
+                    </SuggestionText>
+                    </MessageContainer>
+                    <StatusContainer>
+                      <SuggestionTitle>Status:</SuggestionTitle>
+                    <SuggestionText>
+                    {historyItem.status}
+                    </SuggestionText>
+                    </StatusContainer>
+                    <DenyButton
+                      onClick={() =>
+                        {
+                          handleDeleteSuggestionHistory(
+                            user,
+                            historyItem,
+                            fetchUserPortfolio,
+                            updateUserPortfolio
+                          ),
+                          setClickedHistory(historyItem._id)
+                        }
+                       
+                      }
+                      disabled={clickedHistory === historyItem._id}
+                    >
+                      Delete
+                    </DenyButton>
+                  </SuggestionCard>
+                );
+              })
+            )}
+          </SuggestionContentContainer>
+        </SuggestionWrapper>
+      </SuggestionContainer>
     </SuggestionPageContainer>
   );
 };
