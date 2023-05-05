@@ -1,10 +1,28 @@
 import { useContext, useState, useEffect } from "react";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import { UserPortfolioContext } from "../utils/UserPortfolioContext";
+import {
+  LeaderBoardWrapper,
+  LeaderBoardTitle,
+  LeaderBoardContainer,
+  UserContainer,
+  LeaderBoardBox,
+  UserInfoContainer,
+  BalanceContainer,
+  ColumnContainer,
+  TopCoinsContainer,
+  GeneralTitle,
+  CoinImage,
+  GeneralItem,
+  RowContainer,
+  LeaderBoardImage,
+  CoinLinkContainer,
+} from "./LeaderBoardPageStyles";
 
 const LeaderBoardPage = () => {
   const [users, setUsers] = useState([]);
-  const [userLoading , setUserLoading] = useState(true)
-  const { coins, loadingCoin, } = useContext(UserPortfolioContext);
+  const [userLoading, setUserLoading] = useState(true);
+  const { coins, loadingCoin } = useContext(UserPortfolioContext);
 
   const handleNetWorth = (user, coins) => {
     const portfolioValue = user.holdings.reduce((total, holding) => {
@@ -38,7 +56,7 @@ const LeaderBoardPage = () => {
           (a, b) => b.netWorth - a.netWorth
         );
         setUsers(sortedNetWorthUsers);
-        setUserLoading(false)
+        setUserLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -51,42 +69,70 @@ const LeaderBoardPage = () => {
       const coin = coins.find((coin) => coin.id === holding.coin_id);
       const currentPrice = coin ? coin.current_price : 0;
       const marketValue = holding.coin_quantity * currentPrice;
-      return { ...coin, marketValue };
+      return { ...holding, marketValue };
     });
-    console.log(coinMarketValue)
     const sortedCoinMarketValue = coinMarketValue
       .sort((a, b) => b.marketValue - a.marketValue)
       .slice(0, 3);
 
     return sortedCoinMarketValue;
-
   };
 
   if (loadingCoin || userLoading) {
-    return <div>loading...</div>;
+    return <LoadingSpinner>loading...</LoadingSpinner>;
   }
 
+  console.log(users);
   return (
-    <div style= {{marginTop: 200}} >
-      {users.map((user, index) => {
-        return (
-          <div key={index}>
-            {index + 1} : {user.username} - Net Worth = {user.netWorth} - Portfolio Value = {user.portfolioValue} 
-            - Balance = {user.balance}
-            <div>
-              Top 3 coins :
-              {topCoins(user.holdings).map((coin, index) => {
-                return (
-                  <div> 
-                    {index + 1} : {coin.name} - Market Value = {coin.marketValue}
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-        );
-      })}
-    </div>
+    <LeaderBoardWrapper>
+        <LeaderBoardTitle>Leaderboard</LeaderBoardTitle>
+      <LeaderBoardContainer>
+        <LeaderBoardImage src={"https://cdn.discordapp.com/attachments/899929905318486046/1103905172301819944/trophy_billy.png"}/>
+        <LeaderBoardBox>
+          {users.map((user, index) => {
+            return (
+              <UserContainer key={index}>
+                <UserInfoContainer>
+                  <ColumnContainer>
+                    <GeneralTitle>Rank</GeneralTitle>
+                    <GeneralItem>{index + 1}</GeneralItem>
+                  </ColumnContainer>
+                  <ColumnContainer>
+                    <GeneralTitle>User</GeneralTitle>
+                    <GeneralItem>{user.username}</GeneralItem>
+                  </ColumnContainer>
+                </UserInfoContainer>
+                <BalanceContainer>
+                  <ColumnContainer>
+                    <GeneralTitle>Net Worth</GeneralTitle>
+                    <GeneralItem>{user.netWorth.toFixed(2)}</GeneralItem>
+                  </ColumnContainer>
+                  <ColumnContainer>
+                    <GeneralTitle>Portfolio Value</GeneralTitle>
+                    <GeneralItem>{user.portfolioValue.toFixed(2)}</GeneralItem>
+                  </ColumnContainer>
+                </BalanceContainer>
+                <TopCoinsContainer>
+                  <ColumnContainer>
+                    <GeneralTitle>Top Coins</GeneralTitle>
+                    <RowContainer>
+                      {topCoins(user.holdings).map((coin, index) => {
+                        return (
+                               
+                        <CoinLinkContainer key={index} to={`/coin/${coin.coin_id}`}>
+                        <CoinImage src={coin.coin_image} />
+                        </CoinLinkContainer>
+                        )
+                      })}
+                    </RowContainer>
+                  </ColumnContainer>
+                </TopCoinsContainer>
+              </UserContainer>
+            );
+          })}
+        </LeaderBoardBox>
+      </LeaderBoardContainer>
+    </LeaderBoardWrapper>
   );
 };
 
