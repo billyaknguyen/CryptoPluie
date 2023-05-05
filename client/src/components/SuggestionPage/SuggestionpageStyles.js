@@ -24,6 +24,7 @@ export const SuggestionWrapper = styled.div`
   display: flex;
   padding: 5px;
   max-height: 500px;
+  min-height: 500px;
   width: 280px;
   flex-direction: column;
   overflow: auto;

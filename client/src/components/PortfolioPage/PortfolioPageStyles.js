@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { IconEqual, IconPlus, IconCloud } from "@tabler/icons-react";
 
 export const PortfolioPageWrapper = styled.div`
-  margin-top: 170px;
+  margin-top: 110px;
   display: flex;
   flex-direction: column;
 `;
