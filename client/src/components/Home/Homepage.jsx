@@ -1,16 +1,19 @@
 import { useRef, useEffect, useState } from "react";
-import LoginButton from "../Navbar/LoginButton";
 import Navbar from "../Navbar/Navbar";
+import SignUpButton from "../Navbar/SignUpButton";
+import { useAuth0 } from "@auth0/auth0-react";
 import Coins from "./assets/coins";
 import {
   HomeContainer,
   HeroSection,
   SecondSection,
   AnimatedLetter,
-  TitleContainer,
+  TitleText,
   Wave,
   RainCoatImg,
   SecondSectionTitle,
+  SecondSectionText,
+  SecondSectionWord,
   SecondSectionWrapper,
   CoinsSlider,
   CoinImg,
@@ -19,12 +22,16 @@ import {
   ThirdSectionTitle,
   ThirdSectionText,
   RichImg,
+  HeroText,
+  HeroSectionTextContainer,
+  ThirdSectionButtonWrapper,
 } from "./HomepageStyles";
 
 const HomePage = () => {
-  const text = "Making it Rain with CryptoPluie";
+  const text = "Make it rain with CryptoPluie";
   const myRef = useRef();
   const [playCoinAnimation, setPlayCoinAnimation] = useState(false);
+  const {isAuthenticated} = useAuth0();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -57,13 +64,20 @@ const HomePage = () => {
     <HomeContainer>
       <Navbar />
       <HeroSection>
-        <TitleContainer>{animatedTitle}</TitleContainer>
-        <LoginButton>Get started</LoginButton>
+        <HeroSectionTextContainer>
+          <TitleText>{animatedTitle}</TitleText>
+          <HeroText>
+            by creating your virtual portfolio and ride the storm to the
+            top of our leaderboard!
+          </HeroText>
+          {!isAuthenticated &&<SignUpButton />}
+        </HeroSectionTextContainer>
       </HeroSection>
       <Wave />
       <SecondSection>
         <SecondSectionWrapper>
           <SecondSectionTitle>Track Cryptocurrency prices</SecondSectionTitle>
+          <SecondSectionText>Get access to up-to-date information on <br/><SecondSectionWord>200+ cryptocurrencies</SecondSectionWord> so you can make informed investment decisions</SecondSectionText>
           <CoinsSlider ref={myRef}>
             {Coins.map((coin, index) => {
               return (
@@ -88,6 +102,9 @@ const HomePage = () => {
             portfolio. Get hands-on experience, <br />
             rain or shine , it is risk-free.
           </ThirdSectionText>
+          <ThirdSectionButtonWrapper>
+          {!isAuthenticated &&<SignUpButton />}
+          </ThirdSectionButtonWrapper>
         </ThirdSectionWrapper>
       </ThirdSection>
     </HomeContainer>

@@ -212,6 +212,10 @@ export const SellButton = styled.button`
   }
 `;
 
+export const NotLoggedInText = styled.div `
+text-align: center;
+color: #FFCBCB
+`
 export const SuggestButton = styled.button`
   background-color: #2d72d9;
   border-radius: 6px;

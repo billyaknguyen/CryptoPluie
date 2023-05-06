@@ -8,14 +8,15 @@ export const HomeContainer = styled.div`
 `;
 
 export const HeroSection = styled.section`
+  display: flex;
+  justify-content: center;
   height: 100vh;
   background-image: url(https://media.discordapp.net/attachments/899929905318486046/1094135069867782155/new_background_pic_HD.jpg?width=1752&height=819);
   background-size: cover;
   background-position: center;
-  position: relative;
 `;
 
-export const AnimatedLetter = styled.span`
+export const AnimatedLetter = styled.div`
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -25,8 +26,9 @@ export const AnimatedLetter = styled.span`
 
   @keyframes rainTitle {
     0% {
-      transform: translateY(-200px);
+      transform: translateY(-400px);
       opacity: 0;
+      color: white;
     }
     10% {
       opacity: 0.5;
@@ -44,11 +46,33 @@ export const AnimatedLetter = styled.span`
   }
 `;
 
-export const TitleContainer = styled.div`
-  margin-top: 400px;
-  font-size: 4rem; 
-  color: #f1fafc;
-  text-align: center;
+export const HeroSectionTextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+export const TitleText = styled.div`
+  margin-top: 100px;
+  font-size: 4rem;
+  background-image: linear-gradient(
+    to right, #2bc0e4, #eaecc6
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+`
+
+export const HeroText = styled.div`
+  font-size: 2.2rem;
+  font-weight: bold;
+  padding: 20px;
+  background-image: linear-gradient(
+    to right, #e0eafc, #cfdef3
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 `;
 
 export const Wave = styled.div`
@@ -77,6 +101,19 @@ export const SecondSectionTitle = styled.h2`
   font-size: 3rem;
   color: #163f61;
 `;
+
+export const SecondSectionText = styled.p`
+  color: #213651;
+  width: 100%;
+  font-size: 1.5rem;
+  text-align: left;
+  font-style: italic;
+  margin-top: 0;
+`;
+
+export const SecondSectionWord = styled.span `
+font-weight: bold;
+`
 
 export const CoinsSlider = styled.div`
   display: flex;
@@ -122,6 +159,11 @@ export const ThirdSectionWrapper = styled.div`
   width: 700px;
 `;
 
+export const ThirdSectionButtonWrapper = styled.div `
+display: flex;
+justify-content: center;
+
+`
 export const RichImg = styled.img`
   width: 450px;
   height: 450px;

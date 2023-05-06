@@ -15,7 +15,6 @@ export const NavContainer = styled.header`
 
 export const MainTitle = styled.h1`
   font-size: 1.5rem;
-
   letter-spacing: 3px;
   font-weight: bold;
 `;
@@ -98,6 +97,7 @@ export const HomeLinksWrapper = styled.div`
 
 export const NavigationLinksWrapper = styled.div`
   display: flex;
+  margin-right: 250px;
   gap: 20px;
 `;
 

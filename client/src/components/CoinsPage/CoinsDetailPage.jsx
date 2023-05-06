@@ -13,7 +13,7 @@ import SuggestCoinModal from "../Modal/SuggestModal";
 import fetchUserPortfolio from "../utils/fetchUserPortfolio";
 import CoinChart from "./CoinChart";
 import {
-  SingleCoinContainer,CoinPageDetailsContainer,ChartContainer,CoinContainer,CoinDetailsContainer,CoinInfoContainer,CoinName,CoinImg,CoinSymbol,CoinPrice,CoinPercentage,CoinPriceStatsContainer,CoinDayStatsContainer,CoinHighContainer,CoinLowContainer,PriceChangeContainer,ColumnContainer,CoinStatsContainer,CoinHigh,CoinLow,CoinHighTitle,CoinLowTitle,CoinLastUpdated,CoinPriceChange,CoinPriceTitle,CoinStatsTitle,GeneralTitle,GeneralItem,MiniCoinContainer,ButtonContainer,BuyButton,SellButton, SuggestButton
+  SingleCoinContainer,CoinPageDetailsContainer,ChartContainer,CoinContainer,CoinDetailsContainer,CoinInfoContainer,CoinName,CoinImg,CoinSymbol,CoinPrice,CoinPercentage,CoinPriceStatsContainer,CoinDayStatsContainer,CoinHighContainer,CoinLowContainer,PriceChangeContainer,ColumnContainer,CoinStatsContainer,CoinHigh,CoinLow,CoinHighTitle,CoinLowTitle,CoinLastUpdated,CoinPriceChange,CoinPriceTitle,CoinStatsTitle,GeneralTitle,GeneralItem,MiniCoinContainer,ButtonContainer,BuyButton,SellButton, SuggestButton, NotLoggedInText
 } from "./CoinsDetailPageStyles";
 
 import { useAuth0 } from "@auth0/auth0-react";
@@ -197,7 +197,7 @@ const CoinsDetailPage = () => {
                   </SuggestButton>
                 </ButtonContainer>
               ) : (
-                <div>User must be logged in to make a purchase</div>
+                <NotLoggedInText>User must be logged in to make a purchase</NotLoggedInText>
               )}
             </CoinContainer>
           </SingleCoinContainer>
