@@ -29,7 +29,7 @@ const updateCoins = async () => {
           id: data.id,
         },
         { $set: data },
-        { upsert: false }
+        { upsert: true }
       );
     }
 

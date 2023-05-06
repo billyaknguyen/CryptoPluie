@@ -17,7 +17,7 @@ export const ModalContainer = styled.div`
 export const ModalItem = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #163f61;
+  background: linear-gradient(to left, #536976, #292e49);
   position: relative;
   width: 800px;
   padding: 20px;

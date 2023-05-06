@@ -3,7 +3,9 @@ import { IconEqual, IconPlus, IconCloud } from "@tabler/icons-react";
 
 export const PortfolioPageWrapper = styled.div`
   margin-top: 110px;
+  height: 100vh;
   display: flex;
+  background-color: white;
   flex-direction: column;
 `;
 
@@ -28,13 +30,12 @@ export const ProfileContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 5px;
   width: 500px;
   height: 100px;
   border-radius: 20px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px;
-  background-color: #163f61;
+  background: linear-gradient(to left,#292e49, #163f61);
 `;
 
 export const PortfolioStatsContainer = styled.div`
@@ -45,8 +46,7 @@ export const PortfolioStatsContainer = styled.div`
   width: 500px;
   height: 100px;
   gap: 20px;
-  background-color: #163f61;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to left,#292e49, #163f61);
   border-radius: 20px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px;
 `;

@@ -13,7 +13,40 @@ import SuggestCoinModal from "../Modal/SuggestModal";
 import fetchUserPortfolio from "../utils/fetchUserPortfolio";
 import CoinChart from "./CoinChart";
 import {
-  SingleCoinContainer,CoinPageDetailsContainer,ChartContainer,CoinContainer,CoinDetailsContainer,CoinInfoContainer,CoinName,CoinImg,CoinSymbol,CoinPrice,CoinPercentage,CoinPriceStatsContainer,CoinDayStatsContainer,CoinHighContainer,CoinLowContainer,PriceChangeContainer,ColumnContainer,CoinStatsContainer,CoinHigh,CoinLow,CoinHighTitle,CoinLowTitle,CoinLastUpdated,CoinPriceChange,CoinPriceTitle,CoinStatsTitle,GeneralTitle,GeneralItem,MiniCoinContainer,ButtonContainer,BuyButton,SellButton, SuggestButton, NotLoggedInText
+  SingleCoinContainer,
+  CoinPageDetailsContainer,
+  ChartContainer,
+  CoinContainer,
+  CoinDetailsContainer,
+  CoinInfoContainer,
+  CoinName,
+  CoinImg,
+  CoinSymbol,
+  CoinPrice,
+  CoinPercentage,
+  CoinPriceStatsContainer,
+  CoinDayStatsContainer,
+  CoinHighContainer,
+  CoinLowContainer,
+  PriceChangeContainer,
+  ColumnContainer,
+  CoinStatsContainer,
+  CoinHigh,
+  CoinLow,
+  CoinHighTitle,
+  CoinLowTitle,
+  CoinLastUpdated,
+  CoinPriceChange,
+  CoinPriceTitle,
+  CoinStatsTitle,
+  GeneralTitle,
+  GeneralItem,
+  MiniCoinContainer,
+  ButtonContainer,
+  BuyButton,
+  SellButton,
+  SuggestButton,
+  NotLoggedInText,
 } from "./CoinsDetailPageStyles";
 
 import { useAuth0 } from "@auth0/auth0-react";
@@ -33,8 +66,7 @@ const CoinsDetailPage = () => {
     actions: { updateUserPortfolio },
   } = useContext(UserPortfolioContext);
 
-
-  console.log(singleCoin)
+  console.log(singleCoin);
   useEffect(() => {
     const getSpecificCoin = async () => {
       try {
@@ -56,7 +88,7 @@ const CoinsDetailPage = () => {
       quantity,
       fetchUserPortfolio,
       updateUserPortfolio,
-      addNewCoin,
+      addNewCoin
     );
   };
   const sellHandle = (quantity) => {
@@ -66,7 +98,7 @@ const CoinsDetailPage = () => {
       quantity,
       fetchUserPortfolio,
       updateUserPortfolio,
-      sellCoin,
+      sellCoin
     );
   };
 
@@ -89,7 +121,7 @@ const CoinsDetailPage = () => {
   };
 
   if (loading) {
-    return <LoadingSpinner/>;
+    return <LoadingSpinner />;
   }
 
   return (
@@ -98,7 +130,7 @@ const CoinsDetailPage = () => {
         <CoinPageDetailsContainer>
           <SingleCoinContainer>
             <ChartContainer>
-            <CoinChart singleCoin={singleCoin}/>
+              <CoinChart singleCoin={singleCoin} />
             </ChartContainer>
             <CoinContainer>
               <CoinDetailsContainer>
@@ -119,7 +151,9 @@ const CoinsDetailPage = () => {
 
                 <CoinPriceTitle>Price</CoinPriceTitle>
                 <CoinPrice>
-                  {priceFormatter(singleCoin.current_price)}
+                  {singleCoin.current_price
+                    ? priceFormatter(singleCoin.current_price)
+                    : "N/A"}
                 </CoinPrice>
 
                 <CoinPriceStatsContainer>
@@ -127,22 +161,37 @@ const CoinsDetailPage = () => {
                     <CoinPriceChange
                       isNegative={singleCoin.price_change_24h < 0}
                     >
-                      {priceFormatter(singleCoin.price_change_24h)}
+                      {singleCoin.price_change_24h
+                        ? priceFormatter(singleCoin.price_change_24h)
+                        : "N/A"}
                     </CoinPriceChange>
                     <CoinPercentage
                       isNegative={singleCoin.price_change_percentage_24h < 0}
                     >
-                      ({singleCoin.price_change_percentage_24h.toFixed(2)}%)
+                      {singleCoin.price_change_percentage_24h
+                        ? `(${singleCoin.price_change_percentage_24h.toFixed(
+                            2
+                          )}%)`
+                        : "N/A"}
                     </CoinPercentage>
                   </PriceChangeContainer>
                   <CoinDayStatsContainer>
                     <CoinHighContainer>
                       <CoinHighTitle>24H High</CoinHighTitle>
-                      <CoinHigh>{priceFormatter(singleCoin.high_24h)}</CoinHigh>
+                      <CoinHigh>
+                        {singleCoin.high_24h
+                          ? priceFormatter(singleCoin.high_24h)
+                          : "N/A"}
+                      </CoinHigh>
                     </CoinHighContainer>
                     <CoinLowContainer>
                       <CoinLowTitle>24H Low</CoinLowTitle>
-                      <CoinLow> {priceFormatter(singleCoin.low_24h)}</CoinLow>
+                      <CoinLow>
+                        {" "}
+                        {singleCoin.low_24h
+                          ? priceFormatter(singleCoin.low_24h)
+                          : "N/A"}
+                      </CoinLow>
                     </CoinLowContainer>
                   </CoinDayStatsContainer>
                 </CoinPriceStatsContainer>
@@ -174,11 +223,11 @@ const CoinsDetailPage = () => {
                     <GeneralTitle>Total Supply</GeneralTitle>
                     {singleCoin.total_supply === null ? (
                       <GeneralItem>Unknown</GeneralItem>
-                    ) :
-                    <GeneralItem>
-                      {decimalFormatter(singleCoin.total_supply)}
-                    </GeneralItem>
-                    }
+                    ) : (
+                      <GeneralItem>
+                        {decimalFormatter(singleCoin.total_supply)}
+                      </GeneralItem>
+                    )}
                   </ColumnContainer>
                   <ColumnContainer>
                     <GeneralTitle>Circulating Supply</GeneralTitle>
@@ -197,7 +246,9 @@ const CoinsDetailPage = () => {
                   </SuggestButton>
                 </ButtonContainer>
               ) : (
-                <NotLoggedInText>User must be logged in to make a purchase</NotLoggedInText>
+                <NotLoggedInText>
+                  User must be logged in to make a purchase
+                </NotLoggedInText>
               )}
             </CoinContainer>
           </SingleCoinContainer>
@@ -219,10 +270,10 @@ const CoinsDetailPage = () => {
         suggestCoinHandle={suggestCoinHandle}
         singleCoin={singleCoin}
         loggedInUserId={isAuthenticated ? user.sub : null}
-        loggedInUsername={isAuthenticated ?user.nickname :null}
-        loggedInImage={isAuthenticated?user.picture : null}
-        updateUserPortfolio= {updateUserPortfolio}
-        fetchUserPortfolio= {fetchUserPortfolio}
+        loggedInUsername={isAuthenticated ? user.nickname : null}
+        loggedInImage={isAuthenticated ? user.picture : null}
+        updateUserPortfolio={updateUserPortfolio}
+        fetchUserPortfolio={fetchUserPortfolio}
       />
     </>
   );

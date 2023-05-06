@@ -1,19 +1,29 @@
 import styled from "styled-components"
-import { Wave } from "../Home/HomepageStyles"
+import { Link } from "react-router-dom"
 const Footer = () => {
-   return (
-    <>
-    <Wave/>
-    <FooterContainer>
-    </FooterContainer>
-    </>
-   )
-}
+    return (
+     <>
+     <FooterContainer>
+         <FooterText>© {new Date().getFullYear()} CryptoPluie. All rights reserved.</FooterText>
+     </FooterContainer>
+     </>
+    )
+ }
+ 
+ const FooterContainer = styled.div `
+ display: flex;
+ min-height: 100px;
+ background: linear-gradient(to left,#292e49, #163f61);
+ `
+ const FooterText = styled.p `
+     font-size: 1rem;
+     color: #DBECFF;
+     text-align: center;
+ `
 
-const FooterContainer = styled.div `
-    min-height: 200px;
-    background-color: #f1fafc;
-    display: flex;
-`
+ const GitHubLink = styled(Link) `
+    
 
-export default Footer
+ `
+
+ export default Footer

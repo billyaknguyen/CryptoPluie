@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const CoinPageDetailsContainer = styled.div`
   display: flex;
   margin-top: 200px;
+  height: 70vh;
   margin-bottom: 50px;
   justify-content: center;
 `;
@@ -30,7 +31,7 @@ export const CoinContainer = styled.div`
   gap: 20px;
   flex-direction: column;
   flex: 1;
-  background-color: #163f5f;
+ background: linear-gradient(to left,#292e49, #163f61);
   /* border: 2px solid green; */
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;

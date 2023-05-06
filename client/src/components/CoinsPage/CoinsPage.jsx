@@ -19,7 +19,6 @@ import {
   Title,
   CoinPercentage,
   CoinModelImg,
-
 } from "./CoinsPageStyles";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
@@ -27,11 +26,11 @@ const CoinsPage = () => {
   const { coins, loadingCoin } = useContext(UserPortfolioContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const coinsPerPage = 25
+  const coinsPerPage = 25;
 
   useEffect(() => {
     const numberOfPages = Math.ceil(coins.length / coinsPerPage);
-    console.log(numberOfPages)
+    console.log(numberOfPages);
     setTotalPages(numberOfPages);
   }, [coins]);
 
@@ -55,22 +54,20 @@ const CoinsPage = () => {
   };
 
   if (loadingCoin) {
-    return <LoadingSpinner/>
+    return <LoadingSpinner />;
   }
-
 
   const startingIndex = (currentPage - 1) * coinsPerPage;
   const endingIndex = startingIndex + coinsPerPage;
   const filteredCoins = coins.slice(startingIndex, endingIndex);
 
   return (
-      <CoinPageContainer>
-        
-        <CoinModelImg src="https://cdn.discordapp.com/attachments/899929905318486046/1102823108496330782/ModelImgFlipped-removebg-preview.png"/>
-        
-        <CoinCardWrapper>
+    <CoinPageContainer>
+      <CoinModelImg src="https://cdn.discordapp.com/attachments/899929905318486046/1102823108496330782/ModelImgFlipped-removebg-preview.png" />
+
+      <CoinCardWrapper>
         <Title>Today's Cryptocurrency Prices</Title>
-          <CoinCardContainer>
+        <CoinCardContainer>
           {filteredCoins.map((coin, index) => {
             return (
               <CoinCard to={`/coin/${coin.id}`} key={index}>
@@ -78,28 +75,42 @@ const CoinsPage = () => {
                   <CoinImg src={coin.image}></CoinImg>
                   <CoinName>{coin.name}</CoinName>
                   <CoinPrice>{priceFormatter(coin.current_price)}</CoinPrice>
-                  <CoinPercentage isNegative={coin.price_change_percentage_24h < 0}>{coin.price_change_percentage_24h > 0 ? `+${coin.price_change_percentage_24h.toFixed(2)}%` : `${coin.price_change_percentage_24h.toFixed(2)}%` }</CoinPercentage>
+                  <CoinPercentage
+                    isNegative={coin.price_change_percentage_24h < 0}
+                  >
+                    {coin.price_change_percentage_24h
+                      ? coin.price_change_percentage_24h > 0
+                        ? `+${coin.price_change_percentage_24h.toFixed(2)}%`
+                        : `${coin.price_change_percentage_24h.toFixed(2)}%`
+                      : "N/A"}
+                  </CoinPercentage>
                 </CoinCardItem>
               </CoinCard>
-              
             );
           })}
-          </CoinCardContainer>
-          <ButtonsWrapper>
-        <BackButton onClick={previousPageHandle}><LeftArrow/></BackButton>
-        {generatePageNumbers().map((pageNumber) => (
+        </CoinCardContainer>
+        <ButtonsWrapper>
+          <BackButton onClick={previousPageHandle}>
+            <LeftArrow />
+          </BackButton>
+          {generatePageNumbers().map((pageNumber) => (
             <PaginationButton
               key={pageNumber}
-              onClick={() =>  {setCurrentPage(pageNumber); window.scrollTo({ top: 0, behavior: "smooth" });}}
-              active= {pageNumber === currentPage}
+              onClick={() => {
+                setCurrentPage(pageNumber);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              active={pageNumber === currentPage}
             >
-               {pageNumber}
+              {pageNumber}
             </PaginationButton>
           ))}
-        <NextButton onClick={nextPageHandle}><RightArrow/></NextButton>
-      </ButtonsWrapper>
-        </CoinCardWrapper>
-      </CoinPageContainer>
+          <NextButton onClick={nextPageHandle}>
+            <RightArrow />
+          </NextButton>
+        </ButtonsWrapper>
+      </CoinCardWrapper>
+    </CoinPageContainer>
   );
 };
 

@@ -9,6 +9,7 @@ import {
   CoinsLink,
   PortfolioLink,
   LeaderBoardLink,
+  SuggestionsLink,
   AuthContainer,
   UserContainer,
   UserImage,
@@ -58,7 +59,10 @@ const Navbar = () => {
       <NavigationLinksWrapper>
         <CoinsLink to="/coins">Coins</CoinsLink>
         {isAuthenticated && (
-          <PortfolioLink to="/portfolio">Portfolio</PortfolioLink>
+          <>
+          <PortfolioLink to="/portfolio">Portfolio</PortfolioLink> 
+          <SuggestionsLink to="/suggestions">Suggestions</SuggestionsLink>
+          </>
         )}
         <LeaderBoardLink to="/leaderboard">Leaderboard</LeaderBoardLink>
       </NavigationLinksWrapper>

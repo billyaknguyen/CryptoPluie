@@ -20,7 +20,7 @@ export const ModalItem = styled.div`
   flex-direction: column;
   align-items: center;
   width: 500px;
-  background-color: #163f61;
+  background: linear-gradient(to left, #536976, #292e49);
   position: relative;
   max-width: 100%;
   padding: 20px;
