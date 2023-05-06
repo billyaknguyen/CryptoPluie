@@ -9,26 +9,24 @@ const SignUpButton = () => {
 };
 
 const ButtonText = styled.span`
-  background-image: linear-gradient(
+  background: linear-gradient(
     to left, #ffeeee, #ddefbb
   );
   padding: 20px;
   font-size: 1rem;
   font-family: 'Noto Sans JP', sans-serif;
   font-weight: bolder;
-  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 
   &:hover {
-    background-image: linear-gradient(
-      
+    background: linear-gradient(
+    to right, #e0eafc, #cfdef3
   );
-  font-weight: bolder;
-  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   }
+  
 `;
 
 const Button = styled.button `
@@ -37,13 +35,13 @@ const Button = styled.button `
   border: none;
   padding: 20px;
   border-radius: 100px;
-  background-color: #0A66C2;
+  background: linear-gradient(to left,#292e49, #163f61);
   
   
  
   &:hover {
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px;
-    background-color: #16437E;
+    box-shadow: rgba(3, 4, 4, 0.3) 0px 1px 2px 0px;
+    background-color: grey;
     
   }
 

@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 export const SuggestionPageContainer = styled.div`
   display: flex;
   padding-top: 120px;
+  height: 80vh;
   flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
 `;
 
 export const SectionTitle = styled.h2`
@@ -18,6 +18,9 @@ export const SectionTitle = styled.h2`
 export const SuggestionPageTitle = styled.h1 `
 font-size: 2rem;
 margin-left: 30px;
+background: linear-gradient(to left, #536976, #292e49);
+  background-clip: text;
+  color: transparent;
 `
 
 export const SuggestionWrapper = styled.div`
@@ -28,8 +31,7 @@ export const SuggestionWrapper = styled.div`
   width: 280px;
   flex-direction: column;
   overflow: auto;
-  background-color: #163f61;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to left,#292e49, #163f61);
   border-radius: 20px;
   box-shadow: rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   gap: 20px;
@@ -55,8 +57,8 @@ export const SuggestionCard = styled.div`
   gap: 1rem;
   flex-direction: column;
   justify-content: left;
-  background-color: #f1fafc;
-  border: 1px solid black;
+  background-color: white;
+  box-shadow: rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   border-radius: 12px;
 `;
 
@@ -155,6 +157,7 @@ export const AcceptButton = styled.button`
 export const DenyButton = styled.button`
 background-color: ${(props) => (props.disabled ? "#c4c4c4" : "#ea5252")};
   padding: 5px 10px;
+  color: #223552;
   font-size: 1rem;
   border: none;
   border-radius: 5px;

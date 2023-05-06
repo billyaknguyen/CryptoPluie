@@ -55,10 +55,7 @@ export const HeroSectionTextContainer = styled.div`
 export const TitleText = styled.div`
   margin-top: 100px;
   font-size: 4rem;
-  background-image: linear-gradient(
-    to right, #2bc0e4, #eaecc6
-  );
-  -webkit-background-clip: text;
+  background: linear-gradient(to left, #acb6e5, #86fde8);
   background-clip: text;
   color: transparent;
 `
@@ -67,10 +64,9 @@ export const HeroText = styled.div`
   font-size: 2.2rem;
   font-weight: bold;
   padding: 20px;
-  background-image: linear-gradient(
+  background: linear-gradient(
     to right, #e0eafc, #cfdef3
   );
-  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 `;
@@ -87,9 +83,9 @@ export const Wave = styled.div`
 `;
 
 export const SecondSection = styled.section`
-  background-color: #f1fafc;
   display: flex;
   justify-content: center;
+  background-color: #f1fafc;
   min-height: 500px;
 `;
 export const SecondSectionWrapper = styled.div`
@@ -99,7 +95,9 @@ export const SecondSectionWrapper = styled.div`
 `;
 export const SecondSectionTitle = styled.h2`
   font-size: 3rem;
-  color: #163f61;
+  background: linear-gradient(to left, #2b5876, #4e4376);
+  background-clip: text;
+  color: transparent;
 `;
 
 export const SecondSectionText = styled.p`
@@ -147,9 +145,9 @@ export const RainCoatImg = styled.img`
 `;
 
 export const ThirdSection = styled.section`
-  background-color: #f1fafc;
   display: flex;
   justify-content: center;
+  background-color: #f1fafc;
   min-height: 500px;
 `;
 
@@ -171,7 +169,9 @@ export const RichImg = styled.img`
 
 export const ThirdSectionTitle = styled.h2`
   font-size: 2.5rem;
-  color: #163f61;
+  background: linear-gradient(to left, #2b5876, #4e4376);
+  background-clip: text;
+  color: transparent;
 `;
 
 export const ThirdSectionText = styled.p`

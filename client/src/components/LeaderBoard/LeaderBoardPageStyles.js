@@ -3,12 +3,16 @@ import { Link } from "react-router-dom";
 
 export const LeaderBoardWrapper = styled.div`
   display: flex;
+  height: 100vh;
   flex-direction: column;
   margin-top: 100px;
 `;
 
 export const LeaderBoardTitle = styled.h1`
   margin-left: 30px;
+  background: linear-gradient(to left, #536976, #292e49);
+  background-clip: text;
+  color: transparent;
 `;
 
 export const LeaderBoardContainer = styled.div`
@@ -21,14 +25,13 @@ export const LeaderBoardContainer = styled.div`
 export const LeaderBoardBox = styled.div`
   display: flex;
   width: 90%;
-
   flex-direction: column;
 `;
 export const UserContainer = styled.div`
   display: flex;
   padding: 10px;
   border-bottom: 2px solid #f1fafc;
-  background-color: #163f61;
+  background: linear-gradient(to left, #536976, #292e49);
   border-radius: 20px;
   box-shadow: rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   flex-direction: row;
@@ -39,12 +42,12 @@ export const UserInfoContainer = styled.div`
   flex-direction: row;
 `;
 export const BalanceContainer = styled.div`
-flex: 1;
+  flex: 1;
   display: flex;
 `;
 export const TopCoinsContainer = styled.div`
   display: flex;
-  flex: 1
+  flex: 1;
 `;
 
 export const ColumnContainer = styled.div`
@@ -65,20 +68,19 @@ export const CoinImage = styled.img`
   border-radius: 50%;
 `;
 
-export const LeaderBoardImage = styled.img `
-width: 250px;
-height: 250px;
-margin-bottom: -26px;
-z-index: -10;
-`
+export const LeaderBoardImage = styled.img`
+  width: 250px;
+  height: 250px;
+  margin-bottom: -26px;
+  z-index: -10;
+`;
 
-export const CoinLinkContainer = styled(Link) `
-
-&:hover {
-  background-color: rgba(0,0,0,0.5);
-  border-radius: 50%;
-}
-`
+export const CoinLinkContainer = styled(Link)`
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+  }
+`;
 
 export const GeneralTitle = styled.div`
   font-size: 1.5rem;

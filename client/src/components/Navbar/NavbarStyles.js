@@ -8,10 +8,13 @@ export const NavContainer = styled.header`
   width: 100%;
   position: fixed;
   top: 0;
-  background-color: ${(props) =>
-    props.scrolledDown || !props.isHomePage ? "#163f61" : "transparent"};
+  background: ${(props) =>
+    props.scrolledDown || !props.isHomePage
+      ? `
+      linear-gradient(to left,#292e49, #163f61);`
+      : "transparent"};
   z-index: 1;
-`;
+`
 
 export const MainTitle = styled.h1`
   font-size: 1.5rem;
@@ -88,6 +91,26 @@ export const LeaderBoardLink = styled(NavLink)`
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px
   }
 `;
+
+export const SuggestionsLink = styled(NavLink) `
+  text-decoration: none;
+  color: #f1fafc;
+  padding: 5px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  &.active {
+    background-color:  rgba(0,0,0,0.5);
+    border-radius: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px
+  }
+
+  &:hover {
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px
+  }
+`;
+
 
 export const HomeLinksWrapper = styled.div`
   display: flex;

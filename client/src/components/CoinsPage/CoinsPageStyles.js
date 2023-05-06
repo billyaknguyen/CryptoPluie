@@ -14,10 +14,10 @@ export const CoinCardWrapper = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   box-shadow: rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  background-color: #163f61;
+  /* background-color: #163f61; */
+  background: linear-gradient(to left,#292e49, #163f61)
  
 `;
 
@@ -30,12 +30,11 @@ export const CoinImg = styled.img`
 export const CoinCard = styled(Link)`
   display: flex;
   color: #003E85;
-  border: 1px solid rgba(0, 0, 0, 0.1);
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  background-color: #fcfcfc;
+  background-color: white;
   margin: 30px;
   width: 160px;
   height: 160px;
