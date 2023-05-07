@@ -21,9 +21,10 @@ import {
   CoinModelImg,
 } from "./CoinsPageStyles";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import Error from "../Error/Error";
 
 const CoinsPage = () => {
-  const { coins, loadingCoin } = useContext(UserPortfolioContext);
+  const { coins, loadingCoin, errorCoin } = useContext(UserPortfolioContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const coinsPerPage = 25;
@@ -52,6 +53,10 @@ const CoinsPage = () => {
     }
     return pageNumbers;
   };
+
+  if(errorCoin) {
+    return <Error/>
+  }
 
   if (loadingCoin) {
     return <LoadingSpinner />;

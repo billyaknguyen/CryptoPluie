@@ -31,6 +31,8 @@ const reducer = (state, action) => {
 export const UserPortfolioProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [coins, setCoins] = useState([])
+  const [errorCoin, setErrorCoin] = useState(false)
+  const [errorHolding, setErrorHolding] = useState(false)
   const [loadingCoin, setLoadingCoin] = useState(true)
   const [loadingHolding, setLoadingHolding] = useState(true)
   const { user } = useAuth0();
@@ -53,7 +55,9 @@ export const UserPortfolioProvider = ({ children }) => {
             setLoadingHolding(false)
           }
         } catch (error) {
-          console.log(error);
+          setErrorHolding(true)
+          setLoadingHolding(false)
+          console.log(error)
         }
       };
       fetchPortfolio(user.sub);
@@ -69,6 +73,8 @@ export const UserPortfolioProvider = ({ children }) => {
     setCoins(resData.data)
     setLoadingCoin(false)
   } catch (error) {
+    setErrorCoin(true)
+    setLoadingCoin(false)
     console.log(error)
   }
  }
@@ -88,6 +94,8 @@ export const UserPortfolioProvider = ({ children }) => {
         coins,
         loadingCoin,
         loadingHolding,
+        errorCoin,
+        errorHolding,
         actions: {
           updateUserPortfolio,
         },

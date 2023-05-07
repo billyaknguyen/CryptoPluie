@@ -3,12 +3,12 @@ import { IconCloudRain } from '@tabler/icons-react';
 
 
 
-const LoadingSpinner = () => {
+const ModalSpinner = () => {
     return (
         <LoadingContainer>
           <CloudIcon/>
       <TextContainer>
-      Loading
+      <LoadingText>Loading</LoadingText>
         <RainDrop />
         <RainDrop />
         <RainDrop />
@@ -22,10 +22,12 @@ const LoadingContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   font-size: 1.5rem;
 `;
 
+const LoadingText = styled.div `
+    color: white;
+`
 const TextContainer = styled.div `
   display: flex;
   font-weight: bold;
@@ -37,14 +39,14 @@ const TextContainer = styled.div `
 const CloudIcon = styled(IconCloudRain) `
   width: 64px;
   height: 64px;
-  color: #003E85 
+  color: white
 `
 
 const RainDrop = styled.div`
   width: 7px;
   height: 7px;
   border-radius: 0 50% 50% 50%;
-  background-color: #003E85;
+  background-color: white;
   animation: rainBounce 1.2s infinite ease-in-out;
 
   &:nth-child(1) {
@@ -58,7 +60,7 @@ const RainDrop = styled.div`
   &:nth-child(3) {
     animation-delay: 0.30s;
   }
-    
+
   @keyframes rainBounce {
     0%,
     80%,
@@ -70,7 +72,7 @@ const RainDrop = styled.div`
     }
   }
 `;
-export default LoadingSpinner
+export default ModalSpinner
 
 
 

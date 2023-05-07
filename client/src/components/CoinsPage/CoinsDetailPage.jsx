@@ -52,12 +52,14 @@ import {
 import { useAuth0 } from "@auth0/auth0-react";
 import Modal from "../Modal/Modal";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import Error from "../Error/Error";
 
 const CoinsDetailPage = () => {
   const [singleCoin, setSingleCoin] = useState(null);
   const [openModal, setOpenModal] = useState(false);
   const [suggestModalOpen, setSuggestModalOpen] = useState(false);
   const [modalAction, setModalAction] = useState("");
+  const [error, setError] = useState(false)
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const { user, isAuthenticated } = useAuth0();
@@ -75,6 +77,8 @@ const CoinsDetailPage = () => {
         setSingleCoin(resData.data);
         setLoading(false);
       } catch (error) {
+        setError(true)
+        setLoading(false)
         console.log(error);
       }
     };
@@ -120,6 +124,10 @@ const CoinsDetailPage = () => {
     setSuggestModalOpen(false);
   };
 
+  if (error) {
+    return <Error/>
+  }
+  
   if (loading) {
     return <LoadingSpinner />;
   }

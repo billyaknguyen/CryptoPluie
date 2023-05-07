@@ -26,23 +26,30 @@ import {
   SuggestionPageTitle,
   ProfileContainer,
   CoinContainer,
-  MessageContainer,DateContainer, StatusContainer
+  MessageContainer,
+  DateContainer,
+  StatusContainer,
 } from "./SuggestionpageStyles";
 import priceFormatter from "../utils/priceFormatter";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import { useState } from "react";
+import Error from "../Error/Error";
 
 const SuggestionPage = () => {
   const {
     state,
     loadingHolding,
+    errorHolding,
     actions: { updateUserPortfolio },
   } = useContext(UserPortfolioContext);
   const { user } = useAuth0();
   const [clickedPending, setClickedPending] = useState(null);
-  const [clickedSuggestion, setClickedSuggestion] = useState(null)
-  const [clickedHistory, setClickedHistory] = useState(null)
+  const [clickedSuggestion, setClickedSuggestion] = useState(null);
+  const [clickedHistory, setClickedHistory] = useState(null);
 
+  if (errorHolding) {
+    return <Error />;
+  }
   if (loadingHolding) {
     return <LoadingSpinner />;
   }
@@ -65,12 +72,12 @@ const SuggestionPage = () => {
                   <SuggestionCard key={index}>
                     <ProfileContainer>
                       <SuggestionTitle>Sender:</SuggestionTitle>
-                    <SuggestionText>
-                      {pendingSuggestion.sender.sender_name}
-                    </SuggestionText>
-                    <SuggestionImage
-                      src={pendingSuggestion.sender.sender_picture}
-                    />
+                      <SuggestionText>
+                        {pendingSuggestion.sender.sender_name}
+                      </SuggestionText>
+                      <SuggestionImage
+                        src={pendingSuggestion.sender.sender_picture}
+                      />
                     </ProfileContainer>
                     <AcceptButton
                       onClick={() => {
@@ -80,7 +87,7 @@ const SuggestionPage = () => {
                           fetchUserPortfolio,
                           updateUserPortfolio
                         ),
-                        setClickedPending(pendingSuggestion._id);
+                          setClickedPending(pendingSuggestion._id);
                       }}
                       disabled={clickedPending === pendingSuggestion._id}
                     >
@@ -118,46 +125,43 @@ const SuggestionPage = () => {
                   <SuggestionCard key={index}>
                     <ProfileContainer>
                       <SuggestionTitle>Sender:</SuggestionTitle>
-                    <SuggestionImage src={suggestion.sender.sender_picture} />
-                    <SuggestionText>
-                      {suggestion.sender.sender_name}
-                    </SuggestionText>
+                      <SuggestionImage src={suggestion.sender.sender_picture} />
+                      <SuggestionText>
+                        {suggestion.sender.sender_name}
+                      </SuggestionText>
                     </ProfileContainer>
                     <CoinContainer>
-                    <SuggestionCoinContainer to={`/coin/${suggestion.coin_id}`}>
-                      <SuggestionTitle>Coin:</SuggestionTitle>
-                      <SuggestionCoinImage src={suggestion.coin_image} />
-                      <SuggestionTitle>{suggestion.coin_name}:</SuggestionTitle>
-                    </SuggestionCoinContainer>
-                    <SuggestionText>
-                      {priceFormatter(suggestion.coin_price)}
-                    </SuggestionText>
+                      <SuggestionCoinContainer
+                        to={`/coin/${suggestion.coin_id}`}
+                      >
+                        <SuggestionTitle>Coin:</SuggestionTitle>
+                        <SuggestionCoinImage src={suggestion.coin_image} />
+                        <SuggestionTitle>
+                          {suggestion.coin_name}:
+                        </SuggestionTitle>
+                      </SuggestionCoinContainer>
+                      <SuggestionText>
+                        {priceFormatter(suggestion.coin_price)}
+                      </SuggestionText>
                     </CoinContainer>
-                    < MessageContainer>
-                    <SuggestionTitle> Message:</SuggestionTitle>
-                    <SuggestionText>
-                     {suggestion.message}
-                    </SuggestionText>
+                    <MessageContainer>
+                      <SuggestionTitle> Message:</SuggestionTitle>
+                      <SuggestionText>{suggestion.message}</SuggestionText>
                     </MessageContainer>
                     <DateContainer>
                       <SuggestionTitle>Date:</SuggestionTitle>
-                    <SuggestionText>
-                       {suggestion.messageDate}
-                    </SuggestionText>
+                      <SuggestionText>{suggestion.messageDate}</SuggestionText>
                     </DateContainer>
                     <DenyButton
-                      onClick={() =>
-                        {
-                          handleDeleteSuggestion(
-                            user,
-                            suggestion,
-                            fetchUserPortfolio,
-                            updateUserPortfolio
-                          ),
-                          setClickedSuggestion(suggestion._id)
-                        }
-                       
-                      }
+                      onClick={() => {
+                        handleDeleteSuggestion(
+                          user,
+                          suggestion,
+                          fetchUserPortfolio,
+                          updateUserPortfolio
+                        ),
+                          setClickedSuggestion(suggestion._id);
+                      }}
                       disabled={clickedSuggestion === suggestion._id}
                     >
                       Delete
@@ -179,50 +183,45 @@ const SuggestionPage = () => {
                   <SuggestionCard key={index}>
                     <ProfileContainer>
                       <SuggestionTitle>Receiver:</SuggestionTitle>
-                    <SuggestionImage
-                      src={historyItem.receiver.receiver_picture}
-                    />
-                    <SuggestionText>
-                      {historyItem.receiver.receiver_name}
-                    </SuggestionText>
+                      <SuggestionImage
+                        src={historyItem.receiver.receiver_picture}
+                      />
+                      <SuggestionText>
+                        {historyItem.receiver.receiver_name}
+                      </SuggestionText>
                     </ProfileContainer>
                     <CoinContainer>
-                    <SuggestionCoinContainer
-                      to={`/coin/${historyItem.coin_id}`}
-                    >
-                      <SuggestionTitle>Coin:</SuggestionTitle>
-                      <SuggestionCoinImage src={historyItem.coin_image} />
-                      <SuggestionTitle>{historyItem.coin_name}</SuggestionTitle>
-                    </SuggestionCoinContainer>
-                    <SuggestionText>
-                      {priceFormatter(historyItem.coin_price)}
-                    </SuggestionText>
+                      <SuggestionCoinContainer
+                        to={`/coin/${historyItem.coin_id}`}
+                      >
+                        <SuggestionTitle>Coin:</SuggestionTitle>
+                        <SuggestionCoinImage src={historyItem.coin_image} />
+                        <SuggestionTitle>
+                          {historyItem.coin_name}
+                        </SuggestionTitle>
+                      </SuggestionCoinContainer>
+                      <SuggestionText>
+                        {priceFormatter(historyItem.coin_price)}
+                      </SuggestionText>
                     </CoinContainer>
                     <MessageContainer>
                       <SuggestionTitle>Message:</SuggestionTitle>
-                    <SuggestionText>
-                       {historyItem.message}
-                    </SuggestionText>
+                      <SuggestionText>{historyItem.message}</SuggestionText>
                     </MessageContainer>
                     <StatusContainer>
                       <SuggestionTitle>Status:</SuggestionTitle>
-                    <SuggestionText>
-                    {historyItem.status}
-                    </SuggestionText>
+                      <SuggestionText>{historyItem.status}</SuggestionText>
                     </StatusContainer>
                     <DenyButton
-                      onClick={() =>
-                        {
-                          handleDeleteSuggestionHistory(
-                            user,
-                            historyItem,
-                            fetchUserPortfolio,
-                            updateUserPortfolio
-                          ),
-                          setClickedHistory(historyItem._id)
-                        }
-                       
-                      }
+                      onClick={() => {
+                        handleDeleteSuggestionHistory(
+                          user,
+                          historyItem,
+                          fetchUserPortfolio,
+                          updateUserPortfolio
+                        ),
+                          setClickedHistory(historyItem._id);
+                      }}
                       disabled={clickedHistory === historyItem._id}
                     >
                       Delete
