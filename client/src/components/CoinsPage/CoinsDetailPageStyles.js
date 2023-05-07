@@ -184,32 +184,34 @@ margin-bottom: 30px;
 `;
 
 export const BuyButton = styled.button`
-  background-color: #2ea44f;
+  background: linear-gradient(to right, #11998e, #38ef7d);
   border-radius: 6px;
   padding: 6px 16px;
   margin: 10px;
   flex: 1;
+  cursor: pointer;
   color: white;
-  border: 1px solid rgba(27, 31, 35, 0.15);
+  border: none;
   box-shadow: rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 
   &:hover {
-    background-color: #2c974b;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
   }
 `;
 
 export const SellButton = styled.button`
-  background-color: #e34f4f;
+background: linear-gradient(to right, #eb3349, #f45c43);
   border-radius: 6px;
   padding: 6px 16px;
   margin: 10px;
   color: white;
   flex: 1;
+  cursor: pointer;
   border: 1px solid rgba(27, 31, 35, 0.15);
   box-shadow: rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 
   &:hover {
-    background-color: #c00707;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
   }
 `;
 
@@ -218,16 +220,17 @@ text-align: center;
 color: #FFCBCB
 `
 export const SuggestButton = styled.button`
-  background-color: #2d72d9;
+background: linear-gradient(to right, #2193b0, #6dd5ed);
   border-radius: 6px;
   padding: 6px 16px;
   margin: 10px;
+  cursor: pointer;
   color: white;
   flex: 1;
-  border: 1px solid rgba(27, 31, 35, 0.15);
+  border: none;
   box-shadow: rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 
   &:hover {
-    background-color: #1a57a3;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
   }
 `;

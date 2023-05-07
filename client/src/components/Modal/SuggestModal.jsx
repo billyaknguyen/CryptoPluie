@@ -134,12 +134,12 @@ const SuggestCoinModal = ({
         <WarningMessage>
           {!selectedUser
             ? "please select a user"
-            : message === ""
+            : message.trim() === ""
             ? "please enter a message"
             : null}
         </WarningMessage>
         <SubmitButton
-          disabled={!selectedUser || message === ""}
+          disabled={!selectedUser || message.trim() === ""}
           onClick={handleSubmit}
         >
           <CloudShareIcon />
