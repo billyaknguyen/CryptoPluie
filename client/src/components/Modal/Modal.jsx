@@ -10,9 +10,11 @@ import {
   MiniCoinContainer,
   QuantityForm,
   QuantitySelector,
-  QuantityLabel,
+  CustomAmountInput,
+  Label,
   BuyButton,
   SellButton,
+  SellAllButton,
   BalanceContainer,
   CoinPriceContainer,
   ButtonContainer,
@@ -22,7 +24,7 @@ import {
   WarningMessage,
 } from "./ModalStyles";
 import priceFormatter from "../utils/priceFormatter";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Modal = ({
   isOpen,
@@ -37,7 +39,25 @@ const Modal = ({
   if (!isOpen) return null;
 
   const [quantity, setQuantity] = useState(1);
+  const [customBuyAmount, setCustomBuyAmount] = useState(0);
+  const [customSellAmount, setCustomSellAmount] = useState(0);
 
+  useEffect(() => {
+    if (singleCoin.current_price) {
+      const customBuyQuantity = customBuyAmount / singleCoin.current_price;
+      setQuantity(customBuyQuantity < 0 ? 0 : customBuyQuantity);
+    }
+  }, [customBuyAmount, singleCoin.current_price]);
+
+  useEffect(() => {
+    if (singleCoin.current_price) {
+      const customSellQuantity = customSellAmount / singleCoin.current_price;
+      setQuantity(customSellQuantity < 0 ? 0 : customSellQuantity);
+    }
+  }, [customSellAmount, singleCoin.current_price]);
+
+  console.log("quantity", quantity);
+  console.log("custom", customBuyAmount);
 
   const closeModalOutside = (event) => {
     if (event.target === event.currentTarget) {
@@ -110,28 +130,68 @@ const Modal = ({
           </ColumnContainer>
         </CoinPriceContainer>
         <QuantityForm onSubmit={handleSubmit}>
-          <QuantityLabel htmlFor="quantity">Quantity:</QuantityLabel>
+          <Label htmlFor="quantity">Quantity:</Label>
           <QuantitySelector
             type="number"
             id="quantity"
             name="quantity"
             value={quantity}
             onChange={(event) => {
-              if (event.target.value <= 10000000) {
+              if (event.target.value <= 100000000000) {
                 setQuantity(event.target.value);
               }
             }}
           />
+          {modalAction === "buy" ? (
+            <>
+              <Label htmlFor="dollars">Dollars:</Label>
+              <CustomAmountInput
+                type="number"
+                id="customBuyAmount"
+                name="customBuyAmount"
+                value={customBuyAmount}
+                onChange={(event) => {
+                  if (event.target.value <= 100000000000)
+                    setCustomBuyAmount(event.target.value);
+                }}
+              />
+            </>
+          ) : (
+            <>
+              <Label htmlFor="dollars">Dollars:</Label>
+              <CustomAmountInput
+                type="number"
+                id="customSellAmount"
+                name="customSellAmount"
+                value={customSellAmount}
+                onChange={(event) => {
+                  if (event.target.value <= 100000000000)
+                    setCustomSellAmount(event.target.value);
+                }}
+              />
+            </>
+          )}
+
           {modalAction === "buy" ? (
             <BuyButton disabled={quantity <= 0 || remainingBalance < 0}>
               <CloudDollarIcon />
               Submit Order
             </BuyButton>
           ) : (
-            <SellButton disabled={quantity <= 0 || userCoinQuantity < quantity}>
-              <CloudDollarIcon />
-              Submit Order
-            </SellButton>
+            <>
+              <SellButton
+                disabled={quantity <= 0 || userCoinQuantity < quantity}
+              >
+                <CloudDollarIcon />
+                Submit Order
+              </SellButton>
+              <SellAllButton
+                type="button"
+                onClick={() => setQuantity(userCoinQuantity)}
+              >
+                Sell All
+              </SellAllButton>
+            </>
           )}
         </QuantityForm>
         <WarningMessage>
@@ -144,7 +204,8 @@ const Modal = ({
             : modalAction === "sell" && userCoinQuantity < quantity
             ? "You do not own enough coin"
             : modalAction === "sell" && quantity <= 0
-            ? "Please choose a quantity higher than 0." : null}
+            ? "Please choose a quantity higher than 0."
+            : null}
         </WarningMessage>
         <BalanceContainer>
           <ModalTitle>Balances</ModalTitle>

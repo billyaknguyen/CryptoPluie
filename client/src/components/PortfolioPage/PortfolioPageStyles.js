@@ -151,32 +151,34 @@ export const PortfolioTableContainer = styled.div`
 `;
 
 export const BuyButton = styled.button`
-  background-color: #2ea44f;
+  background: linear-gradient(to right, #11998e, #38ef7d);
   border-radius: 6px;
   padding: 6px 16px;
   margin: 10px;
+  cursor: pointer;
   flex: 1;
   color: white;
-  border: 1px solid rgba(27, 31, 35, 0.15);
-  box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+  border: none;
+  box-shadow: rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 
   &:hover {
-    background-color: #2c974b;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
   }
 `;
 
 export const SellButton = styled.button`
-  background-color: #e34f4f;
+  background: linear-gradient(to right, #eb3349, #f45c43);
   border-radius: 6px;
   padding: 6px 16px;
   margin: 10px;
   color: white;
+  cursor: pointer;
   flex: 1;
   border: 1px solid rgba(27, 31, 35, 0.15);
-  box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+  box-shadow: rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 
   &:hover {
-    background-color: #c00707;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
   }
 `;
 

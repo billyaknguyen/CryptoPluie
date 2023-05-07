@@ -61,6 +61,7 @@ export const GeneralTitle = styled.div`
   color: #f1fafc;
 `;
 export const GeneralItem = styled.div`
+   text-align: center;
   font-size: 1rem;
   color: #DBECFF;
 `;
@@ -73,7 +74,7 @@ justify-content: center;
 border-top: 1px solid #DBECFF;
 `;
 
-export const QuantityLabel = styled.label`
+export const Label = styled.label`
 font-size: 1.2rem;
 margin: 0 10px;
 color: #f1fafc;
@@ -89,23 +90,34 @@ margin: 8px 0;
   box-shadow: rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 `;
 
+ export const CustomAmountInput = styled.input`
+font-size: 1rem;
+width: 20%;
+padding: 8px 12px;
+margin: 8px 0;
+border: none;
+border-radius: 10px;
+box-shadow: rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+`;
+
 export const BuyButton = styled.button`
 display: flex;
 align-items: center;
 justify-content: center;
 gap: 0.5rem;
 font-size: 1rem;
-  background-color: ${(props) => (props.disabled ? "#C4C4C4" : "#2ea44f")};
+  background: ${(props) => (props.disabled ? "#C4C4C4" : "linear-gradient(to right, #11998e, #38ef7d)")};
   border-radius: 6px;
   padding: 6px 16px;
   margin: 10px;
   color: white;
-  border: 1px solid rgba(27, 31, 35, 0.15);
+  border: none;
   box-shadow: rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
 
   &:hover {
-    background-color: ${(props) => (props.disabled ? "#C4C4C4" : "#2c974b")};
+    background: ${(props) => (props.disabled ? "#C4C4C4" : "linear-gradient(to right, #11998e, #38ef7d)")};
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
   }
 `;
 
@@ -115,19 +127,37 @@ align-items: center;
 justify-content: center;
 gap: 0.5rem;
 font-size: 1rem;
-  background-color: ${(props) => (props.disabled ? "#C4C4C4" : "#e34f4f")};
+  background: ${(props) => (props.disabled ? "#C4C4C4" : "linear-gradient(to right, #eb3349, #f45c43)")};
   border-radius: 6px;
   padding: 6px 16px;
   margin: 10px;
   color: white;
-  border: 1px solid rgba(27, 31, 35, 0.15);
+  border: none;
   box-shadow: rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
 
   &:hover {
-    background-color: ${(props) => (props.disabled ? "#C4C4C4" : "#c00707")};
+    background: ${(props) => (props.disabled ? "#C4C4C4" : "linear-gradient(to right, #e43a15, #e65245)")};
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
   }
 `;
+
+export const SellAllButton = styled.button `
+display: flex;
+color: #FFCBCB;
+align-items: center;
+justify-content: center;
+gap: 0.5rem;
+font-size: 1rem;
+border: none;
+background-color: transparent;
+cursor: pointer;
+
+&:hover {
+  color: red;
+}
+
+`
 
 export const BalanceContainer = styled.div`
   display: flex;
@@ -142,6 +172,10 @@ color: #f1fafc;
 cursor: pointer;
   border: none;
   background-color: transparent;
+
+  &:hover {
+    color: #FFCBCB;
+  }
 `
 
 export const CloudXIcon = styled(IconCloudX) `

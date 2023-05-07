@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { IconCloudShare, IconCloudX } from '@tabler/icons-react';
-
+import { IconCloudShare, IconCloudX } from "@tabler/icons-react";
 
 export const ModalContainer = styled.div`
   display: flex;
@@ -47,60 +46,64 @@ export const UserSelect = styled.select`
 
 export const MessageBox = styled.input`
   font-size: 1rem;
-width: 90%;
-padding: 8px 12px;
-margin: 8px 2px;
- border: none;
+  width: 90%;
+  padding: 8px 12px;
+  margin: 8px 2px;
+  border: none;
   border-radius: 10px;
   box-shadow: rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  
 `;
 
-export const CloudShareIcon = styled(IconCloudShare) `
-width: 24px;
-height: 24px;
-`
-export const XButtonIcon = styled(IconCloudX) `
-width: 24px;
-height: 24px;
-`
+export const CloudShareIcon = styled(IconCloudShare)`
+  width: 24px;
+  height: 24px;
+`;
+export const XButtonIcon = styled(IconCloudX)`
+  width: 24px;
+  height: 24px;
+`;
 
-export const XButton = styled.button `
-width: 20px;
-font-size: 1rem;
-color: #f1fafc;
-cursor: pointer;
+export const XButton = styled.button`
+  width: 20px;
+  font-size: 1rem;
+  color: #f1fafc;
+  cursor: pointer;
   border: none;
   background-color: transparent;
-`
+  
+    &:hover {
+    color: #ffcbcb;
+  }
+`;
 
-export const ButtonContainer = styled.div `
-display: flex;
-width: 100%;
-justify-content: flex-end;
-`
- export const WarningMessage = styled.div `
- margin: 5px;
-font-size: 1rem; 
-text-align: center;
-color: #FFCBCB;
-`
+export const ButtonContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+`;
+export const WarningMessage = styled.div`
+  margin: 5px;
+  font-size: 1rem;
+  text-align: center;
+  color: #ffcbcb;
+`;
 
 export const SubmitButton = styled.button`
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   padding: 10px;
   font-size: 1rem;
-  background-color: ${(props) => (props.disabled ? "#C4C4C4" : "#2d72d9")};
+  background: ${(props) => (props.disabled ? "#C4C4C4" : "linear-gradient(to right, #2193b0, #6dd5ed)")};
   color: white;
   border: none;
   border-radius: 5px;
   box-shadow: rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-    cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
 
   &:hover {
-    background-color: ${(props) => (props.disabled ? "#C4C4C4" : "#1a57a3")}
+    background-color: ${(props) => (props.disabled ? "#C4C4C4" : "linear-gradient(to right, #2193b0, #6dd5ed)")};
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
   }
 `;
