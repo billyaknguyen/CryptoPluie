@@ -7,6 +7,7 @@ import sellCoin from "../utils/sellCoin";
 import addCoinHandle from "../hooks/addCoinHandle";
 import sellCoinHandle from "../hooks/sellCoinHandle";
 import fetchUserPortfolio from "../utils/fetchUserPortfolio";
+import Error from "../Error/Error"
 import { useNavigate } from "react-router-dom";
 import { UserPortfolioContext } from "../utils/UserPortfolioContext";
 import {
@@ -44,6 +45,8 @@ const PortfolioPage = () => {
     coins,
     loadingHolding,
     loadingCoin,
+    errorCoin,
+    errorHolding,
     actions: { updateUserPortfolio },
   } = useContext(UserPortfolioContext);
   const { user } = useAuth0();
@@ -86,11 +89,15 @@ const PortfolioPage = () => {
     setOpenModal(true);
   };
 
+  if (errorCoin || errorHolding) {
+    return <Error/>
+  }
+
   if (loadingHolding || loadingCoin) {
     return <LoadingSpinner />;
   }
 
-  console.log(state.suggestions);
+
 
   const portfolioValue = state.holdings.reduce((total, holding) => {
     const coin = coins.find((coin) => coin.id === holding.coin_id);
@@ -112,7 +119,7 @@ const PortfolioPage = () => {
           <ColumnContainer>
             <GeneralTitle>Pending Suggestions
             </GeneralTitle>
-            <PendingSuggestionItem onClick={() => navigate("/suggestions")} animated={state.pendingSuggestions.length > 0}>{state.pendingSuggestions.length}</PendingSuggestionItem>
+            <PendingSuggestionItem onClick={() => navigate("/suggestions")} animated={ state.pendingSuggestions.length > 0 }>{ state.pendingSuggestions.length}</PendingSuggestionItem>
           </ColumnContainer>
           <ColumnContainer>
             <GeneralTitle>Suggestions Sent</GeneralTitle>
@@ -137,7 +144,8 @@ const PortfolioPage = () => {
         </PortfolioStatsContainer>
       </InformationContainer>
       <PortfolioPageContainer>
-        <PortfolioTableContainer>
+        {state.holdings.length === 0  ? ( <div>Please purchase coins for them to appear here</div>) : 
+        (<PortfolioTableContainer>
           <PortfolioTable>
             <thead>
               <PortfolioTableRow>
@@ -202,6 +210,7 @@ const PortfolioPage = () => {
             </tbody>
           </PortfolioTable>
         </PortfolioTableContainer>
+      )}
       </PortfolioPageContainer>
       <Modal
         isOpen={openModal}

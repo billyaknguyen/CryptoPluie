@@ -13,6 +13,8 @@ import {
   XButtonIcon,
   WarningMessage,
 } from "./SuggestModalStyles";
+import ModalSpinner from "./ModalLoading";
+import ModalError from "./ModalError";
 
 const SuggestCoinModal = ({
   isOpen,
@@ -31,6 +33,8 @@ const SuggestCoinModal = ({
 
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
+  const [error, setError] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [message, setMessage] = useState("");
 
   const closeModalOutside = (event) => {
@@ -45,7 +49,10 @@ const SuggestCoinModal = ({
         const response = await fetch("/api/users");
         const resData = await response.json();
         setUsers(resData.data);
+        setLoading(false)
       } catch (error) {
+        setError(true)
+        setLoading(false)
         console.error("Error fetching users:", error);
       }
     };
@@ -93,10 +100,9 @@ const SuggestCoinModal = ({
     onClose();
   };
 
-  console.log(selectedUser);
-  console.log(message);
   return (
     <ModalContainer onClick={closeModalOutside}>
+      {loading ? <ModalSpinner/> : error ? <ModalError/> : (
       <ModalItem>
         <ButtonContainer>
           <XButton onClick={() => onClose()}>
@@ -140,6 +146,7 @@ const SuggestCoinModal = ({
           Suggest Coin
         </SubmitButton>
       </ModalItem>
+      )}
     </ModalContainer>
   );
 };

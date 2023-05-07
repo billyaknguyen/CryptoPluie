@@ -38,6 +38,7 @@ const Modal = ({
 
   const [quantity, setQuantity] = useState(1);
 
+
   const closeModalOutside = (event) => {
     if (event.target === event.currentTarget) {
       onClose();
@@ -115,7 +116,11 @@ const Modal = ({
             id="quantity"
             name="quantity"
             value={quantity}
-            onChange={(event) => setQuantity(event.target.value)}
+            onChange={(event) => {
+              if (event.target.value <= 10000000) {
+                setQuantity(event.target.value);
+              }
+            }}
           />
           {modalAction === "buy" ? (
             <BuyButton disabled={quantity <= 0 || remainingBalance < 0}>

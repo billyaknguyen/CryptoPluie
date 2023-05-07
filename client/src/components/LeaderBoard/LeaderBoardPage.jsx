@@ -1,4 +1,5 @@
 import { useContext, useState, useEffect } from "react";
+import Error from "../Error/Error";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import { UserPortfolioContext } from "../utils/UserPortfolioContext";
 import {
@@ -22,7 +23,9 @@ import {
 const LeaderBoardPage = () => {
   const [users, setUsers] = useState([]);
   const [userLoading, setUserLoading] = useState(true);
-  const { coins, loadingCoin } = useContext(UserPortfolioContext);
+  const [error, setError] = useState(false)
+  const { coins, loadingCoin, errorCoin} = useContext(UserPortfolioContext);
+
 
   const handleNetWorth = (user, coins) => {
     const portfolioValue = user.holdings.reduce((total, holding) => {
@@ -36,6 +39,7 @@ const LeaderBoardPage = () => {
 
     return { portfolioValue, netWorth };
   };
+
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -58,11 +62,22 @@ const LeaderBoardPage = () => {
         setUsers(sortedNetWorthUsers);
         setUserLoading(false);
       } catch (error) {
+        setError(true)
+        setUserLoading(false)
         console.log(error);
       }
     };
     fetchUsers();
   }, [coins]);
+
+  
+  if (error || errorCoin) {
+    return <Error/>
+  }
+
+  if (loadingCoin || userLoading) {
+    return <LoadingSpinner/>
+  }
 
   const topCoins = (holdings) => {
     const coinMarketValue = holdings.map((holding) => {
@@ -78,9 +93,7 @@ const LeaderBoardPage = () => {
     return sortedCoinMarketValue;
   };
 
-  if (loadingCoin || userLoading) {
-    return <LoadingSpinner>loading...</LoadingSpinner>;
-  }
+
 
   console.log(users);
   return (
