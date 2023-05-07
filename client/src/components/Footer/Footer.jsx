@@ -6,6 +6,7 @@ const Footer = () => {
      <>
      <FooterContainer>
          <GitHubLink to={"https://github.com/billyaknguyen/CryptoPluie"}><GitHubIcon/> github</GitHubLink>
+         <FooterText>Made by Billy Nguyen</FooterText>
          <FooterText>© {new Date().getFullYear()} CryptoPluie. All rights reserved.</FooterText>
      </FooterContainer>
      </>

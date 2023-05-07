@@ -6,6 +6,7 @@ export const LeaderBoardWrapper = styled.div`
   height: 100vh;
   flex-direction: column;
   margin-top: 100px;
+  margin-bottom: 100px;
 `;
 
 export const LeaderBoardTitle = styled.h1`

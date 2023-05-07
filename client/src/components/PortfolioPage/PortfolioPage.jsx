@@ -128,7 +128,7 @@ const PortfolioPage = () => {
         </ProfileContainer>
         <PortfolioStatsContainer>
           <ColumnContainer>
-            <GeneralTitle>Current Balance</GeneralTitle>
+            <GeneralTitle>Balance</GeneralTitle>
             <GeneralItem>{priceFormatter(state.balance)}</GeneralItem>
           </ColumnContainer>
           <PlusSign />
