@@ -138,9 +138,10 @@ align-items: center;
 `
 
 export const AcceptButton = styled.button`
-  background-color: ${(props) => (props.disabled ? "#c4c4c4" : "#4cb760")};
+  background: ${(props) => (props.disabled ? "#c4c4c4" : "linear-gradient(to right, #11998e, #38ef7d)")};
   padding: 5px 10px;
   font-size: 1rem;
+  color: white;
   border: none;
   border-radius: 5px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px;
@@ -148,16 +149,16 @@ export const AcceptButton = styled.button`
 
 
   &:hover {
-    background-color: ${(props) => (props.disabled ? "#c4c4c4" : "#2c974b")};
-
+    background-color: ${(props) => (props.disabled ? "#c4c4c4" : "linear-gradient(to right, #11998e, #38ef7d)")};
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
   }
 `;
 
 
 export const DenyButton = styled.button`
-background-color: ${(props) => (props.disabled ? "#c4c4c4" : "#ea5252")};
+background: ${(props) => (props.disabled ? "#c4c4c4" : "linear-gradient(to right, #eb3349, #f45c43)")};
   padding: 5px 10px;
-  color: #223552;
+  color: white;
   font-size: 1rem;
   border: none;
   border-radius: 5px;
@@ -166,6 +167,7 @@ background-color: ${(props) => (props.disabled ? "#c4c4c4" : "#ea5252")};
 
 
   &:hover {
-    background-color: ${(props) => (props.disabled ? "#c4c4c4" : "#d62929")};
+    background-color: ${(props) => (props.disabled ? "#c4c4c4" : "linear-gradient(to right, #eb3349, #f45c43)")};
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
   }
 `;
