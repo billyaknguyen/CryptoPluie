@@ -23,9 +23,8 @@ import {
 const LeaderBoardPage = () => {
   const [users, setUsers] = useState([]);
   const [userLoading, setUserLoading] = useState(true);
-  const [error, setError] = useState(false)
-  const { coins, loadingCoin, errorCoin} = useContext(UserPortfolioContext);
-
+  const [error, setError] = useState(false);
+  const { coins, loadingCoin, errorCoin } = useContext(UserPortfolioContext);
 
   const handleNetWorth = (user, coins) => {
     const portfolioValue = user.holdings.reduce((total, holding) => {
@@ -39,7 +38,6 @@ const LeaderBoardPage = () => {
 
     return { portfolioValue, netWorth };
   };
-
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -62,21 +60,20 @@ const LeaderBoardPage = () => {
         setUsers(sortedNetWorthUsers);
         setUserLoading(false);
       } catch (error) {
-        setError(true)
-        setUserLoading(false)
+        setError(true);
+        setUserLoading(false);
         console.log(error);
       }
     };
     fetchUsers();
   }, [coins]);
 
-  
   if (error || errorCoin) {
-    return <Error/>
+    return <Error />;
   }
 
   if (loadingCoin || userLoading) {
-    return <LoadingSpinner/>
+    return <LoadingSpinner />;
   }
 
   const topCoins = (holdings) => {
@@ -93,14 +90,15 @@ const LeaderBoardPage = () => {
     return sortedCoinMarketValue;
   };
 
-
-
-  console.log(users);
   return (
     <LeaderBoardWrapper>
-        <LeaderBoardTitle>Leaderboard</LeaderBoardTitle>
+      <LeaderBoardTitle>Leaderboard</LeaderBoardTitle>
       <LeaderBoardContainer>
-        <LeaderBoardImage src={"https://cdn.discordapp.com/attachments/899929905318486046/1103905172301819944/trophy_billy.png"}/>
+        <LeaderBoardImage
+          src={
+            "https://cdn.discordapp.com/attachments/899929905318486046/1103905172301819944/trophy_billy.png"
+          }
+        />
         <LeaderBoardBox>
           {users.map((user, index) => {
             return (
@@ -131,11 +129,13 @@ const LeaderBoardPage = () => {
                     <RowContainer>
                       {topCoins(user.holdings).map((coin, index) => {
                         return (
-                               
-                        <CoinLinkContainer key={index} to={`/coin/${coin.coin_id}`}>
-                        <CoinImage src={coin.coin_image} />
-                        </CoinLinkContainer>
-                        )
+                          <CoinLinkContainer
+                            key={index}
+                            to={`/coin/${coin.coin_id}`}
+                          >
+                            <CoinImage src={coin.coin_image} />
+                          </CoinLinkContainer>
+                        );
                       })}
                     </RowContainer>
                   </ColumnContainer>

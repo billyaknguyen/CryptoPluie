@@ -59,7 +59,7 @@ const CoinsDetailPage = () => {
   const [openModal, setOpenModal] = useState(false);
   const [suggestModalOpen, setSuggestModalOpen] = useState(false);
   const [modalAction, setModalAction] = useState("");
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const { user, isAuthenticated } = useAuth0();
@@ -68,7 +68,6 @@ const CoinsDetailPage = () => {
     actions: { updateUserPortfolio },
   } = useContext(UserPortfolioContext);
 
-  console.log(singleCoin);
   useEffect(() => {
     const getSpecificCoin = async () => {
       try {
@@ -77,8 +76,8 @@ const CoinsDetailPage = () => {
         setSingleCoin(resData.data);
         setLoading(false);
       } catch (error) {
-        setError(true)
-        setLoading(false)
+        setError(true);
+        setLoading(false);
         console.log(error);
       }
     };
@@ -125,9 +124,9 @@ const CoinsDetailPage = () => {
   };
 
   if (error) {
-    return <Error/>
+    return <Error />;
   }
-  
+
   if (loading) {
     return <LoadingSpinner />;
   }

@@ -56,9 +56,6 @@ const Modal = ({
     }
   }, [customSellAmount, singleCoin.current_price]);
 
-  console.log("quantity", quantity);
-  console.log("custom", customBuyAmount);
-
   const closeModalOutside = (event) => {
     if (event.target === event.currentTarget) {
       onClose();
@@ -84,8 +81,6 @@ const Modal = ({
     }
     onClose();
   };
-
-  console.log(userCoinHolding);
 
   return (
     <ModalContainer onClick={closeModalOutside}>

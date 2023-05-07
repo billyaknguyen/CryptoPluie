@@ -39,8 +39,6 @@ const Navbar = () => {
     };
   }, []);
 
-  console.log(isAuthenticated);
-
   const isHomePage = location.pathname === "/";
 
   return (
@@ -60,8 +58,8 @@ const Navbar = () => {
         <CoinsLink to="/coins">Coins</CoinsLink>
         {isAuthenticated && (
           <>
-          <PortfolioLink to="/portfolio">Portfolio</PortfolioLink> 
-          <SuggestionsLink to="/suggestions">Suggestions</SuggestionsLink>
+            <PortfolioLink to="/portfolio">Portfolio</PortfolioLink>
+            <SuggestionsLink to="/suggestions">Suggestions</SuggestionsLink>
           </>
         )}
         <LeaderBoardLink to="/leaderboard">Leaderboard</LeaderBoardLink>
@@ -69,12 +67,15 @@ const Navbar = () => {
       {isHomePage ? null : <SearchBar />}
       {!isAuthenticated ? (
         <AuthContainer>
-        <LoginButton />
+          <LoginButton />
         </AuthContainer>
       ) : (
         <AuthContainer>
           <UserContainer>
-           <UserImage src={user.picture} referrerpolicy="no-referrer"></UserImage>
+            <UserImage
+              src={user.picture}
+              referrerpolicy="no-referrer"
+            ></UserImage>
           </UserContainer>
           <LogoutButton />
         </AuthContainer>

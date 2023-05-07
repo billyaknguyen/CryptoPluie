@@ -31,7 +31,6 @@ const CoinsPage = () => {
 
   useEffect(() => {
     const numberOfPages = Math.ceil(coins.length / coinsPerPage);
-    console.log(numberOfPages);
     setTotalPages(numberOfPages);
   }, [coins]);
 

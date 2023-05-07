@@ -54,7 +54,6 @@ const SuggestionPage = () => {
     return <LoadingSpinner />;
   }
 
-  console.log(state);
   return (
     <SuggestionPageContainer>
       <SuggestionPageTitle>My Suggestions</SuggestionPageTitle>
