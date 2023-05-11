@@ -32,7 +32,6 @@ const HomePage = () => {
   const myRef = useRef();
   const [playCoinAnimation, setPlayCoinAnimation] = useState(false);
   const {isAuthenticated} = useAuth0();
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
