@@ -1,9 +1,0 @@
-services:
-  - type: web
-    name: cryptopluie
-    env: static
-    buildCommand: npm run build
-    staticPublishPath: ./client/dist
-    routes:
-      - src: /.*
-        dest: /index.html
