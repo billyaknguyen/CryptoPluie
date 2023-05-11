@@ -56,6 +56,7 @@ export const TitleText = styled.div`
   margin-top: 100px;
   font-size: 4rem;
   background: linear-gradient(to left, #acb6e5, #86fde8);
+  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 `
@@ -67,6 +68,7 @@ export const HeroText = styled.div`
   background: linear-gradient(
     to right, #e0eafc, #cfdef3
   );
+  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 `;
@@ -96,6 +98,7 @@ export const SecondSectionWrapper = styled.div`
 export const SecondSectionTitle = styled.h2`
   font-size: 3rem;
   background: linear-gradient(to left, #2b5876, #4e4376);
+  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 `;
@@ -170,6 +173,7 @@ export const RichImg = styled.img`
 export const ThirdSectionTitle = styled.h2`
   font-size: 2.5rem;
   background: linear-gradient(to left, #2b5876, #4e4376);
+  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 `;
