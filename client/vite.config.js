@@ -8,7 +8,7 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   server: {
     proxy: {
-      "/api": "https://crytopluie-api.onrender.com" 
+      "/api": "https://cryptopluie-api.onrender.com" 
     },
   },
   plugins: [react()],
