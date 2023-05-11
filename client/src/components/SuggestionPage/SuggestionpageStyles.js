@@ -19,6 +19,7 @@ export const SuggestionPageTitle = styled.h1 `
 font-size: 2rem;
 margin-left: 30px;
 background: linear-gradient(to left, #536976, #292e49);
+-webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 `

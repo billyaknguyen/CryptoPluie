@@ -12,6 +12,7 @@ export const LeaderBoardWrapper = styled.div`
 export const LeaderBoardTitle = styled.h1`
   margin-left: 30px;
   background: linear-gradient(to left, #536976, #292e49);
+  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 `;
