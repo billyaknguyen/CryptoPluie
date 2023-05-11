@@ -1,7 +1,8 @@
 const express = require("express");
 const morgan = require("morgan");
+const cors = require('cors')
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const { getAllCoins } = require("./handlers/getAllCoins");
 const { getCoinById } = require("./handlers/getCoinById");
 const { addCoinToHoldings } = require("./handlers/addCoinToHoldings");
@@ -16,6 +17,7 @@ const {deleteSuggestionHistory} = require("./handlers/deleteSuggestionHistory")
 
 app.use(morgan("tiny"));
 app.use(express.json());
+app.use(cors())
 
 app.get("/api/coins", getAllCoins);
 app.get("/api/coin/:id", getCoinById);
