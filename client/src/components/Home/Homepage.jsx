@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import SignUpButton from "../Navbar/SignUpButton";
 import { useAuth0 } from "@auth0/auth0-react";
-import Coins from "./assets/coins";
+import Coins from "./assets/Coins";
 import {
   HomeContainer,
   HeroSection,
