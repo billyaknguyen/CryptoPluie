@@ -37,11 +37,6 @@ export const UserPortfolioProvider = ({ children }) => {
   const [loadingHolding, setLoadingHolding] = useState(true)
   const { user } = useAuth0();
 
-  const API_BASE_URL =
-  process.env.NODE_ENV === 'development'
-    ? '/api'
-    : 'https://cryptopluie-api.onrender.com';
-
   useEffect(() => {
     if (user) {
       const fetchPortfolio = async (userId) => {
@@ -73,7 +68,7 @@ export const UserPortfolioProvider = ({ children }) => {
 
  const fetchCoins = async () => {
   try {
-    const response = await fetch(`${API_BASE_URL}/coins`);
+    const response = await fetch(`/api/coins`);
     const resData = await response.json();
     setCoins(resData.data)
     setLoadingCoin(false)
