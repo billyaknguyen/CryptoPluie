@@ -68,7 +68,7 @@ export const UserPortfolioProvider = ({ children }) => {
 
  const fetchCoins = async () => {
   try {
-    const response = await fetch(`/api/coins`);
+    const response = await fetch(`https://cryptopluie-api.onrender.com/api/coins`);
     const resData = await response.json();
     setCoins(resData.data)
     setLoadingCoin(false)
