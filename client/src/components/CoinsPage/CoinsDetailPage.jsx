@@ -67,11 +67,12 @@ const CoinsDetailPage = () => {
     state,
     actions: { updateUserPortfolio },
   } = useContext(UserPortfolioContext);
+  const apiLink = import.meta.env.VITE_API
 
   useEffect(() => {
     const getSpecificCoin = async () => {
       try {
-        const response = await fetch(`/api/coin/${id}`);
+        const response = await fetch(`${apiLink}/api/coin/${id}`);
         const resData = await response.json();
         setSingleCoin(resData.data);
         setLoading(false);

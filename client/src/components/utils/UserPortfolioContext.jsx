@@ -36,12 +36,13 @@ export const UserPortfolioProvider = ({ children }) => {
   const [loadingCoin, setLoadingCoin] = useState(true)
   const [loadingHolding, setLoadingHolding] = useState(true)
   const { user } = useAuth0();
+  const apiLink = import.meta.env.VITE_API;
 
   useEffect(() => {
     if (user) {
       const fetchPortfolio = async (userId) => {
         try {
-          const response = await fetch(`/api/user/${userId}`);
+          const response = await fetch(`${apiLink}/api/user/${userId}`);
           const resData = await response.json();
           if (resData.status === 200) {
             dispatch({
@@ -68,7 +69,7 @@ export const UserPortfolioProvider = ({ children }) => {
 
  const fetchCoins = async () => {
   try {
-    const response = await fetch(`https://cryptopluie-api.onrender.com/api/coins`);
+    const response = await fetch(`${apiLink}/api/coins`);
     const resData = await response.json();
     setCoins(resData.data)
     setLoadingCoin(false)
