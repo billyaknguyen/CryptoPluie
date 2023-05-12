@@ -16,35 +16,6 @@ export const HeroSection = styled.section`
   background-position: center;
 `;
 
-export const AnimatedLetter = styled.div`
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  animation: rainTitle 0.5s linear forwards;
-  animation-delay: ${({ delay }) => delay || 0}s;
-
-  @keyframes rainTitle {
-    0% {
-      transform: translateY(-400px);
-      opacity: 0;
-      color: white;
-    }
-    10% {
-      opacity: 0.5;
-    }
-    20% {
-      opacity: 1;
-    }
-    90% {
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-`;
 
 export const HeroSectionTextContainer = styled.div`
   display: flex;
@@ -56,9 +27,9 @@ export const TitleText = styled.div`
   margin-top: 100px;
   font-size: 4rem;
   background: linear-gradient(to left, #acb6e5, #86fde8);
-  -webkit-background-clip: text;
-  background-clip: text;
   color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
 `
 
 export const HeroText = styled.div`
