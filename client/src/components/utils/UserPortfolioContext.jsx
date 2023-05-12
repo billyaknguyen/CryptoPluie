@@ -38,6 +38,8 @@ export const UserPortfolioProvider = ({ children }) => {
   const { user } = useAuth0();
   const apiLink = import.meta.env.VITE_API;
 
+
+
   useEffect(() => {
     if (user) {
       const fetchPortfolio = async (userId) => {
@@ -69,6 +71,7 @@ export const UserPortfolioProvider = ({ children }) => {
 
  const fetchCoins = async () => {
   try {
+    console.log(`Fetching ${apiLink}/api/coins`);
     const response = await fetch(`${apiLink}/api/coins`);
     const resData = await response.json();
     setCoins(resData.data)
