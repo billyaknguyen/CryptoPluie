@@ -16,6 +16,7 @@ const ButtonText = styled.span`
   font-size: 1rem;
   font-family: 'Noto Sans JP', sans-serif;
   font-weight: bolder;
+  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 
@@ -23,6 +24,7 @@ const ButtonText = styled.span`
     background: linear-gradient(
     to right, #e0eafc, #cfdef3
   );
+  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   }

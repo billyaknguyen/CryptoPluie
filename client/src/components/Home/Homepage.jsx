@@ -7,7 +7,6 @@ import {
   HomeContainer,
   HeroSection,
   SecondSection,
-  AnimatedLetter,
   TitleText,
   Wave,
   RainCoatImg,
@@ -28,7 +27,6 @@ import {
 } from "./HomepageStyles";
 
 const HomePage = () => {
-  const text = "Make it rain with CryptoPluie";
   const myRef = useRef();
   const [playCoinAnimation, setPlayCoinAnimation] = useState(false);
   const {isAuthenticated} = useAuth0();
@@ -49,22 +47,13 @@ const HomePage = () => {
     };
   }, []);
 
-  const animatedTitle = text.split("").map((letter, index) =>
-    letter === " " ? (
-      " "
-    ) : (
-      <AnimatedLetter key={index} delay={index * 0.1}>
-        {letter}
-      </AnimatedLetter>
-    )
-  );
 
   return (
     <HomeContainer>
       <Navbar />
       <HeroSection>
         <HeroSectionTextContainer>
-          <TitleText>{animatedTitle}</TitleText>
+          <TitleText>Make it rain with CryptoPluie</TitleText>
           <HeroText>
             by creating your virtual portfolio and ride the storm to the
             top of our leaderboard!
