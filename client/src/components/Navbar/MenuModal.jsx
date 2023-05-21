@@ -22,7 +22,7 @@ const MenuModal = ({isOpen, onClose, isAuthenticated}) => {
         )}
         <LeaderBoardLink to="/leaderboard" onClick={closeModal}>Leaderboard</LeaderBoardLink>
         <SearchBarContainer>
-        <SearchBar/>
+        <SearchBar closeModal = {closeModal}/>
         </SearchBarContainer>
             </ModalContent>
         </ModalContainer>
