@@ -17,13 +17,23 @@ const Footer = () => {
  display: flex;
  align-items: center;
  justify-content: space-around;
+ margin-top: 50px;
+ padding-left: 10px;
  min-height: 100px;
  background: linear-gradient(to left,#292e49, #163f61);
+
+ @media (min-width: 800px) {
+   margin-top: 0;
+   padding-left: 0;
+  }
  `
  const FooterText = styled.p `
-     font-size: 1rem;
+     font-size: 0.8em;
      color: #DBECFF;
      text-align: center;
+     @media (min-width: 800px) {
+ font-size: 1em;
+  }
  `
 
  const GitHubLink = styled(Link) `
