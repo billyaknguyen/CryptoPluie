@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { IconMenu2 } from '@tabler/icons-react';
 
 export const NavContainer = styled.header`
   display: flex;
@@ -20,11 +21,15 @@ export const MainTitle = styled.h1`
   font-size: 1.5rem;
   letter-spacing: 3px;
   font-weight: bold;
+
+  @media (max-width: 1052px) {
+    display: none;
+  }
 `;
 
 export const Logo = styled.img`
-  height: 100px;
-  width: 100px;
+width: 100px;
+height: 100px;
   
 `;
 
@@ -33,7 +38,9 @@ export const TitleLink = styled(NavLink)`
   color: white;
 `;
 
-export const LogoLink = styled(NavLink)``;
+export const LogoLink = styled(NavLink)`
+
+`;
 
 export const CoinsLink = styled(NavLink)`
   text-decoration: none;
@@ -52,6 +59,10 @@ export const CoinsLink = styled(NavLink)`
     background-color: rgba(0,0,0,0.5);
     border-radius: 10px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px
+  }
+
+  @media (max-width: 1052px) {
+    font-size: 1.2em;
   }
   
 `;
@@ -72,6 +83,9 @@ export const PortfolioLink = styled(NavLink)`
     border-radius: 10px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px
   }
+  @media (max-width: 1052px) {
+    font-size: 1.2em;
+  }
 `;
 export const LeaderBoardLink = styled(NavLink)`
   text-decoration: none;
@@ -90,13 +104,16 @@ export const LeaderBoardLink = styled(NavLink)`
     border-radius: 10px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px
   }
+  @media (max-width: 1052px) {
+    font-size: 1.2em;
+  }
 `;
 
 export const SuggestionsLink = styled(NavLink) `
   text-decoration: none;
   color: #f1fafc;
   padding: 5px;
-  font-size: 1.5rem;
+  font-size: 1.5em;
   font-weight: bold;
   &.active {
     background-color:  rgba(0,0,0,0.5);
@@ -109,6 +126,10 @@ export const SuggestionsLink = styled(NavLink) `
     border-radius: 10px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px
   }
+
+  @media (max-width: 1052px) {
+    font-size: 1.2em;
+  }
 `;
 
 
@@ -119,9 +140,14 @@ export const HomeLinksWrapper = styled.div`
 `;
 
 export const NavigationLinksWrapper = styled.div`
+  display: none;
+
+  @media (min-width: 810px) {
   display: flex;
-  margin-right: 250px;
+  margin-right: 100px;
   gap: 20px;
+  
+  }
 `;
 
 export const AuthContainer = styled.div `
@@ -141,4 +167,26 @@ box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
 `
 
 export const UserContainer = styled.div `
+`
+
+export const MenuButton = styled.button `
+color: #f1fafc;
+cursor: pointer;
+border: none;
+background-color: transparent;
+
+@media (min-width: 810px) {
+  display: none;
+  }
+`
+
+export const HamburgerIcon = styled(IconMenu2) `
+width: 32px;
+height: 32px;
+color: white;
+
+&:hover {
+ color: grey;
+}
+
 `

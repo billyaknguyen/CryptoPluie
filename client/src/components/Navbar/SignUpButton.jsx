@@ -12,8 +12,8 @@ const ButtonText = styled.span`
   background: linear-gradient(
     to left, #ffeeee, #ddefbb
   );
-  padding: 20px;
-  font-size: 1rem;
+  /* padding: 10px; */
+  font-size: 1.1em;
   font-family: 'Noto Sans JP', sans-serif;
   font-weight: bolder;
   -webkit-background-clip: text;
@@ -35,7 +35,7 @@ const Button = styled.button `
   color: #f1fafc;
   cursor: pointer;
   border: none;
-  padding: 20px;
+  padding: 15px;
   border-radius: 100px;
   background: linear-gradient(to left,#292e49, #163f61);
   

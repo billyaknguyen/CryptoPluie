@@ -13,7 +13,10 @@ import {
   AuthContainer,
   UserContainer,
   UserImage,
+  MenuButton,
+  HamburgerIcon
 } from "./NavbarStyles";
+import MenuModal from "./MenuModal";
 import { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useLocation } from "react-router-dom";
@@ -24,7 +27,12 @@ import SearchBar from "../SearchBar/SearchBar";
 const Navbar = () => {
   const [isScrolledDown, setIsScrolledDown] = useState(false);
   const { isAuthenticated, user } = useAuth0();
+  const [isMenuBarOpen, setIsMenuBarOpen] = useState(false)
   const location = useLocation();
+
+  const menuToggle = () => {
+    setIsMenuBarOpen(!isMenuBarOpen)
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,6 +52,9 @@ const Navbar = () => {
   return (
     <NavContainer scrolledDown={isScrolledDown} isHomePage={isHomePage}>
       <HomeLinksWrapper>
+      <MenuButton onClick={menuToggle}>
+            <HamburgerIcon/>
+          </MenuButton>
         <LogoLink to="/">
           <Logo
             src="https://cdn.discordapp.com/attachments/899929905318486046/1094149965976174672/CryptoPluie_Billy_Nguyen_Logo.png"
@@ -54,6 +65,7 @@ const Navbar = () => {
           <MainTitle>CryptoPluie</MainTitle>
         </TitleLink>
       </HomeLinksWrapper>
+      <MenuModal isOpen={isMenuBarOpen} onClose={() => setIsMenuBarOpen(false)} isAuthenticated= {isAuthenticated}/>
       <NavigationLinksWrapper>
         <CoinsLink to="/coins">Coins</CoinsLink>
         {isAuthenticated && (
