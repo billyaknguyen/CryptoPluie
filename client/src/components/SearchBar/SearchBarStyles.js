@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 
 export const Wrapper = styled.div `
 position: relative;
-width: 300px;
+width: 200px;
+
 `
 export const Form = styled.form `
 display: flex;
-width: 100%;
+width: 90%;
 background-color: #ffffff;
 align-items: center;
 border-radius: 10px;
@@ -29,7 +30,7 @@ border: none;
 outline: none;
 border-radius: 10px;
     &::placeholder {
-        font-size: 1rem;
+        font-size: 1em;
     }
 `
 
@@ -37,7 +38,7 @@ export const SuggestionList= styled.ul `
 z-index: 10;
 position: absolute;
 overflow: auto;
-width: 100%;
+max-width: 200px;
 max-height: 350px;
 padding: 0;
 margin-top: 10px;

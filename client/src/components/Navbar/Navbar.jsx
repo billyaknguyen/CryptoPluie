@@ -14,7 +14,8 @@ import {
   UserContainer,
   UserImage,
   MenuButton,
-  HamburgerIcon
+  HamburgerIcon,
+  SearchBarContainer
 } from "./NavbarStyles";
 import MenuModal from "./MenuModal";
 import { useState, useEffect } from "react";
@@ -67,16 +68,18 @@ const Navbar = () => {
       </HomeLinksWrapper>
       <MenuModal isOpen={isMenuBarOpen} onClose={() => setIsMenuBarOpen(false)} isAuthenticated= {isAuthenticated}/>
       <NavigationLinksWrapper>
-        <CoinsLink to="/coins">Coins</CoinsLink>
+        <CoinsLink isHomePage={isHomePage} to="/coins">Coins</CoinsLink>
         {isAuthenticated && (
           <>
-            <PortfolioLink to="/portfolio">Portfolio</PortfolioLink>
-            <SuggestionsLink to="/suggestions">Suggestions</SuggestionsLink>
+            <PortfolioLink isHomePage={isHomePage} to="/portfolio">Portfolio</PortfolioLink>
+            <SuggestionsLink isHomePage={isHomePage} to="/suggestions">Suggestions</SuggestionsLink>
           </>
         )}
-        <LeaderBoardLink to="/leaderboard">Leaderboard</LeaderBoardLink>
+        <LeaderBoardLink isHomePage={isHomePage} to="/leaderboard">Leaderboard</LeaderBoardLink>
       </NavigationLinksWrapper>
+      <SearchBarContainer>
       {isHomePage ? null : <SearchBar />}
+      </SearchBarContainer>
       {!isAuthenticated ? (
         <AuthContainer>
           <LoginButton />
