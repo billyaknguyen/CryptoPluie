@@ -22,7 +22,7 @@ export const MainTitle = styled.h1`
   letter-spacing: 3px;
   font-weight: bold;
 
-  @media (max-width: 1052px) {
+  @media (max-width: 1170px) {
     display: none;
   }
 `;
@@ -30,7 +30,7 @@ export const MainTitle = styled.h1`
 export const Logo = styled.img`
 width: 100px;
 height: 100px;
-  
+
 `;
 
 export const TitleLink = styled(NavLink)`
@@ -46,7 +46,7 @@ export const CoinsLink = styled(NavLink)`
   text-decoration: none;
   color: #F2FAFC;
   padding: 5px;
-  font-size: 1.5rem;
+  font-size: ${(props) => props.isHomePage ? "1.3em" : "1em"};
   font-weight: bold;
 
   &.active {
@@ -61,8 +61,8 @@ export const CoinsLink = styled(NavLink)`
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px
   }
 
-  @media (max-width: 1052px) {
-    font-size: 1.2em;
+  @media (min-width: 1052px) {
+    font-size: 1.5em;
   }
   
 `;
@@ -70,7 +70,7 @@ export const PortfolioLink = styled(NavLink)`
   text-decoration: none;
   color: #f1fafc;
   padding: 5px;
-  font-size: 1.5rem;
+  font-size: ${(props) => props.isHomePage ? "1.3em" : "1em"};
   font-weight: bold;
   &.active {
     background-color:  rgba(0,0,0,0.5);
@@ -83,15 +83,15 @@ export const PortfolioLink = styled(NavLink)`
     border-radius: 10px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px
   }
-  @media (max-width: 1052px) {
-    font-size: 1.2em;
+  @media (min-width: 1052px) {
+    font-size: 1.5em;
   }
 `;
 export const LeaderBoardLink = styled(NavLink)`
   text-decoration: none;
   color: #f1fafc;
   padding: 5px;
-  font-size: 1.5rem;
+  font-size: ${(props) => props.isHomePage ? "1.3em" : "1em"};
   font-weight: bold;
   &.active {
     background-color:  rgba(0,0,0,0.5);
@@ -104,8 +104,8 @@ export const LeaderBoardLink = styled(NavLink)`
     border-radius: 10px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px
   }
-  @media (max-width: 1052px) {
-    font-size: 1.2em;
+  @media (min-width: 1052px) {
+    font-size: 1.5em;
   }
 `;
 
@@ -113,7 +113,7 @@ export const SuggestionsLink = styled(NavLink) `
   text-decoration: none;
   color: #f1fafc;
   padding: 5px;
-  font-size: 1.5em;
+  font-size: ${(props) => props.isHomePage ? "1.3em" : "1em"};
   font-weight: bold;
   &.active {
     background-color:  rgba(0,0,0,0.5);
@@ -127,8 +127,8 @@ export const SuggestionsLink = styled(NavLink) `
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px
   }
 
-  @media (max-width: 1052px) {
-    font-size: 1.2em;
+  @media (min-width: 1052px) {
+    font-size: 1.5em;
   }
 `;
 
@@ -144,7 +144,7 @@ export const NavigationLinksWrapper = styled.div`
 
   @media (min-width: 810px) {
   display: flex;
-  margin-right: 100px;
+  margin-right: 10px;
   gap: 20px;
   
   }
@@ -152,14 +152,15 @@ export const NavigationLinksWrapper = styled.div`
 
 export const AuthContainer = styled.div `
 display: flex;
+margin-right: 10px;
 height: 50px;
 gap: 10px;
 color: #f1fafc;
 `
 
 export const UserImage = styled.img `
-height: 50px;
-width: 50px;
+height: 40px;
+width: 40px;
 box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   border-radius: 0 50% 50% 50%;
@@ -167,6 +168,9 @@ box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
 `
 
 export const UserContainer = styled.div `
+display: flex;
+justify-content: center;
+align-items: center;
 `
 
 export const MenuButton = styled.button `
@@ -190,3 +194,9 @@ color: white;
 }
 
 `
+
+export const SearchBarContainer = styled.div`
+  @media (max-width: 495px) {
+    display: none;
+  }
+`;

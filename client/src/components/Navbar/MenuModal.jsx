@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { CoinsLink, PortfolioLink, SuggestionsLink, LeaderBoardLink } from "./NavbarStyles";
+import SearchBar from "../SearchBar/SearchBar"
 
 
 const MenuModal = ({isOpen, onClose, isAuthenticated}) => {
@@ -20,6 +21,9 @@ const MenuModal = ({isOpen, onClose, isAuthenticated}) => {
           </>
         )}
         <LeaderBoardLink to="/leaderboard" onClick={closeModal}>Leaderboard</LeaderBoardLink>
+        <SearchBarContainer>
+        <SearchBar/>
+        </SearchBarContainer>
             </ModalContent>
         </ModalContainer>
     )
@@ -43,21 +47,24 @@ const ModalContainer = styled.div`
 
 const ModalContent = styled.div`
 display: flex;
-margin-top: 100px;
-width: 300px;
 flex-direction: column;
+gap: 20px;
+margin-top: 100px;
+margin-left: 10px;
+width: 300px;
+height: 300px;
 
-@media (min-width: 598px) {
-  
-}
-
-@media (min-width: 731px) {
-  
-}
 @media (min-width: 810px) {
   display: none;
 }
 `;
+
+const SearchBarContainer = styled.div`
+  @media (min-width: 495px) {
+    display: none;
+  }
+
+`
 
 
 export default MenuModal;
