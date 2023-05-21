@@ -15,7 +15,7 @@ import {
 } from "./SearchBarStyles";
 import { IconCloudSearch } from "@tabler/icons-react";
 
-const SearchBar = () => {
+const SearchBar = (closeModal) => {
   const { coins } = useContext(UserPortfolioContext);
   const [coinSearch, setCoinSearch] = useState("");
   const [filteredCoins, setFilteredCoins] = useState([]);
@@ -56,6 +56,7 @@ const SearchBar = () => {
 
   const handleLinkClick = () => {
     setCoinSearch("");
+    closeModal()
     setFilteredCoins([]);
   };
 
