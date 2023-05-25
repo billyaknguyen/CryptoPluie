@@ -71,7 +71,6 @@ export const UserPortfolioProvider = ({ children }) => {
 
  const fetchCoins = async () => {
   try {
-    console.log(`Fetching ${apiLink}/api/coins`);
     const response = await fetch(`${apiLink}/api/coins`);
     const resData = await response.json();
     setCoins(resData.data)

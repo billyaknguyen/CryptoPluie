@@ -36,6 +36,7 @@ const SuggestCoinModal = ({
   const [error, setError] = useState(false)
   const [loading, setLoading] = useState(true)
   const [message, setMessage] = useState("");
+  const apiLink = import.meta.env.VITE_API;
 
   const closeModalOutside = (event) => {
     if (event.target === event.currentTarget) {
@@ -46,7 +47,7 @@ const SuggestCoinModal = ({
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch("/api/users");
+        const response = await fetch(`${apiLink}/api/users`);
         const resData = await response.json();
         setUsers(resData.data);
         setLoading(false)

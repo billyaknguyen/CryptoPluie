@@ -1,10 +1,10 @@
 import {toast} from "react-toastify"
-
+const apiLink = import.meta.env.VITE_API;
 
 const suggestCoinHandle = async (loggedInUser, friendUserId, messageData,fetchUserPortfolio,
   updateUserPortfolio,) => {
   try {
-    const response = await fetch("/api/suggestCoin", {
+    const response = await fetch(`${apiLink}/api/suggestCoin`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -25,6 +25,7 @@ const LeaderBoardPage = () => {
   const [userLoading, setUserLoading] = useState(true);
   const [error, setError] = useState(false);
   const { coins, loadingCoin, errorCoin } = useContext(UserPortfolioContext);
+  const apiLink = import.meta.env.VITE_API;
 
   const handleNetWorth = (user, coins) => {
     const portfolioValue = user.holdings.reduce((total, holding) => {
@@ -42,7 +43,7 @@ const LeaderBoardPage = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch("/api/users");
+        const response = await fetch(`${apiLink}/api/users`);
         const resData = await response.json();
         const allUsers = resData.data;
         const usersNetWorth = allUsers.map((user) => {

@@ -1,10 +1,11 @@
 import {toast} from "react-toastify"
+const apiLink = import.meta.env.VITE_API;
 
 
 export const handleAcceptSuggestion = async (user, suggestion,fetchUserPortfolio,
     updateUserPortfolio,) => {
     try {
-      const response = await fetch("/api/acceptSuggestion", {
+      const response = await fetch(`${apiLink}/api/acceptSuggestion`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,7 +39,7 @@ export const handleAcceptSuggestion = async (user, suggestion,fetchUserPortfolio
   export const handleDeclineSuggestion = async (user, suggestion,fetchUserPortfolio,
     updateUserPortfolio,) => {
     try {
-      const response = await fetch("/api/declineSuggestion", {
+      const response = await fetch(`${apiLink}/api/declineSuggestion`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -71,7 +72,7 @@ export const handleAcceptSuggestion = async (user, suggestion,fetchUserPortfolio
   export const handleDeleteSuggestion = async (user, suggestion,fetchUserPortfolio,
     updateUserPortfolio,) => {
     try {
-      const response = await fetch("/api/deleteSuggestion", {
+      const response = await fetch(`${apiLink}/api/deleteSuggestion`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -104,7 +105,7 @@ export const handleAcceptSuggestion = async (user, suggestion,fetchUserPortfolio
   export const handleDeleteSuggestionHistory = async (user, suggestionHistory,fetchUserPortfolio,
     updateUserPortfolio,) => {
     try {
-      const response = await fetch("/api/deleteSuggestionHistory", {
+      const response = await fetch(`${apiLink}/api/deleteSuggestionHistory`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

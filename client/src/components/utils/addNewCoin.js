@@ -1,6 +1,8 @@
+const apiLink = import.meta.env.VITE_API;
+
 const addNewCoin = async (userId, coinData) => {
   try {
-    const response = await fetch("/api/addCoin", {
+    const response = await fetch(`${apiLink}/api/addCoin`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
