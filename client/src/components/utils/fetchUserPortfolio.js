@@ -1,6 +1,8 @@
+const apiLink = import.meta.env.VITE_API;
+
 const fetchUserPortfolio = async (userId, updateUserPortfolio) => {
   try {
-    const response = await fetch(`/api/user/${userId}`);
+    const response = await fetch(`${apiLink}/api/user/${userId}`);
     const resData = await response.json();
     if (resData.status === 200) {
       updateUserPortfolio(
