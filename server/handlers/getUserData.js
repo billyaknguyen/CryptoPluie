@@ -6,6 +6,7 @@ const options = {
   useUnifiedTopology: true,
 };
 
+// function to get a specific user's holdings, balance and suggestions
 const getUserData = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
   const { userId } = req.params;

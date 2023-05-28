@@ -6,7 +6,7 @@ const options = {
   useUnifiedTopology: true,
 };
 
-
+// a function to delete suggestions from the user's suggestion history
 const deleteSuggestionHistory = async (req, res) => {
     const client = new MongoClient(MONGO_URI, options);
     const { userId, suggestionHistory } = req.body;

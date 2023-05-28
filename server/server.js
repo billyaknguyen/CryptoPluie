@@ -19,6 +19,7 @@ app.use(morgan("tiny"));
 app.use(express.json());
 app.use(cors())
 
+// all of the endpoints from my handlers folder
 app.get("/api/coins", getAllCoins);
 app.get("/api/coin/:id", getCoinById);
 app.get("/api/user/:userId", getUserData);

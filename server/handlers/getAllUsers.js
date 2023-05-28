@@ -6,6 +6,7 @@ const options = {
   useUnifiedTopology: true,
 };
 
+// function to get all the users from mongoDB
 const getAllUsers = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
   try {

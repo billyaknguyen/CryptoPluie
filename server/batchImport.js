@@ -6,6 +6,7 @@ const options = {
   useUnifiedTopology: true,
 };
 
+// function to import coingecko's top 250 coins to MongoDB database
 const batchImport = async () => {
   const client = new MongoClient(MONGO_URI, options);
   try {

@@ -6,6 +6,7 @@ const options = {
   useUnifiedTopology: true,
 };
 
+// function to sell a coin from a user's holdings
 const sellCoinFromHoldings = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
   const { userId, coin_id, coin_quantity, coin_salePrice } = req.body;
@@ -32,7 +33,7 @@ const sellCoinFromHoldings = async (req, res) => {
         .json({ status: 400, message: "not enough coin to sell" });
     }
 
-    //Balance
+    //Updates the balance after selling a coin with new Balance
     const newBalance = user.balance + coin_quantity * coin_salePrice;
     await users.updateOne(
       { user_id: userId },
@@ -42,6 +43,7 @@ const sellCoinFromHoldings = async (req, res) => {
     const newCoinCostBasis =
       existingCoin.coin_costBasis -
       coin_quantity * existingCoin.coin_averagePrice;
+// update existing coin info , such as quantity, cost basis 
     const updatedCoin = {
       ...existingCoin,
       coin_quantity: newCoinQuantity,
@@ -56,6 +58,7 @@ const sellCoinFromHoldings = async (req, res) => {
       ],
     };
 
+    // if coin quantity is 0, removes it from the holdings
     if (newCoinQuantity === 0) {
       await users.updateOne(
         { user_id: userId },
@@ -65,6 +68,7 @@ const sellCoinFromHoldings = async (req, res) => {
         .status(200)
         .json({ status: 200, message: "successfully sold all coins" });
     } else {
+      // update the existing coin with the updatedCoin
       await users.updateOne(
         { user_id: userId, "holdings.coin_id": coin_id },
         { $set: { "holdings.$": updatedCoin } }

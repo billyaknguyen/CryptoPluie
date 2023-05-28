@@ -6,6 +6,7 @@ const options = {
   useUnifiedTopology: true,
 };
 
+// function to decline a suggestion from another user
 const declineSuggestion = async (req, res) => {
     const client = new MongoClient(MONGO_URI, options);
     const { userId, suggestion } = req.body;
@@ -14,13 +15,15 @@ const declineSuggestion = async (req, res) => {
       const db = client.db("CryptoPluie");
       const users = db.collection("Users");
   
+      // removes the suggestion from the pendingSuggestions
       await users.updateOne(
         { user_id: userId },
         {
           $pull: { pendingSuggestions: { _id: suggestion._id } },
         }
       );
-  
+      
+  // updates the sender's suggestion's status to declined in their suggestion history
     await users.updateOne (
       {
         user_id: suggestion.sender.sender_id,

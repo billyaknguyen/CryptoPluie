@@ -7,6 +7,7 @@ const options = {
   useUnifiedTopology: true,
 };
 
+// function that allows user to suggest a coin to other users.
 const suggestCoin = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
   const {loggedInUser, userId, messageData } = req.body;
@@ -20,16 +21,19 @@ const suggestCoin = async (req, res) => {
       return res.status(404).json({ message: "user not found" });
     }
 
+    // creates a message with an id
     const messageDataWithId = {
       ...messageData, 
       _id: uuidv4()
     }
 
+    // sends the message to the user's pending suggestions
     await users.updateOne(
       { user_id: userId },
       { $push: { pendingSuggestions: messageDataWithId } }
     );
 
+    // also sends the message to the sender's (logged in user) to their suggestion history
     await users.updateOne({user_id: loggedInUser}, {$push: {suggestionHistory : messageDataWithId}})
 
     return res

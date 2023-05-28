@@ -6,6 +6,7 @@ const options = {
   useUnifiedTopology: true,
 };
 
+// function to accept a suggestion from another user
 const acceptSuggestion = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
   const { userId, suggestion } = req.body;
@@ -18,6 +19,7 @@ const acceptSuggestion = async (req, res) => {
       ...suggestion, 
       status: "accepted"
     }
+    // removes the pending suggestion and add the updated suggestion to suggestions
     await users.updateOne(
       { user_id: userId },
       {
@@ -26,6 +28,7 @@ const acceptSuggestion = async (req, res) => {
       }
     );
 
+    // updates the sender's suggestion's status to accepted in their suggestion history
     await users.updateOne(
       {
         user_id: suggestion.sender.sender_id,
