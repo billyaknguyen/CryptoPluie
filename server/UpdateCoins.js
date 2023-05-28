@@ -8,6 +8,7 @@ const options = {
 };
 console.log("Starting the coin update ");
 
+// function with a cron job , to update mongoDB with fresh info from coingecko.
 const updateCoins = async () => {
   const client = new MongoClient(MONGO_URI, options);
   try {

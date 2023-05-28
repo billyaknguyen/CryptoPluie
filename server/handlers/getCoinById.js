@@ -6,6 +6,7 @@ const options = {
   useUnifiedTopology: true,
 };
 
+// function to get a specific coin based on id 
 const getCoinById = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
   try {

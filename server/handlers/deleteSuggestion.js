@@ -6,7 +6,7 @@ const options = {
   useUnifiedTopology: true,
 };
 
-
+// function to just delete a suggestion from the user's suggestions list
 const deleteSuggestion = async (req, res) => {
     const client = new MongoClient(MONGO_URI, options);
     const { userId, suggestion } = req.body;

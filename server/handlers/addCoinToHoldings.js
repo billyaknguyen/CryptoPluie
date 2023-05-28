@@ -6,6 +6,7 @@ const options = {
   useUnifiedTopology: true,
 };
 
+//function to add a coin after purchasing to the user's holdings
 const addCoinToHoldings = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
 
@@ -29,16 +30,17 @@ const addCoinToHoldings = async (req, res) => {
     );
 
     const newBalance = user.balance - coin_purchasePrice * coin_quantity;
-
     if (newBalance < 0) {
       return res.status(400).json({ status: 400, message: "not enough funds" });
     }
 
+    // update user's balance after a purchase
     await users.updateOne(
       { user_id: userId },
       { $set: { balance: newBalance } }
     );
 
+    // if coin exists in user's holdings, then update quantity , cost basis and average
     if (existingCoin) {
       const newCoinQuantity = existingCoin.coin_quantity + coin_quantity;
       const newCoinCostBasis =
@@ -68,6 +70,7 @@ const addCoinToHoldings = async (req, res) => {
         .status(200)
         .json({ data: updatedCoin, message: "updated existing coin" });
     } else {
+      // create a new coin in the holdings if coin doesn't exist
       const newCoin = {
         coin_id: coin_id,
         coin_name: coin_name,
