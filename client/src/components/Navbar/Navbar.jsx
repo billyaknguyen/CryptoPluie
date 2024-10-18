@@ -58,7 +58,7 @@ const Navbar = () => {
           </MenuButton>
         <LogoLink to="/">
           <Logo
-            src="https://cdn.discordapp.com/attachments/899929905318486046/1094149965976174672/CryptoPluie_Billy_Nguyen_Logo.png"
+            src="https://cdn.discordapp.com/attachments/899929905318486046/1296712589644009493/CryptoPluie_Billy_Nguyen_Logo.png?ex=67134935&is=6711f7b5&hm=cf46c6c72e97c283b4597f1b46b23fdf60bb67ccc9f9d8bf8948a8b932900b6f&"
             alt="logo"
           />
         </LogoLink>

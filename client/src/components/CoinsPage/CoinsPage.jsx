@@ -67,7 +67,7 @@ const CoinsPage = () => {
 
   return (
     <CoinPageContainer>
-      <CoinModelImg src="https://cdn.discordapp.com/attachments/899929905318486046/1102823108496330782/ModelImgFlipped-removebg-preview.png" />
+      <CoinModelImg src="https://cdn.discordapp.com/attachments/899929905318486046/1296713163932307456/ModelImgFlipped-removebg-preview.png?ex=671349be&is=6711f83e&hm=c3cd4c0872159dc2679fe4c017c64ef38b5e524e9ccc7872824250050b3f17d4&" />
 
       <CoinCardWrapper>
         <Title>Today's Cryptocurrency Prices</Title>
