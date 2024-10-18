@@ -45,3 +45,4 @@ const updateCoins = async () => {
 cron.schedule("*/15 * * * *", updateCoins);
 
 updateCoins();
+
