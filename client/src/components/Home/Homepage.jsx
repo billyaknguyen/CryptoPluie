@@ -76,11 +76,11 @@ const HomePage = () => {
             })}
           </CoinsSlider>
         </SecondSectionWrapper>
-        <RainCoatImg src="https://cdn.discordapp.com/attachments/899929905318486046/1095205154837516368/rainCoatSecondSection_Billy_Nguyen.jpeg" />
+        <RainCoatImg src="https://cdn.discordapp.com/attachments/899929905318486046/1296713715080499264/rainCoatSecondSection_Billy_Nguyen.jpeg?ex=67134a41&is=6711f8c1&hm=aaa1f8515e682ac525125b94c6a085542d29f097f6c001ff98ab68c7288f86f5&" />
       </SecondSection>
       <Wave />
       <ThirdSection>
-        <RichImg src="https://cdn.discordapp.com/attachments/899929905318486046/1095181669926977616/RainCoatBilly_N3.png" />
+        <RichImg src="https://cdn.discordapp.com/attachments/899929905318486046/1296713943313547304/RainCoatBilly_N3.png?ex=67134a77&is=6711f8f7&hm=4323614e35eb3a7a960d8203baa7f91b00d8b6b6114d322c54940a3c9dc20503&" />
         <ThirdSectionWrapper>
           <ThirdSectionTitle>
             Turn Rainy Days into Crypto Gains
