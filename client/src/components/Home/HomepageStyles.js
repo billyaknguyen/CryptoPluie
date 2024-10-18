@@ -12,7 +12,7 @@ export const HeroSection = styled.section`
   display: flex;
   justify-content: center;
   height: 100vh;
-  background-image: url(https://media.discordapp.net/attachments/899929905318486046/1094135069867782155/new_background_pic_HD.jpg?width=1752&height=819);
+  background-image: url(https://cdn.discordapp.com/attachments/899929905318486046/1296709268895961119/new_background_pic_HD.jpg?ex=6713461d&is=6711f49d&hm=6fa090630cd98546eed4c53f8ce78b494e6f65d840a2ab5484173143e74a8d85&);
   background-size: cover;
   background-position: center;
 `;
